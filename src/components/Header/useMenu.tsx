@@ -1,13 +1,12 @@
-import { BeakerIcon, GlobeIcon, SwitchVerticalIcon, TrendingUpIcon } from '@heroicons/react/outline'
+import { BeakerIcon, SwitchVerticalIcon } from '@heroicons/react/outline'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ChainId, SUSHI_ADDRESS } from '@sushiswap/core-sdk'
-import { RocketIcon, WalletIcon } from 'app/components/Icon'
+import { SUSHI_ADDRESS } from '@sushiswap/core-sdk'
+import { FarmIcon } from 'app/components/Icon'
 import { Feature } from 'app/enums'
 import { featureEnabled } from 'app/functions'
 import { useActiveWeb3React } from 'app/services/web3'
 import { ReactNode, useMemo } from 'react'
-
 export interface MenuItemLeaf {
   key: string
   title: string
@@ -79,24 +78,24 @@ const useMenu: UseMenu = () => {
     ]
 
     if (featureEnabled(Feature.TRIDENT, chainId)) {
-      menu.push({
-        key: 'trade',
-        title: i18n._(t`Trade`),
-        icon: <SwitchVerticalIcon width={20} />,
-        items: [
-          {
-            key: 'trident-swap',
-            title: i18n._(t`Swap`),
-            link: '/swap',
-          },
-          {
-            key: 'limit',
-            title: i18n._(t`Limit order`),
-            link: '/limit-order',
-            disabled: !featureEnabled(Feature.LIMIT_ORDERS, chainId),
-          },
-        ].filter((item) => !item.disabled),
-      })
+      //   menu.push({
+      //     key: 'trade',
+      //     title: i18n._(t`Trade`),
+      //     icon: <SwitchVerticalIcon width={20} />,
+      //     items: [
+      //       {
+      //         key: 'trident-swap',
+      //         title: i18n._(t`Swap`),
+      //         link: '/swap',
+      //       },
+      //       {
+      //         key: 'limit',
+      //         title: i18n._(t`Limit order`),
+      //         link: '/limit-order',
+      //         disabled: !featureEnabled(Feature.LIMIT_ORDERS, chainId),
+      //       },
+      //     ].filter((item) => !item.disabled),
+      //   })
 
       const tridentLiquidity = {
         key: 'liquidity',
@@ -116,15 +115,15 @@ const useMenu: UseMenu = () => {
         ],
       }
 
-      if (chainId === ChainId.MATIC) {
-        tridentLiquidity.items.push({
-          key: 'trident-migrate',
-          title: i18n._(t`Migrate`),
-          link: '/trident/migrate',
-        })
-      }
+      //   if (chainId === ChainId.MATIC) {
+      //     tridentLiquidity.items.push({
+      //       key: 'trident-migrate',
+      //       title: i18n._(t`Migrate`),
+      //       link: '/trident/migrate',
+      //     })
+      //   }
 
-      menu.push(tridentLiquidity)
+      //   menu.push(tridentLiquidity)
 
       if (featureEnabled(Feature.AMM, chainId)) {
         menu.push({
@@ -135,25 +134,26 @@ const useMenu: UseMenu = () => {
         })
       }
     } else {
-      menu.push({
-        key: 'trade',
-        title: i18n._(t`Trade`),
-        icon: <SwitchVerticalIcon width={20} />,
-        items: trade.filter((item) => !item?.disabled),
-      })
-      menu.push({
-        key: 'liquidity',
-        title: i18n._(t`Liquidity`),
-        icon: <BeakerIcon width={20} />,
-        items: liquidity.filter((item) => !item?.disabled),
-      })
+      //   menu.push({
+      //     key: 'trade',
+      //     title: i18n._(t`Trade`),
+      //     icon: <SwitchVerticalIcon width={20} />,
+      //     items: trade.filter((item) => !item?.disabled),
+      //   })
+      //   menu.push({
+      //     key: 'liquidity',
+      //     title: i18n._(t`Liquidity`),
+      //     icon: <BeakerIcon width={20} />,
+      //     items: liquidity.filter((item) => !item?.disabled),
+      //   })
     }
 
     if (featureEnabled(Feature.LIQUIDITY_MINING, chainId)) {
       const farmItems = {
         key: 'farm',
         title: i18n._(t`Farm`),
-        icon: <SwitchVerticalIcon width={20} className="rotate-90 filter" />,
+        icon: <FarmIcon width={2} height={2} className="rotate-90 filter" />,
+        // icon: <SwitchVerticalIcon width={20} className="rotate-90 filter" />,
         items: [
           {
             key: 'farm',
@@ -171,166 +171,164 @@ const useMenu: UseMenu = () => {
     }
 
     if (featureEnabled(Feature.KASHI, chainId)) {
-      menu.push({
-        key: 'kashi',
-        title: i18n._(t`Kashi`),
-        icon: <SwitchVerticalIcon width={20} className="rotate-90 filter" />,
-        items: [
-          {
-            key: 'lend',
-            title: i18n._(t`Lend`),
-            link: '/kashi?view=lend',
-          },
-          {
-            key: 'borrow',
-            title: i18n._(t`Borrow`),
-            link: '/kashi?view=borrow',
-          },
-        ],
-      })
+      //   menu.push({
+      //     key: 'kashi',
+      //     title: i18n._(t`Kashi`),
+      //     icon: <SwitchVerticalIcon width={20} className="rotate-90 filter" />,
+      //     items: [
+      //       {
+      //         key: 'lend',
+      //         title: i18n._(t`Lend`),
+      //         link: '/kashi?view=lend',
+      //       },
+      //       {
+      //         key: 'borrow',
+      //         title: i18n._(t`Borrow`),
+      //         link: '/kashi?view=borrow',
+      //       },
+      //     ],
+      //   })
     }
 
     if (featureEnabled(Feature.MISO, chainId)) {
-      const misoMenu = {
-        key: 'miso',
-        title: i18n._(t`MISO`),
-        icon: <RocketIcon width={20} />,
-        items: [
-          {
-            key: 'marketplace',
-            title: i18n._(t`Marketplace`),
-            link: '/miso',
-          },
-        ],
-      }
-
-      if (chainId !== ChainId.ETHEREUM) {
-        misoMenu.items.push({
-          key: 'launchpad',
-          title: i18n._(t`Launchpad`),
-          link: '/miso/auction',
-        })
-      }
-
-      menu.push(misoMenu)
+      //   const misoMenu = {
+      //     key: 'miso',
+      //     title: i18n._(t`MISO`),
+      //     icon: <RocketIcon width={20} />,
+      //     items: [
+      //       {
+      //         key: 'marketplace',
+      //         title: i18n._(t`Marketplace`),
+      //         link: '/miso',
+      //       },
+      //     ],
+      //   }
+      //   if (chainId !== ChainId.ETHEREUM) {
+      //     misoMenu.items.push({
+      //       key: 'launchpad',
+      //       title: i18n._(t`Launchpad`),
+      //       link: '/miso/auction',
+      //     })
+      //   }
+      //   menu.push(misoMenu)
     }
 
     const exploreMenu: MenuItemLeaf[] = []
 
     if (featureEnabled(Feature.STAKING, chainId)) {
-      exploreMenu.push({
-        key: 'sushi-bar',
-        title: i18n._(t`Sushi Bar`),
-        link: '/stake',
-      })
+      //   exploreMenu.push({
+      //     key: 'sushi-bar',
+      //     title: i18n._(t`Sushi Bar`),
+      //     link: '/stake',
+      //   })
     }
 
     if (featureEnabled(Feature.MEOWSHI, chainId)) {
-      exploreMenu.push({
-        key: 'meowshi',
-        title: i18n._(t`Meowshi`),
-        link: '/tools/meowshi',
-      })
+      //   exploreMenu.push({
+      //     key: 'meowshi',
+      //     title: i18n._(t`Meowshi`),
+      //     link: '/tools/meowshi',
+      //   })
     }
 
     if (featureEnabled(Feature.MEOWSHI, chainId)) {
-      exploreMenu.push({
-        key: 'yield',
-        title: i18n._(t`Yield Strategies`),
-        link: '/tools/inari',
-      })
+      //   exploreMenu.push({
+      //     key: 'yield',
+      //     title: i18n._(t`Yield Strategies`),
+      //     link: '/tools/inari',
+      //   })
     }
 
     if (exploreMenu.length > 0) {
-      menu.push({
-        key: 'explore',
-        title: i18n._(t`Explore`),
-        items: exploreMenu,
-        icon: <GlobeIcon width={20} />,
-      })
+      //   menu.push({
+      //     key: 'explore',
+      //     title: i18n._(t`Explore`),
+      //     items: exploreMenu,
+      //     icon: <GlobeIcon width={20} />,
+      //   })
     }
 
-    let analyticsMenu: MenuItem = {
-      key: 'analytics',
-      title: i18n._(t`Analytics`),
-      icon: <TrendingUpIcon width={20} />,
-      items: [
-        {
-          key: 'dashboard',
-          title: 'Dashboard',
-          link: `/analytics`,
-        },
-        {
-          key: 'xsushi',
-          title: 'xSUSHI',
-          link: '/analytics/xsushi',
-        },
-        {
-          key: 'tokens',
-          title: 'Tokens',
-          link: `/analytics/tokens`,
-        },
-        {
-          key: 'pools',
-          title: 'Pools',
-          link: `/analytics/pools`,
-        },
-      ],
+    // let analyticsMenu: MenuItem = {
+    //   key: 'analytics',
+    //   title: i18n._(t`Analytics`),
+    //   icon: <TrendingUpIcon width={20} />,
+    //   items: [
+    //     {
+    //       key: 'dashboard',
+    //       title: 'Dashboard',
+    //       link: `/analytics`,
+    //     },
+    //     {
+    //       key: 'xsushi',
+    //       title: 'xSUSHI',
+    //       link: '/analytics/xsushi',
+    //     },
+    //     {
+    //       key: 'tokens',
+    //       title: 'Tokens',
+    //       link: `/analytics/tokens`,
+    //     },
+    //     {
+    //       key: 'pools',
+    //       title: 'Pools',
+    //       link: `/analytics/pools`,
+    //     },
+    //   ],
+    // }
+
+    if (featureEnabled(Feature.BENTOBOX, chainId)) {
+      //   analyticsMenu.items.push({
+      //     key: 'farms',
+      //     title: 'Farms',
+      //     link: `/analytics/farms`,
+      //   })
     }
 
     if (featureEnabled(Feature.BENTOBOX, chainId)) {
-      analyticsMenu.items.push({
-        key: 'farms',
-        title: 'Farms',
-        link: `/analytics/farms`,
-      })
-    }
-
-    if (featureEnabled(Feature.BENTOBOX, chainId)) {
-      analyticsMenu.items.push({
-        key: 'bentobox',
-        title: 'BentoBox',
-        link: `/analytics/bentobox`,
-      })
+      //   analyticsMenu.items.push({
+      //     key: 'bentobox',
+      //     title: 'BentoBox',
+      //     link: `/analytics/bentobox`,
+      //   })
     }
 
     if (featureEnabled(Feature.ANALYTICS, chainId)) {
-      menu.push(analyticsMenu)
+      //   menu.push(analyticsMenu)
     }
 
     if (account) {
-      const portfolio = {
-        key: 'portfolio',
-        title: i18n._(t`Portfolio`),
+      //   const portfolio = {
+      //     key: 'portfolio',
+      //     title: i18n._(t`Portfolio`),
 
-        icon: <WalletIcon width={20} />,
-        items: [
-          {
-            key: 'account',
-            title: 'Account',
-            link: `/account?account=${account}`,
-          },
-          {
-            key: 'liquidity',
-            title: 'Liquidity',
-            link: `/account/liquidity?account=${account}`,
-          },
-        ],
-      }
+      //     icon: <WalletIcon width={20} />,
+      //     items: [
+      //       {
+      //         key: 'account',
+      //         title: 'Account',
+      //         link: `/account?account=${account}`,
+      //       },
+      //       {
+      //         key: 'liquidity',
+      //         title: 'Liquidity',
+      //         link: `/account/liquidity?account=${account}`,
+      //       },
+      //     ],
+      //   }
 
       if (featureEnabled(Feature.KASHI, chainId)) {
-        portfolio.items.push({
-          key: 'lending',
-          title: 'Lending',
-          link: `/account/lending?account=${account}`,
-        })
-        portfolio.items.push({
-          key: 'borrowing',
-          title: 'Borrowing',
-          link: `/account/borrowing?account=${account}`,
-        })
+        // portfolio.items.push({
+        //   key: 'lending',
+        //   title: 'Lending',
+        //   link: `/account/lending?account=${account}`,
+        // })
+        // portfolio.items.push({
+        //   key: 'borrowing',
+        //   title: 'Borrowing',
+        //   link: `/account/borrowing?account=${account}`,
+        // })
       }
-      menu.push(portfolio)
+      //   menu.push(portfolio)
     }
 
     return menu.filter((el) => Object.keys(el).length > 0)

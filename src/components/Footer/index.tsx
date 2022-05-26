@@ -1,13 +1,14 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { DiscordIcon, InstagramIcon, MediumIcon, TwitterIcon } from 'app/components/Icon'
+import { Logo } from 'app/components/Icon'
 import LanguageSwitch from 'app/components/LanguageSwitch'
 import Typography from 'app/components/Typography'
-import { Feature } from 'app/enums'
-import { featureEnabled } from 'app/functions'
+// import { Feature } from 'app/enums'
+// import { featureEnabled } from 'app/functions'
 import { useActiveWeb3React } from 'app/services/web3'
-import Image from 'next/image'
-import Link from 'next/link'
+// import Image from 'next/image'
+// import Link from 'next/link'
 import React from 'react'
 
 import Container from '../Container'
@@ -23,10 +24,11 @@ const Footer = () => {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-start gap-2">
               <div className="">
-                <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="28px" height="28px" />
+                <Logo alt="Exofi logo" width="28px" height="28px" />
+                {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Exofi logo" width="28px" height="28px" /> */}
               </div>
               <Typography variant="h2" weight={700} className="tracking-[0.02em] scale-y-90 hover:text-high-emphesis">
-                Sushi
+                EXOFI
               </Typography>
             </div>
             <Typography variant="xs" className="text-low-emphesis">
@@ -48,7 +50,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="flex flex-col gap-1 text-right">
+          {/* <div className="flex flex-col gap-1 text-right">
             <Typography variant="xs" weight={700} className="mt-2.5 hover:text-high-emphesis">
               {i18n._(t`Products`)}
             </Typography>
@@ -171,7 +173,7 @@ const Footer = () => {
                 {i18n._(t`Vesting`)}
               </Typography>
             </Link>
-          </div>
+          </div> */}
           <div className="flex flex-col gap-1">
             <LanguageSwitch />
           </div>
