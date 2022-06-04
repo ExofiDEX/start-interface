@@ -31,6 +31,137 @@ export const TwitterIcon = (props: React.ComponentProps<'svg'>) => {
   )
 }
 
+export const Logo = (props: React.ComponentProps<'svg'>) => {
+  return (
+    <svg {...props} fill="none" viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg">
+      {/* <svg width="271" height="58" viewBox="0 0 271 58" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
+      <path d="M22.6339 9.8034L14.1461 1.14441e-05V58L22.6339 49.4628V9.8034Z" fill="url(#paint0_linear_60_13)" />
+      <path d="M0 15.4899L8.4878 8.48747V50.9265L0 43.818V15.4899Z" fill="url(#paint1_linear_60_13)" />
+      <path d="M36.7808 15.4899L28.293 8.48747V50.9265L36.7808 43.818V15.4899Z" fill="url(#paint2_linear_60_13)" />
+      <path
+        d="M60.2859 36.7587H101.993V42.4048H54.5865V16.5712H101.993V22.2173H60.2859V26.6383H101.993V32.2844H60.2859V36.7587Z"
+        fill="white"
+      />
+      <path
+        d="M154.312 16.5712L149.198 29.4614L154.312 42.4048H148.506L144.191 32.2844H116.919L112.605 42.4048H106.799L111.859 29.4614L106.799 16.5712H112.605L116.866 26.6383H144.191L148.506 16.5712H154.312Z"
+        fill="white"
+      />
+      <path
+        d="M201.115 16.5712H164.468C163.758 16.5712 163.083 16.6955 162.444 16.944C161.805 17.1926 161.237 17.5655 160.74 18.0626C160.243 18.5242 159.834 19.1101 159.515 19.8204C159.231 20.5306 159.089 21.3295 159.089 22.2173V36.7587C159.089 37.682 159.231 38.4987 159.515 39.2089C159.834 39.8836 160.243 40.4695 160.74 40.9667C161.237 41.4283 161.805 41.7834 162.444 42.032C163.083 42.2806 163.758 42.4048 164.468 42.4048H201.115C201.79 42.4048 202.446 42.2806 203.086 42.032C203.76 41.7834 204.346 41.4283 204.843 40.9667C205.341 40.4695 205.731 39.8836 206.015 39.2089C206.335 38.4987 206.495 37.682 206.495 36.7587V22.2173C206.495 21.365 206.335 20.5838 206.015 19.8736C205.731 19.1634 205.341 18.5775 204.843 18.1159C204.346 17.6187 203.76 17.2459 203.086 16.9973C202.446 16.7132 201.79 16.5712 201.115 16.5712ZM198.771 36.7587H166.652C166.12 36.7587 165.676 36.5457 165.321 36.1195C164.965 35.6579 164.788 35.072 164.788 34.3618V24.6142C164.788 23.904 164.93 23.3359 165.214 22.9097C165.534 22.4481 166.049 22.2173 166.759 22.2173H198.824C199.464 22.2173 199.943 22.4481 200.263 22.9097C200.618 23.3359 200.795 23.904 200.795 24.6142V34.3618C200.795 35.072 200.582 35.6579 200.156 36.1195C199.765 36.5457 199.304 36.7587 198.771 36.7587Z"
+        fill="white"
+      />
+      <path
+        d="M217.533 42.4048H211.834V16.5712H259.24V22.2173H217.533V26.6383H259.24V32.2844H217.533V42.4048Z"
+        fill="white"
+      />
+      <path d="M270.331 42.4048H264.579V16.5712H270.331V42.4048Z" fill="white" />
+      <defs>
+        <linearGradient
+          id="paint0_linear_60_13"
+          x1="18.39"
+          y1="1.14441e-05"
+          x2="18.39"
+          y2="58"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00F0FF" />
+          <stop offset="0.494792" stopColor="#FF00E5" />
+          <stop offset="1" stopColor="#FFF500" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_60_13"
+          x1="4.2439"
+          y1="8.48747"
+          x2="4.2439"
+          y2="50.9265"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00F0FF" />
+          <stop offset="0.494792" stopColor="#FF00E5" />
+          <stop offset="1" stopColor="#FFF500" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_60_13"
+          x1="32.5369"
+          y1="8.48747"
+          x2="32.5369"
+          y2="50.9265"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00F0FF" />
+          <stop offset="0.494792" stopColor="#FF00E5" />
+          <stop offset="1" stopColor="#FFF500" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
+export const LogoWithName = (props: React.ComponentProps<'svg'>) => {
+  return (
+    <svg width="271" height="58" viewBox="0 0 271 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.6339 9.8034L14.1461 1.14441e-05V58L22.6339 49.4628V9.8034Z" fill="url(#paint0_linear_60_13)" />
+      <path d="M0 15.4899L8.4878 8.48747V50.9265L0 43.818V15.4899Z" fill="url(#paint1_linear_60_13)" />
+      <path d="M36.7808 15.4899L28.293 8.48747V50.9265L36.7808 43.818V15.4899Z" fill="url(#paint2_linear_60_13)" />
+      <path
+        d="M60.2859 36.7587H101.993V42.4048H54.5865V16.5712H101.993V22.2173H60.2859V26.6383H101.993V32.2844H60.2859V36.7587Z"
+        fill="white"
+      />
+      <path
+        d="M154.312 16.5712L149.198 29.4614L154.312 42.4048H148.506L144.191 32.2844H116.919L112.605 42.4048H106.799L111.859 29.4614L106.799 16.5712H112.605L116.866 26.6383H144.191L148.506 16.5712H154.312Z"
+        fill="white"
+      />
+      <path
+        d="M201.115 16.5712H164.468C163.758 16.5712 163.083 16.6955 162.444 16.944C161.805 17.1926 161.237 17.5655 160.74 18.0626C160.243 18.5242 159.834 19.1101 159.515 19.8204C159.231 20.5306 159.089 21.3295 159.089 22.2173V36.7587C159.089 37.682 159.231 38.4987 159.515 39.2089C159.834 39.8836 160.243 40.4695 160.74 40.9667C161.237 41.4283 161.805 41.7834 162.444 42.032C163.083 42.2806 163.758 42.4048 164.468 42.4048H201.115C201.79 42.4048 202.446 42.2806 203.086 42.032C203.76 41.7834 204.346 41.4283 204.843 40.9667C205.341 40.4695 205.731 39.8836 206.015 39.2089C206.335 38.4987 206.495 37.682 206.495 36.7587V22.2173C206.495 21.365 206.335 20.5838 206.015 19.8736C205.731 19.1634 205.341 18.5775 204.843 18.1159C204.346 17.6187 203.76 17.2459 203.086 16.9973C202.446 16.7132 201.79 16.5712 201.115 16.5712ZM198.771 36.7587H166.652C166.12 36.7587 165.676 36.5457 165.321 36.1195C164.965 35.6579 164.788 35.072 164.788 34.3618V24.6142C164.788 23.904 164.93 23.3359 165.214 22.9097C165.534 22.4481 166.049 22.2173 166.759 22.2173H198.824C199.464 22.2173 199.943 22.4481 200.263 22.9097C200.618 23.3359 200.795 23.904 200.795 24.6142V34.3618C200.795 35.072 200.582 35.6579 200.156 36.1195C199.765 36.5457 199.304 36.7587 198.771 36.7587Z"
+        fill="white"
+      />
+      <path
+        d="M217.533 42.4048H211.834V16.5712H259.24V22.2173H217.533V26.6383H259.24V32.2844H217.533V42.4048Z"
+        fill="white"
+      />
+      <path d="M270.331 42.4048H264.579V16.5712H270.331V42.4048Z" fill="white" />
+      <defs>
+        <linearGradient
+          id="paint0_linear_60_13"
+          x1="18.39"
+          y1="1.14441e-05"
+          x2="18.39"
+          y2="58"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00F0FF" />
+          <stop offset="0.494792" stopColor="#FF00E5" />
+          <stop offset="1" stopColor="#FFF500" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_60_13"
+          x1="4.2439"
+          y1="8.48747"
+          x2="4.2439"
+          y2="50.9265"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00F0FF" />
+          <stop offset="0.494792" stopColor="#FF00E5" />
+          <stop offset="1" stopColor="#FFF500" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_60_13"
+          x1="32.5369"
+          y1="8.48747"
+          x2="32.5369"
+          y2="50.9265"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00F0FF" />
+          <stop offset="0.494792" stopColor="#FF00E5" />
+          <stop offset="1" stopColor="#FFF500" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
 export const InstagramIcon = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg {...props} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -297,16 +428,16 @@ export const GasIcon = (props: React.ComponentProps<'svg'>) => {
 }
 export const SushiIcon = (props: React.ComponentProps<'svg'>) => {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" >
-      <circle cx="24" cy="24" r="24" fill="url(#paint0_linear_14_16)"/>
-        <path d="M26.4875 13.4088L21.8046 8V40L26.4875 35.2898V13.4088Z" fill="black"/>
-        <path d="M14 16.5462L18.6829 12.6828V36.0974L14 32.1755V16.5462Z" fill="black"/>
-        <path d="M34.2928 16.5462L29.6099 12.6828V36.0974L34.2928 32.1755V16.5462Z" fill="black"/>
-        <defs>
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="24" fill="url(#paint0_linear_14_16)" />
+      <path d="M26.4875 13.4088L21.8046 8V40L26.4875 35.2898V13.4088Z" fill="black" />
+      <path d="M14 16.5462L18.6829 12.6828V36.0974L14 32.1755V16.5462Z" fill="black" />
+      <path d="M34.2928 16.5462L29.6099 12.6828V36.0974L34.2928 32.1755V16.5462Z" fill="black" />
+      <defs>
         <linearGradient id="paint0_linear_14_16" x1="6" y1="8.5" x2="40" y2="42" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#00E9F8"/>
-        <stop offset="0.515625" stop-color="#FF00E5"/>
-        <stop offset="1" stop-color="#FFF500"/>
+          <stop stopColor="#00E9F8" />
+          <stop offset="0.515625" stopColor="#FF00E5" />
+          <stop offset="1" stopColor="#FFF500" />
         </linearGradient>
       </defs>
     </svg>

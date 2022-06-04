@@ -18,6 +18,9 @@ export default function Document() {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#0993ec" />
 
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet" />
         <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png" />
         <link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png" />
         <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128x128.png" />

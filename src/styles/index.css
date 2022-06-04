@@ -25,12 +25,11 @@ html {
   overflow-y: auto;
   overflow-x: hidden;
   font-family: 'Play', sans-serif;
-  
 }
 
 html,
 body {
-  font-family: var(--font-sans);
+  font-family: 'Play', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,6 +59,11 @@ a {
   background-color: #313132;
 
 }
+#connect-wallet:hover{
+  background: linear-gradient(to right, #6ae8f1 , #eb6cde, #e2de65);
+  color: white;
+}
+  
 button:focus {
   outline: none;
 }

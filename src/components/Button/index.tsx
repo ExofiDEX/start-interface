@@ -41,7 +41,7 @@ const OUTLINED = {
   pink: 'border-none bg-pink/20 hover:bg-pink/40 active:bg-pink/60 text-pink focus:bg-pink/40',
   purple: 'border-none bg-purple/20 hover:bg-purple/40 active:bg-purple/60 text-purple focus:bg-purple/40',
   gradient: 'border-none bg-purple/20 hover:bg-purple/40 active:bg-purple/60 text-purple focus:bg-purple/40',
-  gray: 'border-dark-700 hover:bg-dark-700/30 active:bg-dark-700/50 focus:bg-dark-700/30',
+  gray: 'border-dark-700 active:bg-dark-700/50 focus:bg-dark-700/30',
 }
 
 const EMPTY = {
@@ -95,12 +95,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
-      // id='connect-wallet'
+        // id='connect-wallet'
         {...rest}
         ref={ref}
         disabled={disabled || loading}
         className={classNames(
-          VARIANT[variant]['default'],
+          VARIANT[variant]['gray'],
           // @ts-ignore TYPE NEEDS FIXING
           VARIANT[variant][color],
           // @ts-ignore TYPE NEEDS FIXING
