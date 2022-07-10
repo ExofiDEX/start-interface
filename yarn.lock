@@ -2616,6 +2616,22 @@
     tiny-warning "^1.0.0"
     toformat "^2.0.0"
 
+"@sushiswap/core-sdk@1.0.0-canary.16":
+  version "1.0.0-canary.16"
+  resolved "https://registry.yarnpkg.com/@sushiswap/core-sdk/-/core-sdk-1.0.0-canary.16.tgz#e3b42a442233c1fe2d058a0f8564a66667317bd5"
+  integrity sha512-eLcpnUcZDK8gM0JzASsa3AkeESvnYzpsMV1cJ0j8AT8T915tLh96LigvfnJb2DZG3EbDcbl23be/rxlcHIx3QQ==
+  dependencies:
+    "@ethersproject/address" "^5.4.0"
+    "@ethersproject/bignumber" "^5.4.0"
+    "@ethersproject/providers" "^5.4.0"
+    "@ethersproject/solidity" "^5.4.0"
+    big.js "^6.1.1"
+    decimal.js-light "^2.5.0"
+    jsbi "^4.1.0"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.0"
+    toformat "^2.0.0"
+
 "@sushiswap/core@^2.0.0-canary.1":
   version "2.0.0-canary.1"
   resolved "https://registry.yarnpkg.com/@sushiswap/core/-/core-2.0.0-canary.1.tgz#91c938668282d463e4fce6e0cf4d320ce5f3768f"
@@ -2635,10 +2651,10 @@
   resolved "https://registry.yarnpkg.com/@sushiswap/limit-order-pair-list/-/limit-order-pair-list-0.2.17.tgz#0f0b1fb2d4f2425056e76673cb3c3c7011dacfcb"
   integrity sha512-j5ewnBO2kEH1s3/dXPS8+qaFO/rM83H6DMP9Zy/Uh76Ub+wjRC4EqQEuhPlrAgQvqSTNX4hbPByD7x/OMzINuw==
 
-"@sushiswap/limit-order-sdk@1.0.0-canary.89":
-  version "1.0.0-canary.89"
-  resolved "https://registry.yarnpkg.com/@sushiswap/limit-order-sdk/-/limit-order-sdk-1.0.0-canary.89.tgz#65358d6152f49e6ac9c69e3228feba7106d81bb5"
-  integrity sha512-EjM8L+8rcHSAzGXA6XNcM+p5RhTT2D9X6+0ioHlxGwmtG4ErT4yFR7/7l0U9cKkLpAswZRxOl23m3imX3Cd3Iw==
+"@sushiswap/limit-order-sdk@1.0.0-canary.175":
+  version "1.0.0-canary.175"
+  resolved "https://registry.yarnpkg.com/@sushiswap/limit-order-sdk/-/limit-order-sdk-1.0.0-canary.175.tgz#31957918a7ebbcb261dd2bb493d3cb369a0bd714"
+  integrity sha512-tA4rgwc+4aonVN8/dDRMKY3QuxbJBft8ekJL28j0iu7E101a5eaiHZN5L4GcTjFdu4vhAAo1w3vgLzj4uJL5yQ==
   dependencies:
     "@ethersproject/abi" "^5.4.0"
     "@ethersproject/abstract-signer" "^5.4.0"
@@ -2647,7 +2663,7 @@
     "@ethersproject/experimental" "^5.4.0"
     "@ethersproject/signing-key" "^5.4.0"
     "@ethersproject/transactions" "^5.4.0"
-    "@sushiswap/core-sdk" "1.0.0-canary.108"
+    "@sushiswap/core-sdk" "1.0.0-canary.16"
     eip-712 "^0.4.0"
     isomorphic-unfetch "^3.0.0"
 
