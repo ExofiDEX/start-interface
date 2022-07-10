@@ -1,7 +1,7 @@
+import { CurrencyAmount } from '@exoda/core-sdk'
 import { PlusIcon } from '@heroicons/react/outline'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { CurrencyAmount } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
 import Loader from 'app/components/Loader'
 import FullPositionCard from 'app/components/PositionCard'

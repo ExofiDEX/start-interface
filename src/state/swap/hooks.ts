@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-import { useLingui } from '@lingui/react'
 import {
   ChainId,
   Currency,
@@ -9,7 +7,9 @@ import {
   Trade as V2Trade,
   TradeType,
   WNATIVE_ADDRESS,
-} from '@sushiswap/core-sdk'
+} from '@exoda/core-sdk'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import { currencyId } from 'app/functions'
 import { tryParseAmount } from 'app/functions/parse'
 import { isAddress } from 'app/functions/validate'

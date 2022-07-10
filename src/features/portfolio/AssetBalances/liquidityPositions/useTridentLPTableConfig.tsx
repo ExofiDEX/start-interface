@@ -1,4 +1,4 @@
-import { PoolType } from '@sushiswap/trident-sdk'
+import { PoolType } from '@exoda/trident-sdk'
 import Chip from 'app/components/Chip'
 import Typography from 'app/components/Typography'
 import { PoolCell } from 'app/features/trident/pools/PoolCell'

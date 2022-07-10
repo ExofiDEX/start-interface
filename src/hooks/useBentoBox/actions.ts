@@ -1,6 +1,6 @@
 import { getAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
-import { WNATIVE_ADDRESS } from '@sushiswap/core-sdk'
+import { WNATIVE_ADDRESS } from '@exoda/core-sdk'
 import { Action, BatchAction, DepositActionPayload, HarvestAction, WithdrawAction } from 'app/hooks/useBentoBox/types'
 
 export const depositAction: Action<DepositActionPayload> = ({ bentobox, tokenAddress, amount, account, chainId }) => {

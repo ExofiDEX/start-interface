@@ -1,6 +1,6 @@
+import { NATIVE } from '@exoda/core-sdk'
 import { Dialog, Transition } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
-import { NATIVE } from '@sushiswap/core-sdk'
 import useMenu from 'app/components/Header/useMenu'
 import { Logo } from 'app/components/Icon'
 import Web3Network from 'app/components/Web3Network'

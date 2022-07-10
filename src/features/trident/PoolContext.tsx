@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, JSBI, Percent, Rebase, Token, ZERO } from '@sushiswap/core-sdk'
-import { ConstantProductPool, PoolState } from '@sushiswap/trident-sdk'
+import { Currency, CurrencyAmount, JSBI, Percent, Rebase, Token, ZERO } from '@exoda/core-sdk'
+import { ConstantProductPool, PoolState } from '@exoda/trident-sdk'
 import useCurrenciesFromURL from 'app/features/trident/useCurrenciesFromURL'
 import { toAmountCurrencyAmount } from 'app/functions'
 import useBentoRebases from 'app/hooks/useBentoRebases'

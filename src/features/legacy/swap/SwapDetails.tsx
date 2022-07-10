@@ -1,17 +1,18 @@
-import { Disclosure, Transition } from '@headlessui/react'
-import { ChevronDownIcon, ExternalLinkIcon } from '@heroicons/react/outline'
-import { t } from '@lingui/macro'
-import { useLingui } from '@lingui/react'
 import {
   Currency,
   CurrencyAmount,
   NATIVE,
   Percent,
+  Price,
   Token,
   Trade as LegacyTrade,
   TradeVersion,
-} from '@sushiswap/core-sdk'
-import { Trade as TridentTrade } from '@sushiswap/trident-sdk'
+} from '@exoda/core-sdk'
+import { Trade as TridentTrade } from '@exoda/trident-sdk'
+import { Disclosure, Transition } from '@headlessui/react'
+import { ChevronDownIcon, ExternalLinkIcon } from '@heroicons/react/outline'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import Chip from 'app/components/Chip'
 import Typography from 'app/components/Typography'
 import TradePrice from 'app/features/legacy/swap/TradePrice'
@@ -71,7 +72,7 @@ const SwapDetails: FC<SwapDetails> = ({
               <TradePrice
                 inputCurrency={inputCurrency}
                 outputCurrency={outputCurrency}
-                price={trade?.executionPrice}
+                price={trade?.executionPrice as Price<Currency, Currency>}
                 showInverted={inverted}
                 setShowInverted={setInverted}
               />

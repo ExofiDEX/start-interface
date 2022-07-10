@@ -1,6 +1,6 @@
+import { STOP_LIMIT_ORDER_ADDRESS } from '@exoda/limit-order-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { STOP_LIMIT_ORDER_ADDRESS } from '@sushiswap/limit-order-sdk'
 import Button from 'app/components/Button'
 import HeadlessUIModal from 'app/components/Modal/HeadlessUIModal'
 import Typography from 'app/components/Typography'
