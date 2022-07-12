@@ -1,6 +1,6 @@
 {
   "name": "sushiswap-interface",
-  "version": "1.0.0",
+  "version": "1.0.0a",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true yarn build && serve .next -n",
