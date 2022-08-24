@@ -89,9 +89,9 @@ export const getMasterChefV2Farms = async (chainId = ChainId.ETHEREUM, variables
   const { pools } = await masterChefV2(poolsV2Query, chainId, variables)
 
   const tokens = await getTokenSubset(chainId, {
-    // TODO: Access to other subgraph "exchange"
     // @ts-ignore TYPE NEEDS FIXING
-    tokenAddresses: Array.from(pools.map((pool) => pool.rewarder.rewardToken)), // TODO: Replace with something valid since rewardToken is removed
+    //tokenAddresses: Array.from(pools.map((pool) => pool.rewarder.rewardToken)), // TODO: Replace with something valid since rewardToken is removed
+    tokenAddresses: Array.from(pools.map((pool) => '0x3aCE7907c091Db64f3e89485AAE15074CA110C9E')), // TODO: Replace with something more beautiful...
   })
 
   // @ts-ignore TYPE NEEDS FIXING
@@ -99,7 +99,8 @@ export const getMasterChefV2Farms = async (chainId = ChainId.ETHEREUM, variables
     ...pool,
     rewardToken: {
       // @ts-ignore TYPE NEEDS FIXING
-      ...tokens.find((token) => token.id === pool.rewarder.rewardToken), // TODO: Replace with something valid since rewardToken is removed
+      //...tokens.find((token) => token.id === pool.rewarder.rewardToken), // TODO: Replace with something valid since rewardToken is removed
+      ...tokens.find((token) => token.id === '0x3aCE7907c091Db64f3e89485AAE15074CA110C9E'), // TODO: Replace with something valid since rewardToken is removed
     },
   }))
 }
