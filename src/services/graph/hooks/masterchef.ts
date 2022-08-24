@@ -44,8 +44,8 @@ export function useMasterChefV1Farms({ chainId, swrConfig = undefined }: useFarm
 }
 
 export function useMasterChefV2Farms({ chainId, swrConfig = undefined }: useFarmsProps) {
-  const shouldFetch = chainId && chainId === ChainId.ETHEREUM
-  const { data } = useSWR(shouldFetch ? 'masterChefV2Farms' : null, () => getMasterChefV2Farms(), swrConfig)
+  const shouldFetch = chainId && (chainId === ChainId.ETHEREUM || chainId === ChainId.GÖRLI)
+  const { data } = useSWR(shouldFetch ? 'masterChefV2Farms' : null, () => getMasterChefV2Farms(chainId), swrConfig)
   return useMemo(() => {
     if (!data) return []
     // @ts-ignore TYPE NEEDS FIXING

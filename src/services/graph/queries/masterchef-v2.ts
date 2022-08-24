@@ -12,15 +12,15 @@ export const poolsV2Query = gql`
       pair
       allocPoint
       slpBalance
-      masterChef {
+      magneticFieldGenerator {
         id
         totalAllocPoint
       }
-      rewarder {
-        id
-        rewardToken
-        rewardPerSecond
-      }
+      # rewarder {
+      #   id
+      #   rewardToken
+      #   rewardPerSecond
+      # }
     }
   }
 `
@@ -35,7 +35,7 @@ export const masterChefV2PairAddressesQuery = gql`
     pools(first: $first, skip: $skip, orderBy: $orderBy, orderDirection: $orderDirection) {
       id
       allocPoint
-      accSushiPerShare
+      accFermionPerShare
       pair {
         id
       }

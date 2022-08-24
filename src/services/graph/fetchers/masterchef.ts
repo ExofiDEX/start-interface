@@ -41,7 +41,9 @@ export const oldMiniChef = async (query, chainId = ChainId.ETHEREUM) =>
   request(`${GRAPH_HOST[chainId]}/subgraphs/name/${OLD_MINICHEF[chainId]}`, query)
 
 export const MASTERCHEF_V2 = {
-  [ChainId.ETHEREUM]: 'sushiswap/master-chefv2',
+  [ChainId.ETHEREUM]: 'exofidex/magnetic-field-generator-main',
+  [ChainId.GÖRLI]: 'exofidex/magnetic-field-generator-goerli',
+  [ChainId.KOVAN]: 'exofidex/magnetic-field-generator-kovan',
 }
 
 // @ts-ignore TYPE NEEDS FIXING
@@ -83,12 +85,13 @@ export const getMasterChefV1PairAddreses = async () => {
   return pools?.map((pool) => pool.pair)
 }
 
-export const getMasterChefV2Farms = async (variables = undefined) => {
-  const { pools } = await masterChefV2(poolsV2Query, undefined, variables)
+export const getMasterChefV2Farms = async (chainId = ChainId.ETHEREUM, variables = undefined) => {
+  const { pools } = await masterChefV2(poolsV2Query, chainId, variables)
 
-  const tokens = await getTokenSubset(ChainId.ETHEREUM, {
+  const tokens = await getTokenSubset(chainId, {
+    // TODO: Access to other subgraph "exchange"
     // @ts-ignore TYPE NEEDS FIXING
-    tokenAddresses: Array.from(pools.map((pool) => pool.rewarder.rewardToken)),
+    tokenAddresses: Array.from(pools.map((pool) => pool.rewarder.rewardToken)), // TODO: Replace with something valid since rewardToken is removed
   })
 
   // @ts-ignore TYPE NEEDS FIXING
@@ -96,7 +99,7 @@ export const getMasterChefV2Farms = async (variables = undefined) => {
     ...pool,
     rewardToken: {
       // @ts-ignore TYPE NEEDS FIXING
-      ...tokens.find((token) => token.id === pool.rewarder.rewardToken),
+      ...tokens.find((token) => token.id === pool.rewarder.rewardToken), // TODO: Replace with something valid since rewardToken is removed
     },
   }))
 }

@@ -71,7 +71,7 @@ export default function Farm(): JSX.Element {
 
   return (
     <>
-      <NextSeo title="Farm" description="Farm SUSHI" />
+      <NextSeo title="Farm" description="Farm EXOFI" />
       <TridentHeader className="sm:!flex-row justify-between items-center" pattern="bg-bubble">
         <div>
           <Typography variant="h2" className="text-high-emphesis" weight={700}>
