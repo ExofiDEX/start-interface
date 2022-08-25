@@ -1,5 +1,5 @@
 import { getAddress } from '@ethersproject/address'
-import { Token } from '@sushiswap/core-sdk'
+import { Token } from '@exoda/core-sdk'
 import { CurrencyLogo } from 'app/components/CurrencyLogo'
 import { Feature } from 'app/enums'
 import { featureEnabled, formatNumber, formatPercent } from 'app/functions'

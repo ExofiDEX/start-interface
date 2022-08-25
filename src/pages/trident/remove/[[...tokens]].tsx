@@ -1,7 +1,7 @@
+import { PoolState } from '@exoda/trident-sdk'
 import { ChevronLeftIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { PoolState } from '@sushiswap/trident-sdk'
 import Alert from 'app/components/Alert'
 import Button from 'app/components/Button'
 import SettingsTab from 'app/components/Settings'

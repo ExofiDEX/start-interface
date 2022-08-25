@@ -7,7 +7,7 @@ import {
   MASTERCHEF_V2_ADDRESS,
   MINICHEF_ADDRESS,
   SUSHI,
-} from '@sushiswap/core-sdk'
+} from '@exoda/core-sdk'
 import { OLD_FARMS } from 'app/config/farms'
 import {
   useMasterChefContract,
