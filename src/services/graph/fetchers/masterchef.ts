@@ -100,7 +100,7 @@ export const getMasterChefV2Farms = async (chainId = ChainId.ETHEREUM, variables
     rewardToken: {
       // @ts-ignore TYPE NEEDS FIXING
       //...tokens.find((token) => token.id === pool.rewarder.rewardToken), // TODO: Replace with something valid since rewardToken is removed
-      ...tokens.find((token) => token.id === '0x3aCE7907c091Db64f3e89485AAE15074CA110C9E'), // TODO: Replace with something valid since rewardToken is removed
+      ...tokens.find((token) => token.id === token.id), // TODO: Replace with something valid since rewardToken is removed
     },
   }))
 }
