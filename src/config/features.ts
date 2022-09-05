@@ -21,7 +21,7 @@ const features: FeatureMap = {
   ],
   [ChainId.ROPSTEN]: [Feature.AMM, Feature.LIQUIDITY_MINING, Feature.BENTOBOX, Feature.KASHI, Feature.MISO],
   [ChainId.RINKEBY]: [Feature.AMM, Feature.LIQUIDITY_MINING, Feature.BENTOBOX, Feature.KASHI, Feature.MISO],
-  [ChainId.GÖRLI]: [Feature.AMM, Feature.LIQUIDITY_MINING, Feature.BENTOBOX, Feature.KASHI, Feature.MISO],
+  [ChainId.GÖRLI]: [Feature.AMM, Feature.LIQUIDITY_MINING],
   [ChainId.KOVAN]: [
     Feature.AMM,
     Feature.LIQUIDITY_MINING,

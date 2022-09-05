@@ -282,17 +282,20 @@ export function useERC20Permit(
   ])
 }
 
-const REMOVE_V2_LIQUIDITY_PERMIT_INFO: PermitInfo = {
-  version: '1',
-  name: 'SushiSwap LP Token',
-  type: PermitType.AMOUNT,
-}
-
 export function useV2LiquidityTokenPermit(
   liquidityAmount: CurrencyAmount<Token> | null | undefined,
-  spender: string | null | undefined
+  spender: string | null | undefined,
+  symbol: string
 ) {
-  return useERC20Permit(liquidityAmount, spender, REMOVE_V2_LIQUIDITY_PERMIT_INFO)
+  if (!symbol) {
+    console.error('LP token symbol cannot be null')
+  }
+  const permitInfo = {
+    version: '1',
+    name: symbol,
+    type: PermitType.AMOUNT,
+  }
+  return useERC20Permit(liquidityAmount, spender, permitInfo)
 }
 
 export function useTridentLiquidityTokenPermit(liquidityAmount?: CurrencyAmount<Token>, spender?: string) {

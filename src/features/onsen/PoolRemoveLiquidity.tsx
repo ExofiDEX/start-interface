@@ -58,10 +58,19 @@ const PoolWithdraw = ({ currencyA, currencyB, header }) => {
   // router contract
   const routerContract = useRouterContract()
 
+  let symbol = ''
+  if (currencyA && currencyB && currencyA.symbol && currencyB.symbol) {
+    symbol =
+      currencyA.address < currencyB.address
+        ? currencyA.symbol + '/' + currencyB.symbol + ' Plasma'
+        : currencyB.symbol + '/' + currencyA.symbol + ' Plasma'
+  }
+
   // allowance handling
   const { gatherPermitSignature, signatureData } = useV2LiquidityTokenPermit(
     parsedAmounts[Field.LIQUIDITY],
-    routerContract?.address
+    routerContract?.address,
+    symbol
   )
   const [approval, approveCallback] = useApproveCallback(parsedAmounts[Field.LIQUIDITY], routerContract?.address)
 

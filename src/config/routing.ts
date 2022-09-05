@@ -8,6 +8,7 @@ import * as CELO from './tokens/celo'
 import * as ETHEREUM from './tokens/ethereum'
 import * as FANTOM from './tokens/fantom'
 import * as FUSE from './tokens/fuse'
+import * as GOERLI from './tokens/goerli'
 import * as HARMONY from './tokens/harmony'
 import * as HECO from './tokens/heco'
 import * as MATIC from './tokens/matic'
@@ -231,6 +232,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     OPTIMISM.WBTC,
     OPTIMISM.LUSD,
   ],
+  [ChainId.GÖRLI]: [...WRAPPED_NATIVE_ONLY[ChainId.GÖRLI], GOERLI.FERMION, GOERLI.DAI, GOERLI.USDC, GOERLI.USDT],
 }
 
 export const ADDITIONAL_BASES: {
@@ -626,6 +628,7 @@ export const COMMON_BASES: ChainTokenList = {
     OPTIMISM.WBTC,
     OPTIMISM.LUSD,
   ],
+  [ChainId.GÖRLI]: [...WRAPPED_NATIVE_ONLY[ChainId.GÖRLI], GOERLI.FERMION, GOERLI.USDC, GOERLI.USDT, GOERLI.DAI],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -642,6 +645,13 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     ETHEREUM.MIM,
     ETHEREUM.FRAX,
     ETHEREUM.STG,
+  ],
+  [ChainId.GÖRLI]: [
+    // ...WRAPPED_NATIVE_ONLY[ChainId.GÖRLI],
+    GOERLI.FERMION,
+    GOERLI.DAI,
+    GOERLI.USDC,
+    GOERLI.USDT,
   ],
   [ChainId.MATIC]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.MATIC],
@@ -775,5 +785,9 @@ export const PINNED_PAIRS: { readonly [chainId: number]: [Token, Token][] } = {
     ],
     [ETHEREUM.USDC, ETHEREUM.USDT],
     [ETHEREUM.DAI, ETHEREUM.USDT],
+  ],
+  [ChainId.GÖRLI]: [
+    [SUSHI[ChainId.GÖRLI], WNATIVE[ChainId.GÖRLI]],
+    [SUSHI[ChainId.GÖRLI], GOERLI.USDC],
   ],
 }
