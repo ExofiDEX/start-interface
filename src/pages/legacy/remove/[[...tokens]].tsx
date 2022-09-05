@@ -66,11 +66,16 @@ export default function Remove() {
   const routerContract = useRouterContract()
 
   let symbol = ''
-  if (currencyA && currencyB && currencyA.symbol && currencyB.symbol) {
+  if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyA.isToken && currencyB.isToken) {
+    // @ts-ignore address needs to be added to currency
     symbol =
       currencyA.address < currencyB.address
         ? currencyA.symbol + '/' + currencyB.symbol + ' Plasma'
         : currencyB.symbol + '/' + currencyA.symbol + ' Plasma'
+  } else if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyA.isToken) {
+    symbol = currencyA.symbol + '/' + currencyB.symbol + ' Plasma'
+  } else if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyB.isToken) {
+    symbol = currencyB.symbol + '/' + currencyA.symbol + ' Plasma'
   }
 
   // allowance handling

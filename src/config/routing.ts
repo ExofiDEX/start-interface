@@ -787,7 +787,9 @@ export const PINNED_PAIRS: { readonly [chainId: number]: [Token, Token][] } = {
     [ETHEREUM.DAI, ETHEREUM.USDT],
   ],
   [ChainId.GÖRLI]: [
+    // @ts-ignore
     [SUSHI[ChainId.GÖRLI], WNATIVE[ChainId.GÖRLI]],
+    // @ts-ignore
     [SUSHI[ChainId.GÖRLI], GOERLI.USDC],
   ],
 }
