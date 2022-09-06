@@ -73,9 +73,9 @@ export default function Remove() {
         ? currencyA.symbol + '/' + currencyB.symbol + ' Plasma'
         : currencyB.symbol + '/' + currencyA.symbol + ' Plasma'
   } else if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyA.isToken) {
-    symbol = currencyA.symbol + '/' + currencyB.symbol + ' Plasma'
+    symbol = currencyA.symbol + '/' + (currencyB.symbol === 'ETH' ? 'WETH' : currencyB.symbol) + ' Plasma'
   } else if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyB.isToken) {
-    symbol = currencyB.symbol + '/' + currencyA.symbol + ' Plasma'
+    symbol = (currencyA.symbol === 'ETH' ? 'WETH' : currencyA.symbol) + '/' + currencyB.symbol + ' Plasma'
   }
 
   // allowance handling

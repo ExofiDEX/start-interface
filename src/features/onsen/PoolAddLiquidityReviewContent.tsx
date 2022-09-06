@@ -58,7 +58,7 @@ const PoolAddLiquidityReviewContent: FC<PoolAddLiquidityReviewContentProps> = ({
           {i18n._(t`You'll receive (at least):`)}
         </Typography>
         <Typography weight={700} variant="lg" className="text-high-emphesis">
-          {liquidityMinted?.toSignificant(6)} SLP
+          {liquidityMinted?.toSignificant(6)} ENERGY
         </Typography>
       </HeadlessUIModal.BorderedContent>
       <div className="flex justify-between px-2 py-1">

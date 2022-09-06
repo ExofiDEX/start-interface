@@ -101,7 +101,7 @@ const ClassicSingleMode: FC = () => {
                   <ListPanel.Header
                     title={i18n._(t`Balances`)}
                     value={`$${amount ? amount.toSignificant(6) : '0.0000'}`}
-                    subValue={`${poolBalance ? poolBalance.toSignificant(6) : '0.0000'} SLP`}
+                    subValue={`${poolBalance ? poolBalance.toSignificant(6) : '0.0000'} ENERGY`}
                   />
                 }
                 items={[

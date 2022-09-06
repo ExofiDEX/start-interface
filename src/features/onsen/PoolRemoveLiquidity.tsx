@@ -329,7 +329,7 @@ const PoolWithdraw = ({ currencyA, currencyB, header }) => {
       </HeadlessUiModal.BorderedContent>
       {!userLiquidity?.equalTo(ZERO) && (
         <Typography variant="xs" className="italic text-center">
-          {i18n._(t`If your SLP is staked, you cannot remove your liquidity. You must unstake first.`)}
+          {i18n._(t`If your ENERGY is staked, you cannot remove your liquidity. You must unstake first.`)}
         </Typography>
       )}
       {!account ? (

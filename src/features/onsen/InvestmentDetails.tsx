@@ -54,7 +54,7 @@ const InvestmentDetails = ({ farm }) => {
             chainId,
             getAddress(farm.pair.id),
             farm.pair.type === PairType.KASHI ? Number(farm.pair.asset.decimals) : 18,
-            farm.pair.symbol ?? farm.pair.type === PairType.KASHI ? 'KMP' : 'SLP',
+            farm.pair.symbol ?? farm.pair.type === PairType.KASHI ? 'KMP' : 'ENERGY',
             farm.pair.name
           )
         : undefined,

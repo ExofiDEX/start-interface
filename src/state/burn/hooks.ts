@@ -145,7 +145,7 @@ export function useDerivedBurnInfo(
   }
 
   if (parsedAmounts[Field.CURRENCY_A]?.equalTo(ZERO) && parsedAmounts[Field.CURRENCY_B]?.equalTo(ZERO)) {
-    error = error ?? i18n._(t`Insufficient SLP balance`)
+    error = error ?? i18n._(t`Insufficient ENERGY balance`)
   }
 
   return { pair, parsedAmounts, error, userLiquidity }
