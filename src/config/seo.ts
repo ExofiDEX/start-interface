@@ -1,11 +1,11 @@
 const SEO = {
-  defaultTitle: 'Sushi',
-  titleTemplate: '%s | Sushi',
-  description: 'Swap, yield, lend, borrow, leverage, limit, launch all on one community driven ecosystem',
+  defaultTitle: 'Exofi',
+  titleTemplate: '%s | Exofi',
+  description: 'Swap, liquidity, staking, rewards launch all on one community driven ecosystem',
   openGraph: {
     type: 'website',
     url: 'https://app.sushi.com/',
-    site_name: 'Sushi',
+    site_name: 'Exofi',
   },
   twitter: {
     handle: '@SushiSwap',

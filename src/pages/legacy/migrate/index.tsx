@@ -247,7 +247,7 @@ export default function Migrate() {
   return (
     <Container id="migrate-page" className="py-4 space-y-6 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
-        <title>Migrate | Sushi</title>
+        <title>Migrate | Exofi</title>
         <meta key="description" name="description" content="Migrate your liquidity to SushiSwap." />
         <meta key="twitter:description" name="twitter:description" content="Migrate your liquidity to SushiSwap." />
         <meta key="og:description" property="og:description" content="Migrate your liquidity to SushiSwap." />
