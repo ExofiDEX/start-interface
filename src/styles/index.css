@@ -35,6 +35,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--primary);
   color: var(--text-primary);
+
 }
 
 body {
@@ -51,6 +52,15 @@ a {
   background-image: linear-gradient(to right, #00F0FF , #FF00E5, #FFF500);
   color: white;
 }
+
+.search-bar-color{
+  background-color: #313132;
+}  
+.background-color-onsen{
+  background-color: #313132;
+
+}
+
 #connect-wallet:hover{
   background: linear-gradient(to right, #6ae8f1 , #eb6cde, #e2de65);
   color: white;
