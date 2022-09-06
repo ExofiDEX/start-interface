@@ -24,11 +24,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: auto;
   overflow-x: hidden;
+  font-family: 'Play', sans-serif;
 }
 
 html,
 body {
-  font-family: var(--font-sans);
+  font-family: 'Play', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -46,6 +47,15 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+#connect-wallet{
+  background-image: linear-gradient(to right, #00F0FF , #FF00E5, #FFF500);
+  color: white;
+}
+#connect-wallet:hover{
+  background: linear-gradient(to right, #6ae8f1 , #eb6cde, #e2de65);
+  color: white;
+}
+  
 button:focus {
   outline: none;
 }
