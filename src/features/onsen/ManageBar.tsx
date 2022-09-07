@@ -26,8 +26,14 @@ import { useUserInfo } from './hooks'
 import useMasterChef from './useMasterChef'
 
 const APPROVAL_ADDRESSES = {
-  [Chef.MASTERCHEF]: { [ChainId.ETHEREUM]: MASTERCHEF_ADDRESS[ChainId.ETHEREUM] },
-  [Chef.MASTERCHEF_V2]: { [ChainId.ETHEREUM]: MASTERCHEF_V2_ADDRESS[ChainId.ETHEREUM] },
+  [Chef.MASTERCHEF]: {
+    [ChainId.ETHEREUM]: MASTERCHEF_ADDRESS[ChainId.ETHEREUM],
+    [ChainId.GÖRLI]: MASTERCHEF_ADDRESS[ChainId.GÖRLI],
+  },
+  [Chef.MASTERCHEF_V2]: {
+    [ChainId.ETHEREUM]: MASTERCHEF_V2_ADDRESS[ChainId.ETHEREUM],
+    [ChainId.GÖRLI]: MASTERCHEF_V2_ADDRESS[ChainId.GÖRLI],
+  },
   [Chef.MINICHEF]: {
     [ChainId.MATIC]: MINICHEF_ADDRESS[ChainId.MATIC],
     [ChainId.XDAI]: MINICHEF_ADDRESS[ChainId.XDAI],

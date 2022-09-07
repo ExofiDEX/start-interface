@@ -73,9 +73,7 @@ export function useUserInfo(farm, token) {
   }, [farm, account])
 
   const result = useSingleCallResult(args ? contract : null, 'userInfo', args)?.result
-
-  const value = result?.[0]
-
+  const value = result?.[0].amount
   const amount = value ? JSBI.BigInt(value.toString()) : undefined
 
   return amount ? CurrencyAmount.fromRawAmount(token, amount) : undefined
@@ -94,7 +92,7 @@ export function usePendingSushi(farm) {
     return [String(farm.id), String(account)]
   }, [farm, account])
 
-  const result = useSingleCallResult(args ? contract : null, 'pendingSushi', args)?.result
+  const result = useSingleCallResult(args ? contract : null, 'pendingFermion', args)?.result
 
   const value = result?.[0]
 
@@ -139,7 +137,7 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
   }, [numberOfPools, account])
 
   // @ts-ignore TYPE NEEDS FIXING
-  const pendingSushi = useSingleContractMultipleData(args ? contract : null, 'pendingSushi', args)
+  const pendingSushi = useSingleContractMultipleData(args ? contract : null, 'pendingFermion', args)
 
   // @ts-ignore TYPE NEEDS FIXING
   const userInfo = useSingleContractMultipleData(args ? contract : null, 'userInfo', args)
@@ -177,7 +175,7 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
         // @ts-ignore TYPE NEEDS FIXING
         pendingSushi: data[0].result?.[0] || Zero,
         // @ts-ignore TYPE NEEDS FIXING
-        amount: data[1].result?.[0] || Zero,
+        amount: data[1].result?.[0].amount || Zero,
         chef: getChef(),
         // pendingTokens: data?.[2]?.result,
       }))

@@ -66,22 +66,7 @@ export default function useMasterChef(chef: Chef) {
         if (chef === Chef.MASTERCHEF) {
           tx = await contract?.deposit(pid, Zero)
         } else if (chef === Chef.MASTERCHEF_V2) {
-          const pendingSushi = await contract?.pendingSushi(pid, account)
-
-          const balanceOf = await sushi?.balanceOf(contract?.address)
-
-          // If MasterChefV2 doesn't have enough sushi to harvest, batch in a harvest.
-          if (pendingSushi.gt(balanceOf)) {
-            tx = await contract?.batch(
-              [
-                contract?.interface?.encodeFunctionData('harvestFromMasterChef'),
-                contract?.interface?.encodeFunctionData('harvest', [pid, account]),
-              ],
-              true
-            )
-          } else {
-            tx = await contract?.harvest(pid, account)
-          }
+          tx = await contract?.harvest(pid, account)
         } else if (chef === Chef.MINICHEF || chef === Chef.OLD_FARMS) {
           tx = await contract?.harvest(pid, account)
         }
