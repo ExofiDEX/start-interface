@@ -6,6 +6,7 @@ import { request } from 'graphql-request'
 
 export const BLOCKS = {
   [ChainId.ETHEREUM]: 'blocklytics/ethereum-blocks',
+  [ChainId.GÖRLI]: 'exofidex/blocks-goerli', // Enable Görli Testnet
   [ChainId.XDAI]: 'matthewlilley/xdai-blocks',
   [ChainId.MATIC]: 'matthewlilley/polygon-blocks',
   [ChainId.FANTOM]: 'matthewlilley/fantom-blocks',
