@@ -58,6 +58,8 @@ export function useDerivedBurnInfo(
     totalSupply &&
     userLiquidity &&
     tokenA &&
+    JSBI.greaterThan(userLiquidity.denominator, JSBI.BigInt(0)) &&
+    JSBI.greaterThan(userLiquidity.numerator, JSBI.BigInt(0)) &&
     // this condition is a short-circuit in the case where useTokenBalance updates sooner than useTotalSupply
     JSBI.greaterThanOrEqual(totalSupply.quotient, userLiquidity.quotient)
       ? CurrencyAmount.fromRawAmount(tokenA, pair.getLiquidityValue(tokenA, totalSupply, userLiquidity, false).quotient)
@@ -68,6 +70,8 @@ export function useDerivedBurnInfo(
     totalSupply &&
     userLiquidity &&
     tokenB &&
+    JSBI.greaterThan(userLiquidity.denominator, JSBI.BigInt(0)) &&
+    JSBI.greaterThan(userLiquidity.numerator, JSBI.BigInt(0)) &&
     // this condition is a short-circuit in the case where useTokenBalance updates sooner than useTotalSupply
     JSBI.greaterThanOrEqual(totalSupply.quotient, userLiquidity.quotient)
       ? CurrencyAmount.fromRawAmount(tokenB, pair.getLiquidityValue(tokenB, totalSupply, userLiquidity, false).quotient)
