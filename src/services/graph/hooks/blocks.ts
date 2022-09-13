@@ -1,5 +1,5 @@
 import { ChainId } from '@exoda/core-sdk'
-import { getAverageBlockTime, getBlock, getMassBlocks } from 'app/services/graph/fetchers'
+import { getAverageBlockTime, getBlock } from 'app/services/graph/fetchers'
 import {
   addSeconds,
   getUnixTime,
@@ -160,7 +160,7 @@ export function useBlock({
 }: GraphProps) {
   return useSWR(
     shouldFetch ? ['block', chainId, stringify(variables)] : null,
-    (_, chainId) => getBlock(chainId, variables),
+    (_, chainId) => getBlock(chainId),
     swrConfig
   )
 }
@@ -172,7 +172,7 @@ export function useMassBlocks({
 }: GraphProps & { timestamps: number[] | string[] }) {
   return useSWR(
     chainId ? ['massBlocks', chainId, stringify(timestamps)] : null,
-    (_, chainId) => getMassBlocks(chainId, timestamps),
+    (_, chainId) => getBlock(chainId),
     swrConfig
   )
 }

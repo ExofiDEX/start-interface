@@ -1,4 +1,4 @@
-import { ChainId } from '@exoda/core-sdk'
+import { ChainId, SUSHI } from '@exoda/core-sdk'
 import { GRAPH_HOST } from 'app/services/graph/constants'
 import {
   dayDatasQuery,
@@ -173,10 +173,10 @@ export const getMphPrice = async (variables = {}) => {
   })
 }
 
-export const getSushiPrice = async (variables = {}) => {
+export const getSushiPrice = async (chainId = ChainId.ETHEREUM, variables = {}) => {
   // console.log('getSushiPrice')
-  return getTokenPrice(ChainId.ETHEREUM, tokenPriceQuery, {
-    id: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+  return getTokenPrice(chainId, tokenPriceQuery, {
+    id: (SUSHI[chainId]?.address ?? '').toLowerCase(),
     ...variables,
   })
 }
