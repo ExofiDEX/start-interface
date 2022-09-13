@@ -29,6 +29,10 @@ const fetcher = async (chainId = ChainId.ETHEREUM, query, variables = undefined)
   return ret
 }
 
+export const getBlock = async (chainId = ChainId.ETHEREUM) => {
+  return (await getStatisticBlock(chainId)).lastBlockNumber
+}
+
 // @ts-ignore TYPE NEEDS FIXING
 export const getStatisticBlock = async (chainId = ChainId.ETHEREUM) => {
   const { statisticBlock } = await fetcher(chainId, blockQuery)
