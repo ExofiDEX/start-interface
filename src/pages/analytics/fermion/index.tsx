@@ -53,7 +53,7 @@ export default function XSushi() {
   const { data: block6m } = useSixMonthBlock({ chainId: ChainId.ETHEREUM })
 
   const { data: block1y } = useOneYearBlock({ chainId: ChainId.ETHEREUM })
-
+  console.log('block1y', block1y)
   const dayData = useDayData({ chainId: ChainId.ETHEREUM })
 
   const { data: ethPrice } = useNativePrice({ chainId: ChainId.ETHEREUM })
@@ -233,10 +233,10 @@ export default function XSushi() {
       <TridentHeader className="sm:!flex-row justify-between items-center" pattern="bg-bubble">
         <div>
           <Typography variant="h2" className="text-high-emphesis" weight={700}>
-            {i18n._(t`xSUSHI Analytics.`)}
+            {i18n._(t`Fermion Analytics.`)}
           </Typography>
           <Typography variant="sm" weight={400}>
-            {i18n._(t`Find out all about xSushi here.`)}
+            {i18n._(t`Find out all about Fermion here.`)}
           </Typography>
         </div>
       </TridentHeader>
@@ -247,7 +247,7 @@ export default function XSushi() {
             <InfoCard text="Price" number={formatNumber(xSushiPrice ?? 0, true)} />
             <InfoCard text="Market Cap" number={formatNumber(xSushiMarketcap ?? 0, true, false)} />
             <InfoCard text="Total Supply" number={formatNumber(bar?.totalSupply)} />
-            <InfoCard text="xSUSHI : SUSHI" number={Number(bar?.ratio ?? 0)?.toFixed(4)} />
+            {/* <InfoCard text="xSUSHI : SUSHI" number={Number(bar?.ratio ?? 0)?.toFixed(4)} /> */}
           </div>
           <div className="grid grid-flow-col gap-4 overflow-auto grid-col-4">
             <InfoCard text="APY 1m" number={formatPercent(apy1m)} />

@@ -16,8 +16,8 @@ export default function AnalyticsContainer({ children }): JSX.Element {
       href: `/analytics/${chainId}/dashboard`,
     },
     {
-      text: 'xSushi',
-      href: '/analytics/xsushi',
+      text: 'Fermion',
+      href: '/analytics/fermion',
     },
     {
       text: 'Pairs',
