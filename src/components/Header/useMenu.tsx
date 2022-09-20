@@ -219,8 +219,8 @@ const useMenu: UseMenu = () => {
 
     if (featureEnabled(Feature.STAKING, chainId)) {
       exploreMenu.push({
-        key: 'sushi-bar',
-        title: i18n._(t`Sushi Bar`),
+        key: 'lhc-stake',
+        title: i18n._(t`Stake`),
         link: '/stake',
       })
     }
@@ -243,8 +243,8 @@ const useMenu: UseMenu = () => {
 
     if (exploreMenu.length > 0) {
       menu.push({
-        key: 'explore',
-        title: i18n._(t`Explore`),
+        key: 'lhc',
+        title: i18n._(t`LHC`),
         items: exploreMenu,
         icon: <GlobeIcon width={20} />,
       })

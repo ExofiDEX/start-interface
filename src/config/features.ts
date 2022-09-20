@@ -28,7 +28,7 @@ const features: FeatureMap = {
     // Feature.KASHI,
     Feature.MIGRATE,
     Feature.ANALYTICS,
-    // Feature.STAKING,
+    Feature.STAKING,
     // Feature.MISO,
     // Feature.MEOWSHI,
     // Feature.INARI,
