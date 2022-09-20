@@ -78,7 +78,7 @@ export default function Stake() {
 
   const balance = activeTab === 0 ? sushiBalance : xSushiBalance
 
-  const formattedBalance = balance?.toSignificant(4)
+  const formattedBalance = balance?.toFixed(4)
 
   const parsedAmount = usingBalance ? balance : tryParseAmount(input, balance?.currency)
 
@@ -422,7 +422,7 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {xSushiBalance ? xSushiBalance.toSignificant(4) : '-'}
+                        {xSushiBalance ? xSushiBalance.toFixed(4) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">EXOFI</p>
                     </div>
@@ -446,7 +446,7 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {sushiBalance ? sushiBalance.toSignificant(4) : '-'}
+                        {sushiBalance ? sushiBalance.toFixed(4) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">EXOFI</p>
                     </div>

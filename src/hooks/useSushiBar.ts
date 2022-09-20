@@ -27,7 +27,8 @@ const useSushiBar = () => {
     async (amount: CurrencyAmount<Token> | undefined, account: string) => {
       if (amount?.quotient) {
         try {
-          const tx = await barContract?.withdraw(FERMION_POOLID, amount?.quotient.toString(), account)
+          // withdrawAndHarvest(uint256 pid, uint256 amount, address to)
+          const tx = await barContract?.withdrawAndHarvest(FERMION_POOLID, amount?.quotient.toString(), account)
           return addTransaction(tx, { summary: 'Exit EXOFI from LHC' })
         } catch (e) {
           return e
