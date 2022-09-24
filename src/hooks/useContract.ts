@@ -1,6 +1,5 @@
 import { Contract } from '@ethersproject/contracts'
 import {
-  BAR_ADDRESS,
   BENTOBOX_ADDRESS,
   BORING_HELPER_ADDRESS,
   CHAIN_KEY,
@@ -228,7 +227,7 @@ export function useRouterContract(withSignerIfPossible?: boolean): Contract | nu
 
 export function useSushiBarContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? BAR_ADDRESS[chainId] : undefined, BAR_ABI, withSignerIfPossible)
+  return useContract(chainId ? '0x2f10B2756164e72ED6c803e0B1511C56C5D72cfb' : undefined, BAR_ABI, withSignerIfPossible)
 }
 
 export function useMakerContract(): Contract | null {

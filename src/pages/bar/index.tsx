@@ -1,4 +1,4 @@
-import { ChainId, MASTERCHEF_ADDRESS, ZERO } from '@exoda/core-sdk'
+import { ChainId, ZERO } from '@exoda/core-sdk'
 import ExclamationIcon from '@heroicons/react/outline/ExclamationIcon'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
@@ -6,7 +6,7 @@ import Button from 'app/components/Button'
 import Container from 'app/components/Container'
 import Dots from 'app/components/Dots'
 import Input from 'app/components/Input'
-import { FERMION } from 'app/config/tokens'
+import { FERMION, PLANET } from 'app/config/tokens'
 import { classNames } from 'app/functions'
 import { tryParseAmount } from 'app/functions/parse'
 import { ApprovalState, useApproveCallback } from 'app/hooks/useApproveCallback'
@@ -30,7 +30,7 @@ import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 import React, { useState } from 'react'
 
-import { useUserInfo } from '../../features/onsen/hooks'
+// import { useUserInfo } from '../../features/onsen/hooks'
 const INPUT_CHAR_LIMIT = 18
 
 const sendTx = async (txFunc: () => Promise<any>): Promise<boolean> => {
@@ -62,9 +62,10 @@ export default function Stake() {
   const { i18n } = useLingui()
   const { chainId, account } = useActiveWeb3React()
   const sushiBalance = useTokenBalance(account ?? undefined, FERMION)
-  // const xSushiBalance = useTokenBalance(account ?? undefined, FERMION)
+  const xSushiBalance = useTokenBalance(account ?? undefined, PLANET)
+  //  console.log('xSushiBalance', xSushiBalance)
   //TODO: Make farm id dynamic using sdk
-  const xSushiBalance = useUserInfo({ id: 8, chef: 1 }, FERMION)
+  // const xSushiBalance = useUserInfo({ id: 8, chef: 1 }, FERMION)
   const { enter, leave } = useSushiBar()
 
   const walletConnected = !!account
@@ -82,10 +83,7 @@ export default function Stake() {
 
   const parsedAmount = usingBalance ? balance : tryParseAmount(input, balance?.currency)
 
-  const [approvalState, approve] = useApproveCallback(
-    parsedAmount,
-    MASTERCHEF_ADDRESS[chainId ? chainId : ChainId.ETHEREUM]
-  )
+  const [approvalState, approve] = useApproveCallback(parsedAmount, '0x2f10B2756164e72ED6c803e0B1511C56C5D72cfb')
 
   const handleInput = (v: string) => {
     if (v.length <= INPUT_CHAR_LIMIT) {
@@ -193,9 +191,8 @@ export default function Stake() {
 
   // const [xSushiPrice] = [xSushi?.derivedETH * ethPrice, xSushi?.derivedETH * ethPrice * bar?.totalSupply]
   const exofiFarm = useStakingAPY({ chainId: chainId, farmId: '8' })[0]
-  const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
-  const totalStaked = exofiFarm?.totalStaked
-  const tvl = exofiFarm?.tvl
+  // const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
+  const totalStaked = useTokenBalance(PLANET.address ?? undefined, FERMION)
 
   return (
     <Container id="bar-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
@@ -278,7 +275,11 @@ export default function Stake() {
                 </div>
                 <div className="flex flex-col">
                   <p className="mb-1 text-lg font-bold text-right text-high-emphesis md:text-3xl">
-                    {`${apy1m ? apy1m.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
+                    {`${
+                      exofiFarm?.rewardAprPerMonth
+                        ? exofiFarm?.rewardAprPerMonth.toFixed(2) + '%'
+                        : i18n._(t`Loading...`)
+                    }`}
                   </p>
                   <p className="w-32 text-sm text-right text-primary md:w-64 md:text-base">{i18n._(t`1m APY`)}</p>
                 </div>
@@ -311,16 +312,16 @@ export default function Stake() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between w-full mt-6">
+                {/* <div className="flex items-center justify-between w-full mt-6">
                   <p className="font-bold text-large md:text-2xl text-high-emphesis">
                     {activeTab === 0 ? i18n._(t`Stake EXOFI`) : i18n._(t`Unstake`)}
                   </p>
                   <div className="border-gradient-r-pink-red-light-brown-dark-pink-red border-transparent border-solid border rounded-3xl px-4 md:px-3.5 py-1.5 md:py-0.5 text-high-emphesis text-xs font-medium md:text-base md:font-normal">
                     {`TVL = ${totalStaked ? totalStaked.toFixed(4) : '0'} EXOFI ($${Number(
-                      tvl ? tvl.toFixed(4) : '-'
+                      exofiFarm?.tvl ? exofiFarm?.tvl.toFixed(4) : '-'
                     )})`}
                   </div>
-                </div>
+                </div> */}
 
                 <Input.Numeric
                   value={input}
