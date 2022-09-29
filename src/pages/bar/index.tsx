@@ -1,4 +1,4 @@
-import { ChainId, FERMION_POOLID, ZERO } from '@exoda/core-sdk'
+import { ChainId, FERMION_POOLID, MASTERCHEF_ADDRESS, ZERO } from '@exoda/core-sdk'
 import ExclamationIcon from '@heroicons/react/outline/ExclamationIcon'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
@@ -81,7 +81,10 @@ export default function Stake() {
 
   const parsedAmount = usingBalance ? balance : tryParseAmount(input, balance?.currency)
 
-  const [approvalState, approve] = useApproveCallback(parsedAmount, '0x2f10B2756164e72ED6c803e0B1511C56C5D72cfb')
+  const [approvalState, approve] = useApproveCallback(
+    parsedAmount,
+    MASTERCHEF_ADDRESS[chainId ? chainId : ChainId.ETHEREUM]
+  )
 
   const handleInput = (v: string) => {
     if (v.length <= INPUT_CHAR_LIMIT) {
@@ -414,7 +417,7 @@ export default function Stake() {
                   <div className="flex items-center space-x-4">
                     <Image
                       className="max-w-10 md:max-w-16 -ml-1 mr-1 md:mr-2 -mb-1.5 rounded"
-                      src="https://raw.githubusercontent.com/ExofiDEX/logos/main/network/goerli/0x7d5e85d281CE6E93C6D17b4887e58242A23703c3.jpg"
+                      src="https://raw.githubusercontent.com/ExofiDEX/logos/main/network/goerli/0x6D4e23C1B39F42a676BCE13E3b2b0CC6ea7F405E.jpg"
                       alt="EXOFI"
                       width={64}
                       height={64}
@@ -438,7 +441,7 @@ export default function Stake() {
                   <div className="flex items-center ml-8 space-x-4 md:ml-0">
                     <Image
                       className="max-w-10 md:max-w-16 -ml-1 mr-1 md:mr-2 -mb-1.5 rounded"
-                      src="https://raw.githubusercontent.com/ExofiDEX/logos/main/network/goerli/0x7d5e85d281CE6E93C6D17b4887e58242A23703c3.jpg"
+                      src="https://raw.githubusercontent.com/ExofiDEX/logos/main/network/goerli/0x6D4e23C1B39F42a676BCE13E3b2b0CC6ea7F405E.jpg"
                       alt="EXOFI"
                       width={64}
                       height={64}

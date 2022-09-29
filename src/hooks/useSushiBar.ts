@@ -2,11 +2,11 @@ import { ChainId, CurrencyAmount, FERMION_POOLID, Token } from '@exoda/core-sdk'
 import { useTransactionAdder } from 'app/state/transactions/hooks'
 import { useCallback } from 'react'
 
-import { useSushiBarContract } from './useContract'
+import { useMasterChefContract } from './useContract'
 
 const useSushiBar = () => {
   const addTransaction = useTransactionAdder()
-  const barContract = useSushiBarContract()
+  const barContract = useMasterChefContract()
 
   const enter = useCallback(
     async (amount: CurrencyAmount<Token> | undefined, account: string, chainId: number | undefined) => {

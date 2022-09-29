@@ -4,7 +4,6 @@ import { useFarms, useMasterChefV1SushiPerBlock, useSushiPrice } from 'app/servi
 import { useGetBlock } from 'app/services/graph/hooks/blocks'
 import { useCallback, useMemo } from 'react'
 
-// TODO: make farm id in args dynamic
 export default function useStakingAPY({
   chainId = ChainId.ETHEREUM,
   library,
