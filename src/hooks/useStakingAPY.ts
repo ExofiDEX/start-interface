@@ -1,20 +1,23 @@
-import { ChainId, Currency, SUSHI } from '@exoda/core-sdk'
-import { useAverageBlockTime, useFarms, useMasterChefV1SushiPerBlock, useSushiPrice } from 'app/services/graph'
+import { ChainId, Currency, FERMION_POOLID, SUSHI } from '@exoda/core-sdk'
+import { useFarms, useMasterChefV1SushiPerBlock, useSushiPrice } from 'app/services/graph'
+import { useGetBlock } from 'app/services/graph/hooks/blocks'
 import { useCallback, useMemo } from 'react'
 
 // TODO: make farm id in args dynamic
-export default function useStakingAPY({ chainId = ChainId.ETHEREUM, farmId = '8' }) {
+export default function useStakingAPY({ chainId = ChainId.ETHEREUM, library }) {
   const farms = useFarms({ chainId })
   const exofiFarm = farms.filter((farm) => {
     // @ts-ignore TYPE NEEDS FIXING
-    return farm.id === farmId && farm.chef === 1
+    return Number(farm.id) == FERMION_POOLID[chainId] && farm.chef === 1
   })
-  const { data: averageBlockTime } = useAverageBlockTime({ chainId })
-
+  // const { data: averageBlockTime } = useAverageBlockTime({ chainId })
   const { data: masterChefV1SushiPerBlock } = useMasterChefV1SushiPerBlock()
 
   const { data: sushiPrice } = useSushiPrice()
 
+  const { data: blockTime } = useGetBlock({ library: library, blockNumber: 'latest' })
+  const { data: blockTime2 } = useGetBlock({ library: library, blockNumber: blockTime?.number - 500 })
+  const averageBlockTime = (blockTime?.timestamp - blockTime2?.timestamp) / 500
   const blocksPerDay = 86400 / Number(averageBlockTime)
   // @ts-ignore TYPE NEEDS FIXING
   const map = useCallback(

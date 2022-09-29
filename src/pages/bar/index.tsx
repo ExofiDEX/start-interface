@@ -1,4 +1,4 @@
-import { ChainId, MASTERCHEF_ADDRESS, ZERO } from '@exoda/core-sdk'
+import { ChainId, FERMION_POOLID, MASTERCHEF_ADDRESS, ZERO } from '@exoda/core-sdk'
 import ExclamationIcon from '@heroicons/react/outline/ExclamationIcon'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
@@ -60,11 +60,10 @@ const buttonStyleConnectWallet = `${buttonStyle} text-high-emphesis bg-blue hove
 
 export default function Stake() {
   const { i18n } = useLingui()
-  const { chainId, account } = useActiveWeb3React()
+  const { chainId, account, library } = useActiveWeb3React()
   const sushiBalance = useTokenBalance(account ?? undefined, FERMION)
   // const xSushiBalance = useTokenBalance(account ?? undefined, FERMION)
-  //TODO: Make farm id dynamic using sdk
-  const xSushiBalance = useUserInfo({ id: 8, chef: 1 }, FERMION)
+  const xSushiBalance = useUserInfo({ id: FERMION_POOLID[chainId ? chainId : ChainId.ETHEREUM], chef: 1 }, FERMION)
   const { enter, leave } = useSushiBar()
 
   const walletConnected = !!account
@@ -126,14 +125,14 @@ export default function Stake() {
             return
           }
         }
-        const success = await sendTx(() => enter(parsedAmount, account))
+        const success = await sendTx(() => enter(parsedAmount, account, chainId))
         if (!success) {
           setPendingTx(false)
           // setModalOpen(true)
           return
         }
       } else if (activeTab === 1) {
-        const success = await sendTx(() => leave(parsedAmount, account))
+        const success = await sendTx(() => leave(parsedAmount, account, chainId))
         if (!success) {
           setPendingTx(false)
           // setModalOpen(true)
@@ -192,7 +191,10 @@ export default function Stake() {
   })
 
   // const [xSushiPrice] = [xSushi?.derivedETH * ethPrice, xSushi?.derivedETH * ethPrice * bar?.totalSupply]
-  const exofiFarm = useStakingAPY({ chainId: chainId, farmId: '8' })[0]
+  const exofiFarm = useStakingAPY({
+    chainId: chainId,
+    library: library,
+  })
   const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
   const totalStaked = exofiFarm?.totalStaked
   const tvl = exofiFarm?.tvl
@@ -242,14 +244,14 @@ export default function Stake() {
                         </div> */}
           </div>
           <div className="hidden px-8 ml-6 md:block w-72">
-            <Image
+            {/* <Image
               src="https://app.sushi.com/images/xsushi-sign.png"
               alt="xSUSHI sign"
               width="100%"
               height="100%"
               layout="responsive"
               priority
-            />
+            /> */}
           </div>
         </div>
         <div className="flex flex-col justify-center md:flex-row">

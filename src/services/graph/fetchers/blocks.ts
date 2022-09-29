@@ -53,3 +53,11 @@ export const getAverageBlockTime = async (chainId = ChainId.ETHEREUM) => {
   ret = ret.substring(0, ret.length - 3) // to Seconds...
   return ret
 }
+
+export const ethFetcher =
+  (library: Web3Provider) =>
+  (...args: [any, ...any[]] | undefined[]) => {
+    const [method, ...params] = args
+    console.log(method, params)
+    return library[method](...params)
+  }
