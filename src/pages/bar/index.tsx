@@ -30,7 +30,7 @@ import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 import React, { useState } from 'react'
 
-// import { useUserInfo } from '../../features/onsen/hooks'
+import { useUserInfo } from '../../features/onsen/hooks'
 const INPUT_CHAR_LIMIT = 18
 
 const sendTx = async (txFunc: () => Promise<any>): Promise<boolean> => {
@@ -191,7 +191,7 @@ export default function Stake() {
   const exofiFarm = useStakingAPY({
     chainId: chainId,
     library: library,
-  })
+  })[0]
   const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
   const totalStaked = exofiFarm?.totalStaked
   const tvl = exofiFarm?.tvl
@@ -277,11 +277,7 @@ export default function Stake() {
                 </div>
                 <div className="flex flex-col">
                   <p className="mb-1 text-lg font-bold text-right text-high-emphesis md:text-3xl">
-                    {`${
-                      exofiFarm?.rewardAprPerMonth
-                        ? exofiFarm?.rewardAprPerMonth.toFixed(2) + '%'
-                        : i18n._(t`Loading...`)
-                    }`}
+                    {`${apy1m ? apy1m.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
                   </p>
                   <p className="w-32 text-sm text-right text-primary md:w-64 md:text-base">{i18n._(t`1m APY`)}</p>
                 </div>

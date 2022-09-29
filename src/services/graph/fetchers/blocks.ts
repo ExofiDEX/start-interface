@@ -1,3 +1,4 @@
+import { Web3Provider } from '@ethersproject/providers'
 import { ChainId } from '@exoda/core-sdk'
 import { BLOCKS_GRAPH_VERSION, GRAPH_HOST } from 'app/services/graph/constants'
 import { blockQuery } from 'app/services/graph/queries'
@@ -26,7 +27,11 @@ export const BLOCKS = {
 const fetcher = async (chainId = ChainId.ETHEREUM, query, variables = undefined) => {
   // @ts-ignore TYPE NEEDS FIXING
   const ret = await request(
-    `${GRAPH_HOST[chainId]}/query/${BLOCKS[chainId]}/${BLOCKS_GRAPH_VERSION[chainId]}`,
+    // @ts-ignore TYPE NEEDS FIXING
+    `${GRAPH_HOST[chainId ? chainId : ChainId.ETHEREUM]}/query/${BLOCKS[chainId ? chainId : ChainId.ETHEREUM]}/${
+      // @ts-ignore TYPE NEEDS FIXING
+      BLOCKS_GRAPH_VERSION[chainId ? chainId : ChainId.ETHEREUM]
+    }`,
     query,
     variables
   )
@@ -59,5 +64,6 @@ export const ethFetcher =
   (...args: [any, ...any[]] | undefined[]) => {
     const [method, ...params] = args
     console.log(method, params)
+    // @ts-ignore TYPE NEEDS FIXING
     return library[method](...params)
   }

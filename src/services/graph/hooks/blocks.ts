@@ -1,3 +1,4 @@
+import { Web3Provider } from '@ethersproject/providers'
 import { ChainId } from '@exoda/core-sdk'
 import { ethFetcher, getAverageBlockTime, getBlock } from 'app/services/graph/fetchers'
 import {
@@ -185,6 +186,13 @@ export function useAverageBlockTime({
   return useSWR(chainId ? ['averageBlockTime', chainId] : null, (_, chainId) => getAverageBlockTime(chainId), swrConfig)
 }
 
-export function useGetBlock({ library, blockNumber }) {
+export function useGetBlock({
+  library,
+  blockNumber,
+}: {
+  library: Web3Provider | undefined
+  blockNumber: String | number
+}) {
+  // @ts-ignore TYPE NEEDS FIXING
   return useSWR(['getBlock', blockNumber], { fetcher: ethFetcher(library) })
 }

@@ -1,10 +1,17 @@
+import { Web3Provider } from '@ethersproject/providers'
 import { ChainId, Currency, FERMION_POOLID, SUSHI } from '@exoda/core-sdk'
 import { useFarms, useMasterChefV1SushiPerBlock, useSushiPrice } from 'app/services/graph'
 import { useGetBlock } from 'app/services/graph/hooks/blocks'
 import { useCallback, useMemo } from 'react'
 
 // TODO: make farm id in args dynamic
-export default function useStakingAPY({ chainId = ChainId.ETHEREUM, library }) {
+export default function useStakingAPY({
+  chainId = ChainId.ETHEREUM,
+  library,
+}: {
+  chainId: number | undefined
+  library: Web3Provider | undefined
+}) {
   const farms = useFarms({ chainId })
   const exofiFarm = farms.filter((farm) => {
     // @ts-ignore TYPE NEEDS FIXING
