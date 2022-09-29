@@ -1,6 +1,6 @@
 import { ChainId, Token } from '@exoda/core-sdk'
 
-export const FERMION = new Token(ChainId.GÖRLI, '0x7d5e85d281CE6E93C6D17b4887e58242A23703c3', 18, 'EXOFI', 'Fermion')
+export const FERMION = new Token(ChainId.GÖRLI, '0x6D4e23C1B39F42a676BCE13E3b2b0CC6ea7F405E', 18, 'EXOFI', 'Fermion')
 export const DAI = new Token(ChainId.GÖRLI, '0xC10c9307022c8Ab914113b0d09e5d48E342dc80a', 18, 'DAI', 'Dai Stablecoin')
 export const PLANET = new Token(ChainId.GÖRLI, '0x2f10B2756164e72ED6c803e0B1511C56C5D72cfb', 18, 'GRAVITY', 'Planet')
 export const USDT = new Token(

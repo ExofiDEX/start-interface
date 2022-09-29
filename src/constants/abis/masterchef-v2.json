@@ -1,8 +1,14 @@
-[{
+[
+  {
     "inputs": [
       {
         "internalType": "contract IFermion",
         "name": "fermion",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IPlanet",
+        "name": "planet",
         "type": "address"
       },
       {
@@ -185,6 +191,37 @@
       }
     ],
     "name": "LogUpdatePool",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "pid",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract IERC20",
+        "name": "fromToken",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract IERC20",
+        "name": "toToken",
+        "type": "address"
+      }
+    ],
+    "name": "Migrate",
     "type": "event"
   },
   {

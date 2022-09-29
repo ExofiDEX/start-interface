@@ -1,5 +1,5 @@
 import { ChainId, SUSHI_ADDRESS } from '@exoda/core-sdk'
-import { GRAPH_HOST } from 'app/services/graph/constants'
+import { GRAPH_HOST, MFG_GRAPH_VERSION } from 'app/services/graph/constants'
 import { getTokenSubset } from 'app/services/graph/fetchers/exchange'
 import {
   masterChefV1PairAddressesQuery,
@@ -41,23 +41,23 @@ export const oldMiniChef = async (query, chainId = ChainId.ETHEREUM) =>
 
 export const MASTERCHEF_V2 = {
   [ChainId.ETHEREUM]: 'sushiswap/master-chefv2',
-  [ChainId.GÖRLI]: 'exofidex/magnetic-field-generator-goerli', // Enable Görli Testnet
+  [ChainId.GÖRLI]: '30494/mfg-goerli', // Enable Görli Testnet
 }
 
 // @ts-ignore TYPE NEEDS FIXING
 export const masterChefV2 = async (query, chainId = ChainId.ETHEREUM, variables = undefined) =>
   // @ts-ignore TYPE NEEDS FIXING
-  request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V2[chainId]}`, query, variables)
+  request(`${GRAPH_HOST[chainId]}/query/${MASTERCHEF_V2[chainId]}/${MFG_GRAPH_VERSION[chainId]}`, query, variables)
 
 export const MASTERCHEF_V1 = {
   [ChainId.ETHEREUM]: 'sushiswap/master-chef',
-  [ChainId.GÖRLI]: 'exofidex/magnetic-field-generator-goerli', // Enable Görli Testnet
+  [ChainId.GÖRLI]: '30494/mfg-goerli', // Enable Görli Testnet
 }
 
 // @ts-ignore TYPE NEEDS FIXING
 export const masterChefV1 = async (query, chainId = ChainId.ETHEREUM, variables = undefined) =>
   // @ts-ignore TYPE NEEDS FIXING
-  request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V1[chainId]}`, query, variables)
+  request(`${GRAPH_HOST[chainId]}/query/${MASTERCHEF_V1[chainId]}/${MFG_GRAPH_VERSION[chainId]}`, query, variables)
 
 export const getMasterChefV1TotalAllocPoint = async () => {
   const {

@@ -1,4 +1,4 @@
-import { ChainId, ZERO } from '@exoda/core-sdk'
+import { ChainId, FERMION_POOLID, ZERO } from '@exoda/core-sdk'
 import ExclamationIcon from '@heroicons/react/outline/ExclamationIcon'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
@@ -6,7 +6,7 @@ import Button from 'app/components/Button'
 import Container from 'app/components/Container'
 import Dots from 'app/components/Dots'
 import Input from 'app/components/Input'
-import { FERMION, PLANET } from 'app/config/tokens'
+import { FERMION } from 'app/config/tokens'
 import { classNames } from 'app/functions'
 import { tryParseAmount } from 'app/functions/parse'
 import { ApprovalState, useApproveCallback } from 'app/hooks/useApproveCallback'
@@ -60,12 +60,10 @@ const buttonStyleConnectWallet = `${buttonStyle} text-high-emphesis bg-blue hove
 
 export default function Stake() {
   const { i18n } = useLingui()
-  const { chainId, account } = useActiveWeb3React()
+  const { chainId, account, library } = useActiveWeb3React()
   const sushiBalance = useTokenBalance(account ?? undefined, FERMION)
-  const xSushiBalance = useTokenBalance(account ?? undefined, PLANET)
-  //  console.log('xSushiBalance', xSushiBalance)
-  //TODO: Make farm id dynamic using sdk
-  // const xSushiBalance = useUserInfo({ id: 8, chef: 1 }, FERMION)
+  // const xSushiBalance = useTokenBalance(account ?? undefined, FERMION)
+  const xSushiBalance = useUserInfo({ id: FERMION_POOLID[chainId ? chainId : ChainId.ETHEREUM], chef: 1 }, FERMION)
   const { enter, leave } = useSushiBar()
 
   const walletConnected = !!account
@@ -124,14 +122,14 @@ export default function Stake() {
             return
           }
         }
-        const success = await sendTx(() => enter(parsedAmount, account))
+        const success = await sendTx(() => enter(parsedAmount, account, chainId))
         if (!success) {
           setPendingTx(false)
           // setModalOpen(true)
           return
         }
       } else if (activeTab === 1) {
-        const success = await sendTx(() => leave(parsedAmount, account))
+        const success = await sendTx(() => leave(parsedAmount, account, chainId))
         if (!success) {
           setPendingTx(false)
           // setModalOpen(true)
@@ -190,9 +188,13 @@ export default function Stake() {
   })
 
   // const [xSushiPrice] = [xSushi?.derivedETH * ethPrice, xSushi?.derivedETH * ethPrice * bar?.totalSupply]
-  const exofiFarm = useStakingAPY({ chainId: chainId, farmId: '8' })[0]
-  // const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
-  const totalStaked = useTokenBalance(PLANET.address ?? undefined, FERMION)
+  const exofiFarm = useStakingAPY({
+    chainId: chainId,
+    library: library,
+  })
+  const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
+  const totalStaked = exofiFarm?.totalStaked
+  const tvl = exofiFarm?.tvl
 
   return (
     <Container id="bar-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
@@ -239,14 +241,14 @@ export default function Stake() {
                         </div> */}
           </div>
           <div className="hidden px-8 ml-6 md:block w-72">
-            <Image
+            {/* <Image
               src="https://app.sushi.com/images/xsushi-sign.png"
               alt="xSUSHI sign"
               width="100%"
               height="100%"
               layout="responsive"
               priority
-            />
+            /> */}
           </div>
         </div>
         <div className="flex flex-col justify-center md:flex-row">

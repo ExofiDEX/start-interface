@@ -7,6 +7,8 @@ const NETWORK_POLLING_INTERVALS: { [chainId: number]: number } = {
   [ChainId.ARBITRUM_TESTNET]: ms`1s`,
   // [ChainId.HARMONY]: ms`1s`,
   [ChainId.MATIC]: ms`1s`,
+  [ChainId.ETHEREUM]: ms`1s`,
+  [ChainId.GÖRLI]: ms`1s`,
 }
 
 export default function getLibrary(provider: any): Web3Provider {

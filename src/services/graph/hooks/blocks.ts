@@ -1,5 +1,5 @@
 import { ChainId } from '@exoda/core-sdk'
-import { getAverageBlockTime, getBlock } from 'app/services/graph/fetchers'
+import { ethFetcher, getAverageBlockTime, getBlock } from 'app/services/graph/fetchers'
 import {
   addSeconds,
   getUnixTime,
@@ -183,4 +183,8 @@ export function useAverageBlockTime({
   swrConfig = undefined,
 }: GraphProps) {
   return useSWR(chainId ? ['averageBlockTime', chainId] : null, (_, chainId) => getAverageBlockTime(chainId), swrConfig)
+}
+
+export function useGetBlock({ library, blockNumber }) {
+  return useSWR(['getBlock', blockNumber], { fetcher: ethFetcher(library) })
 }
