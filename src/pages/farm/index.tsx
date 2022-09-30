@@ -75,10 +75,10 @@ export default function Farm(): JSX.Element {
       <TridentHeader className="sm:!flex-row justify-between items-center" pattern="bg-bubble">
         <div>
           <Typography variant="h2" className="text-high-emphesis" weight={700}>
-            {i18n._(t`Onsen Menu`)}
+            {i18n._(t`Fusion Reactor`)}
           </Typography>
           <Typography variant="sm" weight={400}>
-            {i18n._(t`Earn fees and rewards by depositing and staking your tokens to the platform.`)}
+            {i18n._(t`Earn fees and rewards by depositing and staking your tokens to the Fusion Reactor.`)}
           </Typography>
         </div>
         <div className="flex gap-3">

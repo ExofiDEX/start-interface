@@ -8,8 +8,6 @@ import { classNames, formatNumber, formatPercent } from 'app/functions'
 import { useCurrency } from 'app/hooks/Tokens'
 import React, { FC, ReactNode } from 'react'
 
-import { PairType } from './enum'
-
 interface FarmListItem {
   farm: any
   onClick(x: ReactNode): void
@@ -31,7 +29,7 @@ const FarmListItem: FC<FarmListItem> = ({ farm, onClick }) => {
             <span className="text-low-emphesis">/</span>
             {farm?.pair?.token1?.symbol}
           </Typography>
-          {farm?.pair?.type === PairType.SWAP && (
+          {/* {farm?.pair?.type === PairType.SWAP && (
             <Typography variant="xs" className="text-low-emphesis">
               {i18n._(t`SushiSwap Farm`)}
             </Typography>
@@ -40,7 +38,7 @@ const FarmListItem: FC<FarmListItem> = ({ farm, onClick }) => {
             <Typography variant="xs" className="text-low-emphesis">
               {i18n._(t`Kashi Farm`)}
             </Typography>
-          )}
+          )} */}
         </div>
       </div>
       <div className={TABLE_TBODY_TD_CLASSNAME(1, 4)}>

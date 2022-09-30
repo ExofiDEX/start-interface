@@ -52,7 +52,7 @@ const useMenu: UseMenu = () => {
     const liquidity = [
       {
         key: 'pool',
-        title: i18n._(t`Pool`),
+        title: i18n._(t`Liquidity Pool`),
         link: '/pool',
       },
       {
@@ -81,7 +81,7 @@ const useMenu: UseMenu = () => {
     if (featureEnabled(Feature.TRIDENT, chainId)) {
       menu.push({
         key: 'trade',
-        title: i18n._(t`Trade`),
+        title: i18n._(t`Quantum Flip`),
         icon: <SwitchVerticalIcon width={20} />,
         items: [
           {
@@ -137,13 +137,13 @@ const useMenu: UseMenu = () => {
     } else {
       menu.push({
         key: 'trade',
-        title: i18n._(t`Trade`),
+        title: i18n._(t`Quantum Flip`),
         icon: <SwitchVerticalIcon width={20} />,
         items: trade.filter((item) => !item?.disabled),
       })
       menu.push({
         key: 'liquidity',
-        title: i18n._(t`Liquidity`),
+        title: i18n._(t`Fusion Reactor`),
         icon: <BeakerIcon width={20} />,
         items: liquidity.filter((item) => !item?.disabled),
       })
@@ -152,19 +152,19 @@ const useMenu: UseMenu = () => {
     if (featureEnabled(Feature.LIQUIDITY_MINING, chainId)) {
       const farmItems = {
         key: 'farm',
-        title: i18n._(t`Farm`),
+        title: i18n._(t`Dyson Sphere`),
         icon: <SwitchVerticalIcon width={20} className="rotate-90 filter" />,
         items: [
           {
             key: 'farm',
-            title: i18n._(t`Onsen Menu`),
+            title: i18n._(t`Farms`),
             link: '/farm',
           },
-          {
-            key: 'my-farms',
-            title: i18n._(t`My Farms`),
-            link: '/farm?filter=portfolio',
-          },
+          // {
+          //   key: 'my-farms',
+          //   title: i18n._(t`My Farms`),
+          //   link: '/farm?filter=portfolio',
+          // },
         ],
       }
       menu.push(farmItems)
@@ -330,7 +330,7 @@ const useMenu: UseMenu = () => {
           link: `/account/borrowing?account=${account}`,
         })
       }
-      menu.push(portfolio)
+      //menu.push(portfolio)
     }
 
     return menu.filter((el) => Object.keys(el).length > 0)
