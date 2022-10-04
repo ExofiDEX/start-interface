@@ -80,6 +80,11 @@ a {
   backdrop-filter: blur(12px);
 }
 
+.heading-blur{
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(200px);
+}
+
 .border-input {
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 16px;
