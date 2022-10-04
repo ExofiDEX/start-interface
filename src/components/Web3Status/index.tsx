@@ -13,6 +13,7 @@ import Image from 'next/image'
 import React, { useMemo } from 'react'
 import { useWeb3React } from 'web3-react-core'
 
+import avatar from '../../../public/images/alien.svg'
 import Loader from '../Loader'
 import Typography from '../Typography'
 import Web3Connect from '../Web3Connect'
@@ -70,11 +71,12 @@ function Web3StatusInner() {
               address={account}
               defaultComponent={
                 <Image
-                  src="https://app.sushi.com/images/chef.svg"
+                  src={avatar}
                   alt="Sushi Chef"
                   width={24}
                   height={24}
                   className="rounded-full pointer-events-none"
+                  unoptimized={true}
                 />
               }
               provider={library}
