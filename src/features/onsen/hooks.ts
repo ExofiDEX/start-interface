@@ -82,6 +82,7 @@ export function useUserInfo(farm, token) {
 // @ts-ignore TYPE NEEDS FIXING
 export function usePendingSushi(farm) {
   const { account, chainId } = useActiveWeb3React()
+  if (farm && farm.length > 0) farm = farm[0]
 
   const contract = useChefContract(farm.chef)
 

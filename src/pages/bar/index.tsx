@@ -13,6 +13,7 @@ import { ApprovalState, useApproveCallback } from 'app/hooks/useApproveCallback'
 import useStakingAPY from 'app/hooks/useStakingAPY'
 import useSushiBar from 'app/hooks/useSushiBar'
 import TransactionFailedModal from 'app/modals/TransactionFailedModal'
+import { useFarms } from 'app/services/graph'
 import {
   useNativePrice,
   useOneMonthBlock,
@@ -30,7 +31,8 @@ import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import React, { useState } from 'react'
 
-import { useUserInfo } from '../../features/onsen/hooks'
+import { usePendingSushi, useUserInfo } from '../../features/onsen/hooks'
+
 const INPUT_CHAR_LIMIT = 18
 
 const sendTx = async (txFunc: () => Promise<any>): Promise<boolean> => {
@@ -55,12 +57,18 @@ const buttonStyle =
   'flex justify-center items-center w-full h-14 rounded font-bold md:font-medium md:text-lg mt-5 text-sm focus:outline-none focus:ring'
 const buttonStyleEnabled = `${buttonStyle} text-high-emphesis bg-gradient-to-r from-pink-red to-light-brown hover:opacity-90`
 const buttonStyleInsufficientFunds = `${buttonStyleEnabled} opacity-60`
-const buttonStyleDisabled = `${buttonStyle} text-secondary bg-dark-700`
+const buttonStyleDisabled = `${buttonStyle} text-secondary bg-dark-900/80`
 const buttonStyleConnectWallet = `${buttonStyle} text-high-emphesis bg-blue hover:bg-opacity-90`
 
 export default function Stake() {
   const { i18n } = useLingui()
   const { chainId, account, library } = useActiveWeb3React()
+  // @ts-ignore TYPE NEEDS FIXING
+  const farms = useFarms({ chainId })
+  const exofiFarmObj = farms.filter((farm) => {
+    // @ts-ignore TYPE NEEDS FIXING
+    return Number(farm.id) == FERMION_POOLID[chainId] && farm.chef === 1
+  })
   const sushiBalance = useTokenBalance(account ?? undefined, FERMION)
   // const xSushiBalance = useTokenBalance(account ?? undefined, FERMION)
   const xSushiBalance = useUserInfo({ id: FERMION_POOLID[chainId ? chainId : ChainId.ETHEREUM], chef: 1 }, FERMION)
@@ -195,9 +203,9 @@ export default function Stake() {
     chainId: chainId,
     library: library,
   })[0]
+
+  const pendingFermions = usePendingSushi(exofiFarmObj)
   const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
-  const totalStaked = exofiFarm?.totalStaked
-  const tvl = exofiFarm?.tvl
 
   return (
     <Container id="bar-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
@@ -213,24 +221,25 @@ export default function Stake() {
         }}
       />
       <div className="flex flex-col w-full min-h-full">
-        <div className="flex justify-center mb-6">
-          <div className="flex flex-col w-full max-w-xl mt-auto mb-2">
-            <div className="flex max-w-lg">
-              <div className="self-end mb-3 text-lg font-bold md:text-2xl text-high-emphesis md:mb-7">
-                {i18n._(t`Maximize yield by staking EXOFI for more EXOFI`)}
-              </div>
-              {/* <div className="self-start pl-6 pr-3 mb-1 min-w-max md:hidden">
+        <div className="flex flex-col justify-center mb-6 md:flex-row">
+          <div className="flex flex-col w-full max-w-xl mx-auto mb-4 md:m-0">
+            <div className="flex flex-col w-full max-w-xl mt-auto mb-2 text-bg-blur backdrop-blur">
+              <div className="flex max-w-lg">
+                <div className="self-end mt-3 mb-3 ml-4 text-lg font-bold md:text-2xl text-high-emphesis md:mb-7">
+                  {i18n._(t`Maximize yield by staking EXOFI for more EXOFI`)}
+                </div>
+                {/* <div className="self-start pl-6 pr-3 mb-1 min-w-max md:hidden">
                                 <img src={XSushiSignSmall} alt="xsushi sign" />
                             </div> */}
-            </div>
-            <div className="max-w-lg pr-3 mb-2 text-sm leading-5 text-gray-500 md:text-base md:mb-4 md:pr-0">
-              {i18n._(t`For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as EXOFI
+              </div>
+              <div className="max-w-lg mb-4 ml-4 text-sm leading-5 text-gray-400 pr-3mb-2 md:text-base md:pr-0">
+                {i18n._(t`For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as EXOFI
                                 proportional to your share of the EXOFI in LHC. When your EXOFI is staked into the LHC(Large Hadron Collider), you receive
                                 more EXOFI.
                                 Your EXOFI is continuously compounding, when you unstake you will receive all the originally deposited
                                 EXOFI and any additional from fees.`)}
-            </div>
-            {/* <div className="flex">
+              </div>
+              {/* <div className="flex">
                             <div className="mr-14 md:mr-9">
                                 <StyledLink className="text-sm text-lg whitespace-nowrap md:text-lg md:leading-5">
                                     Enter the Kitchen
@@ -242,25 +251,43 @@ export default function Stake() {
                                 </StyledLink>
                             </div>
                         </div> */}
+            </div>
           </div>
-          <div className="hidden px-8 ml-6 md:block w-72">
-            {/* <Image
-              src="https://app.sushi.com/images/xsushi-sign.png"
-              alt="xSUSHI sign"
-              width="100%"
-              height="100%"
-              layout="responsive"
-              priority
-            /> */}
+          <div className="w-full max-w-xl mx-auto md:mx-0 md:ml-6 md:block md:w-72">
+            <div className="flex flex-col w-full px-4 pt-6 pb-5 rounded backdrop-blur md:px-8 md:pt-7 md:pb-9">
+              <div className="flex flex-wrap">
+                <div className="flex flex-col flex-grow md:mb-7 md:mt-7">
+                  <p className="mb-3 text-lg font-bold md:text-2xl md:font-medium text-high-emphesis">
+                    {i18n._(t`Your Rewards`)}
+                  </p>
+                  <p className="text-lg font-bold md:text-2xl md:font-medium text-yellow">{i18n._(t`Total Earned`)}</p>
+                  <div className="flex items-center space-x-4">
+                    <Image
+                      className="max-w-10 md:max-w-16 -ml-1 mr-1 md:mr-2 -mb-1.5 rounded"
+                      src="https://raw.githubusercontent.com/ExofiDEX/logos/main/network/goerli/0x6D4e23C1B39F42a676BCE13E3b2b0CC6ea7F405E.jpg"
+                      alt="EXOFI"
+                      width={64}
+                      height={64}
+                    />
+                    <div className="flex flex-col justify-center">
+                      <p className="text-sm font-bold md:text-lg text-high-emphesis">
+                        {pendingFermions ? pendingFermions.toFixed(4) : '-'}
+                      </p>
+                      <p className="text-sm md:text-base text-primary">EXOFI</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex flex-col justify-center md:flex-row">
           <div className="flex flex-col w-full max-w-xl mx-auto mb-4 md:m-0">
             <div className="mb-4">
-              <div className="flex items-center justify-between w-full h-24 max-w-xl p-4 rounded md:pl-5 md:pr-7 bg-yellow bg-opacity-40">
+              <div className="flex items-center justify-between w-full h-24 max-w-xl p-4 bg-opacity-50 rounded md:pl-5 md:pr-7 backdrop-blur-highlight">
                 <div className="flex flex-col">
                   <div className="flex items-center justify-center mb-4 flex-nowrap md:mb-2">
-                    <p className="text-sm font-bold whitespace-nowrap md:text-lg md:leading-5 text-high-emphesis">
+                    <p className="text-sm font-bold whitespace-nowrap md:text-lg md:leading-5 text-low-emphesis">
                       {i18n._(t`Staking APY`)}{' '}
                     </p>
                     {/* <img className="ml-3 cursor-pointer" src={MoreInfoSymbol} alt={'more info'} /> */}
@@ -279,17 +306,17 @@ export default function Stake() {
                   </div> */}
                 </div>
                 <div className="flex flex-col">
-                  <p className="mb-1 text-lg font-bold text-right text-high-emphesis md:text-3xl">
+                  <p className="mb-1 text-lg font-bold text-right text-low-emphesis md:text-3xl">
                     {`${apy1m ? apy1m.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
                   </p>
-                  <p className="w-32 text-sm text-right text-primary md:w-64 md:text-base">{i18n._(t`1m APY`)}</p>
+                  <p className="w-32 text-sm text-right text-low-emphesis md:w-64 md:text-base">{i18n._(t`1m APY`)}</p>
                 </div>
               </div>
             </div>
             <div>
               <TransactionFailedModal isOpen={modalOpen} onDismiss={() => setModalOpen(false)} />
-              <div className="w-full max-w-xl px-3 pt-2 pb-6 rounded bg-dark-900 md:pb-9 md:pt-4 md:px-8">
-                <div className="flex w-full rounded h-14 bg-dark-800">
+              <div className="w-full max-w-xl px-3 pt-2 pb-6 rounded backdrop-blur md:pb-9 md:pt-4 md:px-8">
+                <div className="flex w-full rounded h-14 backdrop-blur-input">
                   <div
                     className="h-full w-6/12 p-0.5"
                     onClick={() => {
@@ -328,7 +355,7 @@ export default function Stake() {
                   value={input}
                   onUserInput={handleInput}
                   className={classNames(
-                    'w-full h-14 px-3 md:px-5 mt-5 rounded bg-dark-800 text-sm md:text-lg font-bold text-dark-800 whitespace-nowrap caret-high-emphesis',
+                    'w-full h-14 px-3 md:px-5 mt-5 rounded backdrop-blur-input text-sm md:text-lg font-bold text-dark-800 whitespace-nowrap caret-high-emphesis',
                     inputError ? ' pl-9 md:pl-12' : ''
                   )}
                   placeholder=" "
@@ -407,7 +434,7 @@ export default function Stake() {
             </div>
           </div>
           <div className="w-full max-w-xl mx-auto md:mx-0 md:ml-6 md:block md:w-72">
-            <div className="flex flex-col w-full px-4 pt-6 pb-5 rounded bg-dark-900 md:px-8 md:pt-7 md:pb-9">
+            <div className="flex flex-col w-full px-4 pt-6 pb-5 rounded backdrop-blur md:px-8 md:pt-7 md:pb-9">
               <div className="flex flex-wrap">
                 <div className="flex flex-col flex-grow md:mb-14">
                   <p className="mb-3 text-lg font-bold md:text-2xl md:font-medium text-high-emphesis">
@@ -455,16 +482,7 @@ export default function Stake() {
                   </div>
                 </div>
 
-                <div className="flex flex-col w-full mb-4 mt-7 md:mb-0">
-                  {/* <div className="flex items-center justify-between">
-                        <div className="flex items-center flex-1 flex-nowrap">
-                            <p className="text-base font-bold md:text-lg text-high-emphesis">Weighted APR</p>
-                            <img className="w-4 ml-2 cursor-pointer" src={MoreInfoSymbol} alt={'more info'} />
-                        </div>
-                        <div className="flex flex-1 md:flex-initial">
-                            <p className="ml-5 text-base text-primary md:ml-0">{`${weightedApr}%`}</p>
-                        </div>
-                    </div> */}
+                {/* <div className="flex flex-col w-full mb-4 mt-7 md:mb-0">
                   {account && (
                     <a
                       href={`https://analytics.sushi.com/users/${account}`}
@@ -481,7 +499,7 @@ export default function Stake() {
                       {i18n._(t`Your LHC Stats`)}
                     </a>
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

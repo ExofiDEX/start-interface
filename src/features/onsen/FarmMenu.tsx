@@ -102,7 +102,7 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
     <div className="flex gap-2 items-center w-[180px]">
       <Menu as="div" className="relative inline-block w-full text-left">
         <div>
-          <Menu.Button className="w-full px-4 py-2.5 text-sm font-bold bg-transparent border rounded shadow-sm text-primary border-dark-800 hover:bg-dark-900">
+          <Menu.Button className="w-full px-4 py-2.5 text-sm font-bold bg-dark-900/70 rounded shadow-sm text-primary hover:bg-dark-900">
             <div className="flex flex-row items-center justify-between">
               <Typography weight={700} variant="sm">
                 {selected}
