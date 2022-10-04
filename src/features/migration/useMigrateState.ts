@@ -42,7 +42,7 @@ const useMigrateState: () => MigrateState = () => {
       const tx = await func(state.selectedLPToken, units)
 
       addTransaction(tx, {
-        summary: `Migrate ${state.selectedLPToken.symbol} liquidity to SushiSwap`,
+        summary: `Migrate ${state.selectedLPToken.symbol} liquidity to ExofiDEX`,
       })
       setPendingMigrationHash(tx.hash)
 

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-// import { DiscordIcon, InstagramIcon, MediumIcon, TwitterIcon } from 'app/components/Icon'
+import { DiscordIcon, RedditIcon, TelegramIcon, TwitterIcon } from 'app/components/Icon'
 import { Logo } from 'app/components/Icon'
 import LanguageSwitch from 'app/components/LanguageSwitch'
 import Typography from 'app/components/Typography'
@@ -31,20 +31,20 @@ const Footer = () => {
               {i18n._(t`Our community is building a comprehensive decentralized trading platform for the future of finance. Join
               us!`)}
             </Typography>
-            {/* <div className="flex items-center gap-4">
-              <a href="https://twitter.com/sushiswap" target="_blank" rel="noreferrer">
+            <div className="flex items-center gap-4">
+              <a href="https://twitter.com/EXOFI3" target="_blank" rel="noreferrer">
                 <TwitterIcon width={16} className="text-low-emphesis" />
               </a>
-              <a href="https://instagram.com/instasushiswap" target="_blank" rel="noreferrer">
-                <InstagramIcon width={16} className="text-low-emphesis" />
+              <a href="https://t.me/EXOFI3" target="_blank" rel="noreferrer">
+                <TelegramIcon width={16} className="text-low-emphesis" />
               </a>
-              <a href="https://medium.com/sushiswap-org" target="_blank" rel="noreferrer">
-                <MediumIcon width={16} className="text-low-emphesis" />
+              <a href="https://www.reddit.com/r/EXOFI3/" target="_blank" rel="noreferrer">
+                <RedditIcon width={16} className="text-low-emphesis" />
               </a>
-              <a href="https://discord.gg/NVPXN4e" target="_blank" rel="noreferrer">
+              <a href="https://discord.gg/Gs4QQUVVWX" target="_blank" rel="noreferrer">
                 <DiscordIcon width={16} className="text-low-emphesis" />
               </a>
-            </div> */}
+            </div>
           </div>
           {/* <div className="flex flex-col gap-1 text-right">
             <Typography variant="xs" weight={700} className="mt-2.5 hover:text-high-emphesis">
