@@ -1,5 +1,5 @@
 export * as ARBITRUM_TOKENS from './arbitrum'
-// TODO: Enable below export and remove testnet import
+// TODO: Thered: Enable below export and remove testnet import
 // export * from './ethereum'
 export * from './goerli'
 export * as MATIC_TOKENS from './matic'

@@ -106,7 +106,7 @@ const LOGO: Record<ChainId, string> = {
 }
 
 export interface CurrencyLogoProps {
-  currency?: Currency
+  currency?: Currency | null
   size?: string | number
   style?: React.CSSProperties
   className?: string

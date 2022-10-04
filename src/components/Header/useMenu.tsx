@@ -40,6 +40,7 @@ const useMenu: UseMenu = () => {
         key: 'swap',
         title: i18n._(t`Swap`),
         link: '/swap',
+        disabled: !featureEnabled(Feature.AMM, chainId),
       },
       {
         key: 'limit',
@@ -54,11 +55,13 @@ const useMenu: UseMenu = () => {
         key: 'pool',
         title: i18n._(t`Liquidity Pool`),
         link: '/pool',
+        disabled: !featureEnabled(Feature.POOL, chainId),
       },
       {
         key: 'add-liquidity',
         title: i18n._(t`Add`),
         link: `/add/ETH/${SUSHI_ADDRESS[chainId]}`,
+        disabled: !featureEnabled(Feature.ADD_LIQUIDITY, chainId),
       },
       // {
       //   key: 'remove-liquidity',
@@ -75,6 +78,7 @@ const useMenu: UseMenu = () => {
         key: 'import',
         title: i18n._(t`Import`),
         link: '/find',
+        disabled: !featureEnabled(Feature.POOL_FINDER, chainId),
       },
     ]
 
@@ -135,18 +139,22 @@ const useMenu: UseMenu = () => {
         })
       }
     } else {
-      menu.push({
-        key: 'trade',
-        title: i18n._(t`Quantum Flip`),
-        icon: <SwitchVerticalIcon width={20} />,
-        items: trade.filter((item) => !item?.disabled),
-      })
-      menu.push({
-        key: 'liquidity',
-        title: i18n._(t`Fusion Reactor`),
-        icon: <BeakerIcon width={20} />,
-        items: liquidity.filter((item) => !item?.disabled),
-      })
+      if (featureEnabled(Feature.AMM, chainId)) {
+        menu.push({
+          key: 'trade',
+          title: i18n._(t`Quantum Flip`),
+          icon: <SwitchVerticalIcon width={20} />,
+          items: trade.filter((item) => !item?.disabled),
+        })
+      }
+      if (featureEnabled(Feature.POOL, chainId)) {
+        menu.push({
+          key: 'liquidity',
+          title: i18n._(t`Fusion Reactor`),
+          icon: <BeakerIcon width={20} />,
+          items: liquidity.filter((item) => !item?.disabled),
+        })
+      }
     }
 
     if (featureEnabled(Feature.LIQUIDITY_MINING, chainId)) {

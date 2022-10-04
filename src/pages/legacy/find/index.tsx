@@ -12,7 +12,9 @@ import { MinimalPositionCard } from 'app/components/PositionCard'
 import { AutoRow } from 'app/components/Row'
 import Typography from 'app/components/Typography'
 import Web3Connect from 'app/components/Web3Connect'
+import { Feature } from 'app/enums'
 import { currencyId } from 'app/functions/currency'
+import NetworkGuard from 'app/guards/Network'
 import { PairState, useV2Pair } from 'app/hooks/useV2Pairs'
 import { useActiveWeb3React } from 'app/services/web3'
 import { usePairAdder } from 'app/state/user/hooks'
@@ -179,3 +181,5 @@ export default function PoolFinder() {
     </Container>
   )
 }
+
+PoolFinder.Guard = NetworkGuard(Feature.POOL_FINDER)

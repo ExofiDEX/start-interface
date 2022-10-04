@@ -1,5 +1,6 @@
 import { Feature } from 'app/enums'
 import { featureEnabled } from 'app/functions'
+import NetworkGuard from 'app/guards/Network'
 import { SwapLayout } from 'app/layouts/SwapLayout'
 import { Banner as BannerType, fetchBanners } from 'app/lib/api'
 import { useActiveWeb3React } from 'app/services/web3'
@@ -35,4 +36,5 @@ const Swap = ({ banners }: SwapProps) => {
 }
 
 Swap.Layout = SwapLayout('swap-page')
+Swap.Guard = NetworkGuard(Feature.SWAP)
 export default Swap

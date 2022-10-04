@@ -14,4 +14,8 @@ export enum Feature {
   MEOWSHI = 'MEOWSHI',
   VESTING = 'Vesting',
   SUSHIGUARD = 'SushiGuard',
+  ADD_LIQUIDITY = 'Add Liquidity',
+  POOL = 'Liquidity Pool',
+  POOL_FINDER = 'Pool Finder Tool',
+  SWAP = 'Legacy Swap',
 }

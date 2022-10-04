@@ -67,7 +67,7 @@ export const getMasterChefV1TotalAllocPoint = async () => {
 }
 
 // Not available in the subgraph anymore
-// TODO: The best fix would be to ask the MFG contract getFermionPerBlock() method.
+// TODO: Michael: The best fix would be to ask the MFG contract getFermionPerBlock() method.
 export const getMasterChefV1SushiPerBlock = async () => {
   // const {
   //   masterChef: { sushiPerBlock },

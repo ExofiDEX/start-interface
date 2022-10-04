@@ -10,12 +10,14 @@ import SettingsTab from 'app/components/Settings'
 import Typography from 'app/components/Typography'
 import Web3Connect from 'app/components/Web3Connect'
 import { ZERO_PERCENT } from 'app/constants'
+import { Feature } from 'app/enums'
 import { ConfirmAddModalBottom } from 'app/features/legacy/liquidity/ConfirmAddModalBottom'
 import LiquidityPrice from 'app/features/legacy/liquidity/LiquidityPrice'
 import UnsupportedCurrencyFooter from 'app/features/legacy/swap/UnsupportedCurrencyFooter'
 import SwapAssetPanel from 'app/features/trident/swap/SwapAssetPanel'
 import { currencyId } from 'app/functions/currency'
 import { calculateGasMargin, calculateSlippageAmount } from 'app/functions/trade'
+import NetworkGuard from 'app/guards/Network'
 import { useCurrency } from 'app/hooks/Tokens'
 import { ApprovalState, useApproveCallback } from 'app/hooks/useApproveCallback'
 import { useRouterContract } from 'app/hooks/useContract'
@@ -402,3 +404,4 @@ export default function Add() {
 }
 
 Add.Layout = SwapLayout('add-page')
+Add.Guard = NetworkGuard(Feature.ADD_LIQUIDITY)

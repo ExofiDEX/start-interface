@@ -7,7 +7,9 @@ import Loader from 'app/components/Loader'
 import FullPositionCard from 'app/components/PositionCard'
 import Typography from 'app/components/Typography'
 import Web3Connect from 'app/components/Web3Connect'
+import { Feature } from 'app/enums'
 import { useV2PairsWithLiquidity } from 'app/features/trident/migrate/context/useV2PairsWithLiquidity'
+import NetworkGuard from 'app/guards/Network'
 import { SwapLayout, SwapLayoutCard } from 'app/layouts/SwapLayout'
 import { useActiveWeb3React } from 'app/services/web3'
 import Link from 'next/link'
@@ -69,5 +71,5 @@ const Pool = () => {
 }
 
 Pool.Layout = SwapLayout('pool-page')
-
+Pool.Guard = NetworkGuard(Feature.POOL)
 export default Pool

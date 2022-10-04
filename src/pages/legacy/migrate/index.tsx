@@ -5,6 +5,8 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import Back from 'app/components/Back'
 import Chip from 'app/components/Chip'
+import { Feature } from 'app/enums'
+import NetworkGuard from 'app/guards/Network'
 import { USER_REJECTED_TX } from 'app/services/web3/WalletError'
 import Head from 'next/head'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -290,3 +292,5 @@ export default function Migrate() {
     </Container>
   )
 }
+
+Migrate.Guard = NetworkGuard(Feature.MIGRATE)

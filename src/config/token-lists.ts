@@ -19,7 +19,7 @@ const SUSHI_LIST = 'https://token-list.sushi.com'
 const CHAINLINK_LIST = 'https://token-list.sushi.com/chainlink'
 
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST]
-
+// TODO: Thered: Update token lists
 // this is the default list of lists that are exposed to users
 // lower index == higher priority for token import
 const DEFAULT_LIST_OF_LISTS_TO_DISPLAY: string[] = [

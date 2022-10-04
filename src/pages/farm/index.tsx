@@ -5,9 +5,11 @@ import { useLingui } from '@lingui/react'
 import ExternalLink from 'app/components/ExternalLink'
 import Search from 'app/components/Search'
 import Typography from 'app/components/Typography'
+import { Feature } from 'app/enums'
 import { Chef, PairType } from 'app/features/onsen/enum'
 import FarmList from 'app/features/onsen/FarmList'
 import OnsenFilter from 'app/features/onsen/FarmMenu'
+import NetworkGuard from 'app/guards/Network'
 import useFarmRewards from 'app/hooks/useFarmRewards'
 import useFuse from 'app/hooks/useFuse'
 import { TridentBody, TridentHeader } from 'app/layouts/Trident'
@@ -16,7 +18,7 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import React from 'react'
 
-export default function Farm(): JSX.Element {
+function Farm(): JSX.Element {
   const { i18n } = useLingui()
 
   const { account } = useActiveWeb3React()
@@ -117,3 +119,6 @@ export default function Farm(): JSX.Element {
     </>
   )
 }
+
+Farm.Guard = NetworkGuard(Feature.LIQUIDITY_MINING)
+export default Farm
