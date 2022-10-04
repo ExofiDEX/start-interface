@@ -35,7 +35,7 @@ export default function LangSwitcher() {
   return (
     <Menu as="div" className="relative inline-block w-full text-left">
       <div>
-        <Menu.Button className="w-full px-4 py-2 text-sm font-bold bg-transparent border-2 rounded shadow-sm text-primary border-dark-800 hover:border-dark-700 bg-dark-1000">
+        <Menu.Button className="w-full px-4 py-2 text-sm font-bold rounded shadow-sm text-primary bg-dark-1000/40">
           <div className="flex flex-row items-center justify-between">
             <Typography weight={700} variant="sm">
               {locale && LANG_TO_COUNTRY[locale]}
@@ -55,7 +55,7 @@ export default function LangSwitcher() {
       >
         <Menu.Items
           static
-          className="absolute max-h-[240px] overflow-auto w-full border-2 mt-2 divide-y rounded shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border-dark-900 bg-dark-1000 divide-dark-900"
+          className="absolute max-h-[240px] overflow-auto w-full mt-2 divide-y rounded shadow-lg focus:outline-none backdrop-blur divide-dark-1000/10"
         >
           {locales?.map((l, index) => {
             return (

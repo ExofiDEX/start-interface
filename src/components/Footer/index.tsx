@@ -14,9 +14,9 @@ const Footer = () => {
   const { i18n } = useLingui()
 
   return (
-    <div className="z-10 w-full py-20 mt-20">
+    <div className="z-10 w-full footer-bg">
       <Container maxWidth="7xl" className="px-6 mx-auto">
-        <div className="grid grid-cols-2 gap-10 pt-8 border-t md:grid-cols-3 lg:grid-cols-6 xs:px-6 border-dark-900">
+        <div className="grid grid-cols-2 gap-10 pt-8 mb-10 md:grid-cols-3 lg:grid-cols-6 xs:px-6">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-start gap-2">
               <div className="">
@@ -27,7 +27,7 @@ const Footer = () => {
                 EXOFI
               </Typography>
             </div>
-            <Typography variant="xs" className="text-low-emphesis">
+            <Typography variant="xs">
               {i18n._(t`Our community is building a comprehensive decentralized trading platform for the future of finance. Join
               us!`)}
             </Typography>

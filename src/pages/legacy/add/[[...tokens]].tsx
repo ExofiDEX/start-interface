@@ -385,7 +385,8 @@ export default function Add() {
           )}
         </Typography>
       )}
-      <Typography variant="xs" className="px-10 mt-5 text-center text-low-emphesis">
+
+      <Typography variant="xs" className="px-10 py-1 mt-5 text-center text-low-emphesis text-bg-blur">
         <Typography variant="xs" weight={700} component="span">
           Tip
         </Typography>

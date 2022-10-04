@@ -32,11 +32,11 @@ const Pool = () => {
           </Button>
         </Link>
       </div>
-      <SwapLayoutCard className="!bg-dark-900 border border-dark-800 !p-0 overflow-hidden">
+      <SwapLayoutCard className="!backdrop-blur-input border border-dark-800 !p-0 overflow-hidden">
         {!account ? (
-          <Web3Connect className="w-full !bg-dark-900 bg-gradient-to-r from-pink/80 hover:from-pink to-purple/80 hover:to-purple text-white h-[38px]" />
+          <Web3Connect className="w-full !backdrop-blur-input bg-gradient-to-r from-pink/80 hover:from-pink to-purple/80 hover:to-purple text-white h-[38px]" />
         ) : (
-          <div className="px-2 space-y-4 rounded bg-dark-900">
+          <div className="px-2 space-y-4 rounded backdrop-blur-input">
             <div className="grid grid-flow-row divide-y divide-dark-800">
               {loading ? (
                 <div className="flex items-center justify-center h-40">
@@ -59,7 +59,7 @@ const Pool = () => {
           </div>
         )}
       </SwapLayoutCard>
-      <Typography variant="xs" className="px-10 mt-5 text-center text-low-emphesis">
+      <Typography variant="xs" className="px-10 mt-5 text-center text-low-emphesis text-bg-blur">
         {i18n._(t`Liquidity providers earn a 0.25% fee on all trades proportional to their share of
                         the pool. Fees are added to the pool, accrue in real time and can be claimed by
                         withdrawing your liquidity`)}

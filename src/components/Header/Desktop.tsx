@@ -1,6 +1,5 @@
 import { NATIVE } from '@exoda/core-sdk'
 import Container from 'app/components/Container'
-import { NAV_CLASS } from 'app/components/Header/styles'
 import useMenu from 'app/components/Header/useMenu'
 import { Logo } from 'app/components/Icon'
 import Web3Network from 'app/components/Web3Network'
@@ -25,7 +24,7 @@ const Desktop: FC = () => {
   return (
     <>
       <header className="fixed z-20 hidden w-full lg:block" style={{ height: HEADER_HEIGHT }}>
-        <nav className={NAV_CLASS}>
+        <nav className="backdrop-blur">
           <Container maxWidth="full" className="mx-auto">
             <div className="flex items-center justify-between gap-4 px-6">
               <div className="flex gap-4">
