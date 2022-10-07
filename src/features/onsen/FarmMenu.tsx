@@ -102,7 +102,7 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
     <div className="flex gap-2 items-center w-[180px]">
       <Menu as="div" className="relative inline-block w-full text-left">
         <div>
-          <Menu.Button className="w-full px-4 py-2.5 text-sm font-bold bg-dark-900/70 rounded shadow-sm text-primary hover:bg-dark-900">
+          <Menu.Button className="w-full px-4 py-2.5 text-sm font-bold rounded shadow-sm text-low-emphasis backdrop-blur hover:backdrop-blur-input hover:text-high-emphasis">
             <div className="flex flex-row items-center justify-between">
               <Typography weight={700} variant="sm">
                 {selected}
@@ -122,7 +122,7 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
         >
           <Menu.Items
             static
-            className="absolute z-10 w-full mt-2 border divide-y rounded shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border-dark-900 bg-dark-1000 divide-dark-900"
+            className="absolute z-10 w-full mt-2 overflow-auto divide-y rounded shadow-lg focus:outline-none backdrop-blur divide-dark-1000/10"
           >
             {Object.entries(items).map(([k, v], index) => (
               <div

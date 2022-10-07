@@ -13,7 +13,7 @@ export const SwapLayoutCard: FC<{ className?: string }> = ({ children, className
   return (
     <div
       className={classNames(
-        'flex flex-col gap-3 p-2 md:p-4 pt-4 rounded-[24px] backdrop-blur backdrop-blur-input shadow-md shadow-dark-1000',
+        'flex flex-col gap-3 p-2 md:p-4 pt-4 rounded-[12px] backdrop-blur backdrop-blur-input shadow-md shadow-dark-1000',
         className
       )}
     >

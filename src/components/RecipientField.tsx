@@ -52,15 +52,15 @@ const RecipientField: FC<RecipientField> = ({ recipient, action }) => {
         <Typography variant="sm" className="px-2">
           {i18n._(t`Recipient`)}
         </Typography>
-        <CloseIcon width={18} className="text-secondary hover:text-white cursor-pointer" onClick={handleClose} />
+        <CloseIcon width={18} className="cursor-pointer text-secondary hover:text-white" onClick={handleClose} />
       </div>
       <div
         className={classNames(
           error ? 'ring ring-red' : '',
-          'flex justify-between items-baseline bg-dark-900 rounded px-4 py-3 border border-dark-700 hover:border-dark-600'
+          'flex justify-between items-baseline backdrop-blur-input rounded px-4 py-3 border border-input hover:border-dark-600'
         )}
       >
-        <Typography weight={700} variant="lg" className="flex gap-3 flex-grow items-baseline relative overflow-hidden">
+        <Typography weight={700} variant="lg" className="relative flex items-baseline flex-grow gap-3 overflow-hidden">
           <Input.Address
             className="!text-sm leading-[32px] focus:placeholder:text-low-emphesis flex-grow w-full text-left bg-transparent text-inherit disabled:cursor-not-allowed"
             onUserInput={(val) => dispatch(action(val))}

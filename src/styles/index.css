@@ -70,7 +70,7 @@ a {
   background: rgba(0, 0, 0, 0.27);
   backdrop-filter: blur(120px);
   color: rgba(255, 255, 255, 0.5);
-  border-radius: 24px;
+  border-radius: 0.625rem;
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   
 }
