@@ -6,7 +6,7 @@ import ExternalLink from 'app/components/ExternalLink'
 import Search from 'app/components/Search'
 import Typography from 'app/components/Typography'
 import { Feature } from 'app/enums'
-import { Chef, PairType } from 'app/features/onsen/enum'
+import { Chef } from 'app/features/onsen/enum'
 import FarmList from 'app/features/onsen/FarmList'
 import OnsenFilter from 'app/features/onsen/FarmMenu'
 import NetworkGuard from 'app/guards/Network'
@@ -42,16 +42,16 @@ function Farm(): JSX.Element {
     // @ts-ignore TYPE NEEDS FIXING
     portfolio: (farm) => farm?.amount && !farm.amount.isZero(),
     // @ts-ignore TYPE NEEDS FIXING
-    sushi: (farm) => farm.pair.type === PairType.SWAP && farm.allocPoint !== '0',
+    // sushi: (farm) => farm.pair.type === PairType.SWAP && farm.allocPoint !== '0',
     // @ts-ignore TYPE NEEDS FIXING
-    kashi: (farm) => farm.pair.type === PairType.KASHI && farm.allocPoint !== '0',
+    // kashi: (farm) => farm.pair.type === PairType.KASHI && farm.allocPoint !== '0',
     // @ts-ignore TYPE NEEDS FIXING
-    '2x': (farm) =>
-      (farm.chef === Chef.MASTERCHEF_V2 || farm.chef === Chef.MINICHEF) &&
-      farm.rewards.length > 1 &&
-      farm.allocPoint !== '0',
+    // '2x': (farm) =>
+    //   (farm.chef === Chef.MASTERCHEF_V2 || farm.chef === Chef.MINICHEF) &&
+    //   farm.rewards.length > 1 &&
+    //   farm.allocPoint !== '0',
     // @ts-ignore TYPE NEEDS FIXING
-    old: (farm) => farm.chef === Chef.OLD_FARMS,
+    // old: (farm) => farm.chef === Chef.OLD_FARMS,
   }
 
   const rewards = useFarmRewards({ chainId })

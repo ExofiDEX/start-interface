@@ -1,4 +1,3 @@
-import { ChainId } from '@exoda/core-sdk'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
@@ -53,9 +52,9 @@ enum FarmFilter {
 const filters: Record<string, FarmFilter> = {
   portfolio: FarmFilter.Portfolio,
   farm: FarmFilter.All,
-  kashi: FarmFilter.Kashi,
-  old: FarmFilter.Old,
-  sushi: FarmFilter.Sushi,
+  // kashi: FarmFilter.Kashi,
+  // old: FarmFilter.Old,
+  // sushi: FarmFilter.Sushi,
 }
 
 const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: number }) => {
@@ -77,19 +76,19 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
       ) : (
         <MenuLink onClick={toggleWalletModal} label={i18n._(t`Your Farms`)} />
       ),
-      [FarmFilter.Kashi]:
-        chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
-          <MenuLink href={'/farm?filter=kashi'} label={i18n._(t`Kashi Farms`)} />
-        ) : undefined,
-      [FarmFilter.Sushi]:
-        chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
-          <MenuLink href={'/farm?filter=sushi'} label={i18n._(t`SushiSwap Farms`)} />
-        ) : undefined,
-      // @ts-ignore TYPE NEEDS FIXING
-      [FarmFilter.Old]:
-        chainId && [ChainId.CELO].includes(chainId) ? (
-          <MenuLink href={'/farm?filter=old'} label={i18n._(t`Old Farms`)} />
-        ) : undefined,
+      // [FarmFilter.Kashi]:
+      //   chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
+      //     <MenuLink href={'/farm?filter=kashi'} label={i18n._(t`Kashi Farms`)} />
+      //   ) : undefined,
+      // [FarmFilter.Sushi]:
+      //   chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
+      //     <MenuLink href={'/farm?filter=sushi'} label={i18n._(t`SushiSwap Farms`)} />
+      //   ) : undefined,
+      // // @ts-ignore TYPE NEEDS FIXING
+      // [FarmFilter.Old]:
+      //   chainId && [ChainId.CELO].includes(chainId) ? (
+      //     <MenuLink href={'/farm?filter=old'} label={i18n._(t`Old Farms`)} />
+      //   ) : undefined,
     }
 
     return Object.entries(map).reduce<Record<string, ReactNode>>((acc, [k, v]) => {
