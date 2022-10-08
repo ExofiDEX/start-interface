@@ -40,7 +40,7 @@ export const oldMiniChef = async (query, chainId = ChainId.ETHEREUM) =>
   request(`${GRAPH_HOST[chainId]}/subgraphs/name/${OLD_MINICHEF[chainId]}`, query)
 
 export const MASTERCHEF_V2 = {
-  [ChainId.ETHEREUM]: 'sushiswap/master-chefv2',
+  [ChainId.ETHEREUM]: '36072/mfg',
   [ChainId.GÖRLI]: '30494/mfg-goerli', // Enable Görli Testnet
 }
 
@@ -50,7 +50,7 @@ export const masterChefV2 = async (query, chainId = ChainId.ETHEREUM, variables 
   request(`${GRAPH_HOST[chainId]}/query/${MASTERCHEF_V2[chainId]}/${MFG_GRAPH_VERSION[chainId]}`, query, variables)
 
 export const MASTERCHEF_V1 = {
-  [ChainId.ETHEREUM]: 'sushiswap/master-chef',
+  [ChainId.ETHEREUM]: '36072/mfg',
   [ChainId.GÖRLI]: '30494/mfg-goerli', // Enable Görli Testnet
 }
 

@@ -32,7 +32,7 @@ export const TRIDENT = {
 }
 
 export const EXCHANGE_GRAPH_VERSION = {
-  [ChainId.ETHEREUM]: 'v0.1.1',
+  [ChainId.ETHEREUM]: 'v0.0.1',
   [ChainId.GÖRLI]: 'v0.1.1',
   [ChainId.XDAI]: 'v0.1.1',
   [ChainId.MATIC]: 'v0.1.1',
@@ -70,7 +70,7 @@ export const BLOCKS_GRAPH_VERSION = {
 }
 
 export const MFG_GRAPH_VERSION = {
-  [ChainId.ETHEREUM]: 'v0.1.1',
+  [ChainId.ETHEREUM]: 'v0.0.1',
   [ChainId.GÖRLI]: 'v0.1.1',
   [ChainId.XDAI]: 'v0.1.1',
   [ChainId.MATIC]: 'v0.1.1',

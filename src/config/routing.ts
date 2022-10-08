@@ -93,15 +93,15 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     // @ts-ignore TYPE NEEDS FIXING
     ETHEREUM.WBTC,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.RUNE,
+    // ETHEREUM.RUNE,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.NFTX,
+    // ETHEREUM.NFTX,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.STETH,
+    // ETHEREUM.STETH,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.OHM_V1,
+    // ETHEREUM.OHM_V1,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.OHM_V2,
+    // ETHEREUM.OHM_V2,
     // @ts-ignore TYPE NEEDS FIXING
     ETHEREUM.MIM,
     // @ts-ignore TYPE NEEDS FIXING
@@ -109,7 +109,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     // @ts-ignore TYPE NEEDS FIXING
     SUSHI[ChainId.ETHEREUM],
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.STG,
+    // ETHEREUM.STG,
   ],
   [ChainId.MATIC]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.MATIC],
@@ -240,32 +240,32 @@ export const ADDITIONAL_BASES: {
 } = {
   [ChainId.ETHEREUM]: {
     ...MIRROR_ADDITIONAL_BASES,
-    '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETHEREUM.ETH2X_FLI],
-    [ETHEREUM.FEI.address]: [ETHEREUM.DPI],
-    [ETHEREUM.FRAX.address]: [ETHEREUM.FXS],
-    [ETHEREUM.FXS.address]: [ETHEREUM.FRAX],
-    [ETHEREUM.WBTC.address]: [ETHEREUM.RENBTC],
-    [ETHEREUM.RENBTC.address]: [ETHEREUM.WBTC],
-    [ETHEREUM.PONT.address]: [ETHEREUM.PWING],
-    [ETHEREUM.PWING.address]: [ETHEREUM.PONT],
-    [ETHEREUM.PLAY.address]: [ETHEREUM.DOUGH],
-    [ETHEREUM.DOUGH.address]: [ETHEREUM.PLAY],
-    [ETHEREUM.IBETH.address]: [ETHEREUM.ALPHA],
-    [ETHEREUM.ALPHA.address]: [ETHEREUM.IBETH],
-    [ETHEREUM.HBTC.address]: [ETHEREUM.CREAM],
-    [ETHEREUM.CREAM.address]: [ETHEREUM.HBTC],
-    [ETHEREUM.DUCK.address]: [ETHEREUM.USDP],
-    [ETHEREUM.USDP.address]: [ETHEREUM.DUCK],
-    [ETHEREUM.BAB.address]: [ETHEREUM.BAC],
-    [ETHEREUM.BAC.address]: [ETHEREUM.BAB],
-    [ETHEREUM.LIFT.address]: [ETHEREUM.LFBTC],
-    [ETHEREUM.LFBTC.address]: [ETHEREUM.LIFT],
-    [ETHEREUM.CVXCRV.address]: [ETHEREUM.CRV],
-    [ETHEREUM.CRV.address]: [ETHEREUM.CVXCRV],
-    [ETHEREUM.WOOFY.address]: [ETHEREUM.YFI],
-    [ETHEREUM.SPANK.address]: [ETHEREUM.RAI],
-    [ETHEREUM.DOLA.address]: [ETHEREUM.INV],
-    [ETHEREUM.AGEUR.address]: [ETHEREUM.ANGLE],
+    // '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETHEREUM.ETH2X_FLI],
+    // [ETHEREUM.FEI.address]: [ETHEREUM.DPI],
+    // [ETHEREUM.FRAX.address]: [ETHEREUM.FXS],
+    // [ETHEREUM.FXS.address]: [ETHEREUM.FRAX],
+    // [ETHEREUM.WBTC.address]: [ETHEREUM.RENBTC],
+    // [ETHEREUM.RENBTC.address]: [ETHEREUM.WBTC],
+    // [ETHEREUM.PONT.address]: [ETHEREUM.PWING],
+    // [ETHEREUM.PWING.address]: [ETHEREUM.PONT],
+    // [ETHEREUM.PLAY.address]: [ETHEREUM.DOUGH],
+    // [ETHEREUM.DOUGH.address]: [ETHEREUM.PLAY],
+    // [ETHEREUM.IBETH.address]: [ETHEREUM.ALPHA],
+    // [ETHEREUM.ALPHA.address]: [ETHEREUM.IBETH],
+    // [ETHEREUM.HBTC.address]: [ETHEREUM.CREAM],
+    // [ETHEREUM.CREAM.address]: [ETHEREUM.HBTC],
+    // [ETHEREUM.DUCK.address]: [ETHEREUM.USDP],
+    // [ETHEREUM.USDP.address]: [ETHEREUM.DUCK],
+    // [ETHEREUM.BAB.address]: [ETHEREUM.BAC],
+    // [ETHEREUM.BAC.address]: [ETHEREUM.BAB],
+    // [ETHEREUM.LIFT.address]: [ETHEREUM.LFBTC],
+    // [ETHEREUM.LFBTC.address]: [ETHEREUM.LIFT],
+    // [ETHEREUM.CVXCRV.address]: [ETHEREUM.CRV],
+    // [ETHEREUM.CRV.address]: [ETHEREUM.CVXCRV],
+    // [ETHEREUM.WOOFY.address]: [ETHEREUM.YFI],
+    // [ETHEREUM.SPANK.address]: [ETHEREUM.RAI],
+    // [ETHEREUM.DOLA.address]: [ETHEREUM.INV],
+    // [ETHEREUM.AGEUR.address]: [ETHEREUM.ANGLE],
   },
   [ChainId.MATIC]: {
     [MATIC.FRAX.address]: [MATIC.FXS],
@@ -315,7 +315,7 @@ export const CUSTOM_BASES: {
   [chainId: number]: { [tokenAddress: string]: Token[] }
 } = {
   [ChainId.ETHEREUM]: {
-    [ETHEREUM.AMPL.address]: [ETHEREUM.DAI, WNATIVE[ChainId.ETHEREUM]],
+    // [ETHEREUM.AMPL.address]: [ETHEREUM.DAI, WNATIVE[ChainId.ETHEREUM]],
   },
   [ChainId.MATIC]: {
     [MATIC.TEL.address]: [MATIC.SUSHI, MATIC.AAVE],
@@ -334,11 +334,11 @@ export const COMMON_BASES: ChainTokenList = {
     // @ts-ignore TYPE NEEDS FIXING
     ETHEREUM.WBTC,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.MIM,
+    // ETHEREUM.MIM,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.SPELL,
+    // ETHEREUM.SPELL,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.ICE,
+    // ETHEREUM.ICE,
     // @ts-ignore TYPE NEEDS FIXING
     ETHEREUM.USDC,
     // @ts-ignore TYPE NEEDS FIXING
@@ -346,11 +346,11 @@ export const COMMON_BASES: ChainTokenList = {
     // @ts-ignore TYPE NEEDS FIXING
     ETHEREUM.DAI,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.OHM_V2,
+    // ETHEREUM.OHM_V2,
     // @ts-ignore TYPE NEEDS FIXING
     ETHEREUM.FRAX,
     // @ts-ignore TYPE NEEDS FIXING
-    ETHEREUM.STG,
+    // ETHEREUM.STG,
   ],
   [ChainId.MATIC]: [
     // @ts-ignore TYPE NEEDS FIXING
@@ -640,11 +640,11 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     ETHEREUM.USDC,
     ETHEREUM.USDT,
     ETHEREUM.WBTC,
-    ETHEREUM.OHM_V1,
-    ETHEREUM.OHM_V2,
-    ETHEREUM.MIM,
+    // ETHEREUM.OHM_V1,
+    // ETHEREUM.OHM_V2,
+    // ETHEREUM.MIM,
     ETHEREUM.FRAX,
-    ETHEREUM.STG,
+    // ETHEREUM.STG,
   ],
   [ChainId.GÖRLI]: [
     // ...WRAPPED_NATIVE_ONLY[ChainId.GÖRLI],
@@ -779,10 +779,10 @@ export const PINNED_PAIRS: { readonly [chainId: number]: [Token, Token][] } = {
   [ChainId.ETHEREUM]: [
     // @ts-ignore TYPE NEEDS FIXING
     [SUSHI[ChainId.ETHEREUM], WNATIVE[ChainId.ETHEREUM]],
-    [
-      new Token(ChainId.ETHEREUM, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
-      new Token(ChainId.ETHEREUM, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin'),
-    ],
+    // [
+    //   new Token(ChainId.ETHEREUM, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
+    //   new Token(ChainId.ETHEREUM, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin'),
+    // ],
     [ETHEREUM.USDC, ETHEREUM.USDT],
     [ETHEREUM.DAI, ETHEREUM.USDT],
   ],
