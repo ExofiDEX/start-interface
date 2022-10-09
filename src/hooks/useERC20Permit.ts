@@ -9,7 +9,7 @@ import {
   Token,
   Trade as V2Trade,
   TradeType,
-} from '@sushiswap/core-sdk'
+} from '@exoda/core-sdk'
 import { DAI, USDC } from 'app/config/tokens'
 import { useSingleCallResult } from 'app/lib/hooks/multicall'
 import { useActiveWeb3React } from 'app/services/web3'
@@ -282,17 +282,20 @@ export function useERC20Permit(
   ])
 }
 
-const REMOVE_V2_LIQUIDITY_PERMIT_INFO: PermitInfo = {
-  version: '1',
-  name: 'SushiSwap LP Token',
-  type: PermitType.AMOUNT,
-}
-
 export function useV2LiquidityTokenPermit(
   liquidityAmount: CurrencyAmount<Token> | null | undefined,
-  spender: string | null | undefined
+  spender: string | null | undefined,
+  symbol: string
 ) {
-  return useERC20Permit(liquidityAmount, spender, REMOVE_V2_LIQUIDITY_PERMIT_INFO)
+  if (!symbol) {
+    console.error('LP token symbol cannot be null')
+  }
+  const permitInfo = {
+    version: '1',
+    name: symbol,
+    type: PermitType.AMOUNT,
+  }
+  return useERC20Permit(liquidityAmount, spender, permitInfo)
 }
 
 export function useTridentLiquidityTokenPermit(liquidityAmount?: CurrencyAmount<Token>, spender?: string) {

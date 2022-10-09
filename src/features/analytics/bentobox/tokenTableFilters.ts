@@ -1,4 +1,4 @@
-// import { Fee } from '@sushiswap/trident-sdk'
+// import { Fee } from '@exoda/trident-sdk'
 
 type FilterSymbolsFunc<T> = (
   arg0: { original: { token: { name: string; symbol: string } } }[],

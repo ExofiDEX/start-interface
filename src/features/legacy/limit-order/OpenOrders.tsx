@@ -1,6 +1,6 @@
+import { LimitOrder } from '@exoda/limit-order-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { LimitOrder } from '@sushiswap/limit-order-sdk'
 import Pagination from 'app/components/Pagination'
 import Typography from 'app/components/Typography'
 import useLimitOrders from 'app/features/legacy/limit-order/useLimitOrders'

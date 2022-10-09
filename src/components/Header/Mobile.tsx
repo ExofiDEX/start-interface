@@ -1,6 +1,6 @@
+import { NATIVE } from '@exoda/core-sdk'
 import { Dialog, Transition } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
-import { NATIVE } from '@sushiswap/core-sdk'
 import useMenu from 'app/components/Header/useMenu'
 import { Logo } from 'app/components/Icon'
 import Web3Network from 'app/components/Web3Network'
@@ -22,14 +22,14 @@ const Mobile: FC = () => {
 
   return (
     <>
-      <header className="w-full flex items-center justify-between min-h-[64px] h-[64px] px-4">
+      <header className="w-full flex items-center justify-between min-h-[64px] h-[64px] px-4 backdrop-blur">
         <div className="flex justify-between flex-grow">
           <div className="p-2 rounded-full hover:bg-white/10">
             <MenuIcon width={28} className="text-white cursor-pointer hover:text-white" onClick={() => setOpen(true)} />
           </div>
           <div className="flex items-center w-6">
             <Link href="/swap" passHref={true}>
-              <Logo alt="Exofi logo" width="24px" height="24px" />
+              <Logo width="24px" height="24px" />
               {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="24px" height="24px" /> */}
             </Link>
           </div>
@@ -62,7 +62,7 @@ const Mobile: FC = () => {
                   unmount={false}
                 >
                   <div className="w-screen max-w-sm">
-                    <div className="flex flex-col h-full py-6 overflow-x-hidden overflow-y-scroll shadow-xl bg-dark-800">
+                    <div className="flex flex-col h-full py-6 overflow-x-hidden overflow-y-scroll shadow-xl backdrop-blur">
                       <nav className="flex-1 pl-6" aria-label="Sidebar">
                         {menu.map((node) => {
                           return <NavigationItem node={node} key={node.key} />

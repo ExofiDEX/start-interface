@@ -1,5 +1,5 @@
 // import { SafeAppConnector } from '@gnosis.pm/safe-apps-web3-react'
-import { ChainId } from '@sushiswap/core-sdk'
+import { ChainId } from '@exoda/core-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 // import { PortisConnector } from 'web3-react-portis-connector'
 // import { WalletConnectConnector } from 'web3-react-walletconnect-connector'
@@ -70,7 +70,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     name: 'MetaMask',
     iconName: 'metamask.png',
     description: 'Open in MetaMask app.',
-    href: 'https://metamask.app.link/dapp/app.sushi.com',
+    href: 'https://metamask.app.link/dapp/app.exofi.com',
     color: '#E8831D',
     mobile: true,
     mobileOnly: true,
@@ -128,8 +128,8 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
       const WalletLinkConnector = (await import('web3-react-walletlink-connector')).WalletLinkConnector
       return new WalletLinkConnector({
         url: RPC[ChainId.ETHEREUM],
-        appName: 'SushiSwap',
-        appLogoUrl: 'https://raw.githubusercontent.com/sushiswap/art/master/sushi/logo-256x256.png',
+        appName: 'ExofiDEX',
+        appLogoUrl: 'https://raw.githubusercontent.com/Exoda/art/master/exofi/logo-256x256.png',
         darkMode: true,
       })
     },

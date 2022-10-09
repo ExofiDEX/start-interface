@@ -1,6 +1,6 @@
+import { CurrencyAmount } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { CurrencyAmount } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
 import ListPanel from 'app/components/ListPanel'
 import HeadlessUIModal from 'app/components/Modal/HeadlessUIModal'
@@ -71,7 +71,7 @@ const TransactionReviewStandardModal: FC = () => {
               {i18n._(t`You'll receive (at least):`)}
             </Typography>
             <Typography weight={700} variant="lg" className="text-high-emphesis">
-              {liquidityMinted?.toSignificant(6)} SLP
+              {liquidityMinted?.toSignificant(6)} ENERGY
             </Typography>
           </HeadlessUIModal.BorderedContent>
           <div className="flex justify-between px-2 py-1">

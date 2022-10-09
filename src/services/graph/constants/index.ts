@@ -1,11 +1,12 @@
-import { ChainId } from '@sushiswap/core-sdk'
+import { ChainId } from '@exoda/core-sdk'
 
-const THE_GRAPH = 'https://api.thegraph.com'
+const THE_GRAPH = 'https://api.studio.thegraph.com'
 const NAS_GRAPH = 'https://graph.kkt.one/node'
 const HYPER_GRAPH = 'https://q.hg.network'
 
 export const GRAPH_HOST = {
   [ChainId.ETHEREUM]: THE_GRAPH,
+  [ChainId.GÖRLI]: THE_GRAPH, // Enable Görli Testnet
   [ChainId.XDAI]: THE_GRAPH,
   [ChainId.MATIC]: THE_GRAPH,
   [ChainId.FANTOM]: THE_GRAPH,
@@ -28,4 +29,80 @@ export const TRIDENT = {
   [ChainId.MATIC]: 'matthewlilley/trident-polygon',
   [ChainId.KOVAN]: 'sushiswap/trident-kovan',
   [ChainId.OPTIMISM]: 'matthewlilley/trident-optimism',
+}
+
+export const EXCHANGE_GRAPH_VERSION = {
+  [ChainId.ETHEREUM]: 'v0.0.1',
+  [ChainId.GÖRLI]: 'v0.1.1',
+  [ChainId.XDAI]: 'v0.1.1',
+  [ChainId.MATIC]: 'v0.1.1',
+  [ChainId.FANTOM]: 'v0.1.1',
+  [ChainId.BSC]: 'v0.1.1',
+  [ChainId.HARMONY]: 'v0.1.1',
+  [ChainId.AVALANCHE]: 'v0.1.1',
+  [ChainId.CELO]: 'v0.1.1',
+  [ChainId.ARBITRUM]: 'v0.1.1',
+  [ChainId.OKEX]: 'v0.1.1',
+  [ChainId.HECO]: 'v0.1.1',
+  [ChainId.MOONRIVER]: 'v0.1.1',
+  [ChainId.FUSE]: 'v0.1.1',
+  [ChainId.KOVAN]: 'v0.1.1',
+  [ChainId.MOONBEAM]: 'v0.1.1',
+}
+
+export const BLOCKS_GRAPH_VERSION = {
+  [ChainId.ETHEREUM]: 'v0.1.1',
+  [ChainId.GÖRLI]: 'v0.1.1',
+  [ChainId.XDAI]: 'v0.1.1',
+  [ChainId.MATIC]: 'v0.1.1',
+  [ChainId.FANTOM]: 'v0.1.1',
+  [ChainId.BSC]: 'v0.1.1',
+  [ChainId.HARMONY]: 'v0.1.1',
+  [ChainId.AVALANCHE]: 'v0.1.1',
+  [ChainId.CELO]: 'v0.1.1',
+  [ChainId.ARBITRUM]: 'v0.1.1',
+  [ChainId.OKEX]: 'v0.1.1',
+  [ChainId.HECO]: 'v0.1.1',
+  [ChainId.MOONRIVER]: 'v0.1.1',
+  [ChainId.FUSE]: 'v0.1.1',
+  [ChainId.KOVAN]: 'v0.1.1',
+  [ChainId.MOONBEAM]: 'v0.1.1',
+}
+
+export const MFG_GRAPH_VERSION = {
+  [ChainId.ETHEREUM]: 'v0.0.1',
+  [ChainId.GÖRLI]: 'v0.1.1',
+  [ChainId.XDAI]: 'v0.1.1',
+  [ChainId.MATIC]: 'v0.1.1',
+  [ChainId.FANTOM]: 'v0.1.1',
+  [ChainId.BSC]: 'v0.1.1',
+  [ChainId.HARMONY]: 'v0.1.1',
+  [ChainId.AVALANCHE]: 'v0.1.1',
+  [ChainId.CELO]: 'v0.1.1',
+  [ChainId.ARBITRUM]: 'v0.1.1',
+  [ChainId.OKEX]: 'v0.1.1',
+  [ChainId.HECO]: 'v0.1.1',
+  [ChainId.MOONRIVER]: 'v0.1.1',
+  [ChainId.FUSE]: 'v0.1.1',
+  [ChainId.KOVAN]: 'v0.1.1',
+  [ChainId.MOONBEAM]: 'v0.1.1',
+}
+
+export const FERMION_GRAPH_VERSION = {
+  [ChainId.ETHEREUM]: 'v0.1.1',
+  [ChainId.GÖRLI]: 'v0.1.1',
+  [ChainId.XDAI]: 'v0.1.1',
+  [ChainId.MATIC]: 'v0.1.1',
+  [ChainId.FANTOM]: 'v0.1.1',
+  [ChainId.BSC]: 'v0.1.1',
+  [ChainId.HARMONY]: 'v0.1.1',
+  [ChainId.AVALANCHE]: 'v0.1.1',
+  [ChainId.CELO]: 'v0.1.1',
+  [ChainId.ARBITRUM]: 'v0.1.1',
+  [ChainId.OKEX]: 'v0.1.1',
+  [ChainId.HECO]: 'v0.1.1',
+  [ChainId.MOONRIVER]: 'v0.1.1',
+  [ChainId.FUSE]: 'v0.1.1',
+  [ChainId.KOVAN]: 'v0.1.1',
+  [ChainId.MOONBEAM]: 'v0.1.1',
 }

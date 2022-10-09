@@ -1,6 +1,6 @@
+import { Currency, CurrencyAmount, Percent, Token } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency, CurrencyAmount, Percent, Token } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
 import ListPanel from 'app/components/ListPanel'
 import { HeadlessUiModal } from 'app/components/Modal'
@@ -58,7 +58,7 @@ const PoolAddLiquidityReviewContent: FC<PoolAddLiquidityReviewContentProps> = ({
           {i18n._(t`You'll receive (at least):`)}
         </Typography>
         <Typography weight={700} variant="lg" className="text-high-emphesis">
-          {liquidityMinted?.toSignificant(6)} SLP
+          {liquidityMinted?.toSignificant(6)} ENERGY
         </Typography>
       </HeadlessUIModal.BorderedContent>
       <div className="flex justify-between px-2 py-1">

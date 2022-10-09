@@ -16,8 +16,8 @@ export default function AnalyticsContainer({ children }): JSX.Element {
       href: `/analytics/${chainId}/dashboard`,
     },
     {
-      text: 'xSushi',
-      href: '/analytics/xsushi',
+      text: 'Fermion',
+      href: '/analytics/fermion',
     },
     {
       text: 'Pairs',
@@ -46,8 +46,8 @@ export default function AnalyticsContainer({ children }): JSX.Element {
   return (
     <div className="relative w-full">
       <Head>
-        <title>Sushi Analytics | Sushi</title>
-        <meta name="description" content="SushiSwap Liquidity Pair (SLP) Analytics by Sushi" />
+        <title>Exofi Analytics | Exofi</title>
+        <meta name="description" content="Exofi Liquidity Pair (ENERGY) Analytics by EXODA" />
       </Head>
       <Container id="analytics" maxWidth="7xl" className="mx-auto">
         <div className="w-full border-dark-700">{children}</div>

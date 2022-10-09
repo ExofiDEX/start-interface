@@ -1,10 +1,10 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
+import { ChainId, NATIVE, Percent, WNATIVE, WNATIVE_ADDRESS } from '@exoda/core-sdk'
 import { ArrowLeftIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ChainId, NATIVE, Percent, WNATIVE, WNATIVE_ADDRESS } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
 import { CurrencyLogo } from 'app/components/CurrencyLogo'
 import Input from 'app/components/Input'
@@ -65,10 +65,24 @@ export default function Remove() {
   // router contract
   const routerContract = useRouterContract()
 
+  let symbol = ''
+  if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyA.isToken && currencyB.isToken) {
+    // @ts-ignore address needs to be added to currency
+    symbol =
+      currencyA.address < currencyB.address
+        ? currencyA.symbol + '/' + currencyB.symbol + ' Plasma'
+        : currencyB.symbol + '/' + currencyA.symbol + ' Plasma'
+  } else if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyA.isToken) {
+    symbol = currencyA.symbol + '/' + (currencyB.symbol === 'ETH' ? 'WETH' : currencyB.symbol) + ' Plasma'
+  } else if (currencyA && currencyB && currencyA.symbol && currencyB.symbol && currencyB.isToken) {
+    symbol = (currencyA.symbol === 'ETH' ? 'WETH' : currencyA.symbol) + '/' + currencyB.symbol + ' Plasma'
+  }
+
   // allowance handling
   const { gatherPermitSignature, signatureData } = useV2LiquidityTokenPermit(
     parsedAmounts[Field.LIQUIDITY],
-    routerContract?.address
+    routerContract?.address,
+    symbol
   )
 
   const [approval, approveCallback] = useApproveCallback(parsedAmounts[Field.LIQUIDITY], routerContract?.address)

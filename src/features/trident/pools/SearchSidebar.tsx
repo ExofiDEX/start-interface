@@ -1,4 +1,4 @@
-import { Fee } from '@sushiswap/trident-sdk'
+import { Fee } from '@exoda/trident-sdk'
 import Checkbox from 'app/components/Checkbox'
 import Typography from 'app/components/Typography'
 import { selectTridentPools, setPoolsFeeTiers, setPoolsTWAPOnly } from 'app/features/trident/pools/poolsSlice'

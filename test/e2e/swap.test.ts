@@ -1,5 +1,5 @@
 import { Dappeteer } from '@chainsafe/dappeteer'
-import { closeValues } from '@sushiswap/trident-sdk'
+import { closeValues } from '@exoda/trident-sdk'
 import { Browser, Page } from 'puppeteer'
 
 import { ADDRESSES, FUNDING_SOURCE } from './constants/Index'

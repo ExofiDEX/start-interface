@@ -1,13 +1,15 @@
+import { ChainId } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ChainId } from '@sushiswap/core-sdk'
-import Button from 'app/components/Button'
+// import Button from 'app/components/Button'
 import ExternalLink from 'app/components/ExternalLink'
 import Search from 'app/components/Search'
 import Typography from 'app/components/Typography'
-import { Chef, PairType } from 'app/features/onsen/enum'
+import { Feature } from 'app/enums'
+import { Chef } from 'app/features/onsen/enum'
 import FarmList from 'app/features/onsen/FarmList'
 import OnsenFilter from 'app/features/onsen/FarmMenu'
+import NetworkGuard from 'app/guards/Network'
 import useFarmRewards from 'app/hooks/useFarmRewards'
 import useFuse from 'app/hooks/useFuse'
 import { TridentBody, TridentHeader } from 'app/layouts/Trident'
@@ -16,7 +18,7 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import React from 'react'
 
-export default function Farm(): JSX.Element {
+function Farm(): JSX.Element {
   const { i18n } = useLingui()
 
   const { account } = useActiveWeb3React()
@@ -40,16 +42,16 @@ export default function Farm(): JSX.Element {
     // @ts-ignore TYPE NEEDS FIXING
     portfolio: (farm) => farm?.amount && !farm.amount.isZero(),
     // @ts-ignore TYPE NEEDS FIXING
-    sushi: (farm) => farm.pair.type === PairType.SWAP && farm.allocPoint !== '0',
+    // sushi: (farm) => farm.pair.type === PairType.SWAP && farm.allocPoint !== '0',
     // @ts-ignore TYPE NEEDS FIXING
-    kashi: (farm) => farm.pair.type === PairType.KASHI && farm.allocPoint !== '0',
+    // kashi: (farm) => farm.pair.type === PairType.KASHI && farm.allocPoint !== '0',
     // @ts-ignore TYPE NEEDS FIXING
-    '2x': (farm) =>
-      (farm.chef === Chef.MASTERCHEF_V2 || farm.chef === Chef.MINICHEF) &&
-      farm.rewards.length > 1 &&
-      farm.allocPoint !== '0',
+    // '2x': (farm) =>
+    //   (farm.chef === Chef.MASTERCHEF_V2 || farm.chef === Chef.MINICHEF) &&
+    //   farm.rewards.length > 1 &&
+    //   farm.allocPoint !== '0',
     // @ts-ignore TYPE NEEDS FIXING
-    old: (farm) => farm.chef === Chef.OLD_FARMS,
+    // old: (farm) => farm.chef === Chef.OLD_FARMS,
   }
 
   const rewards = useFarmRewards({ chainId })
@@ -72,17 +74,17 @@ export default function Farm(): JSX.Element {
   return (
     <>
       <NextSeo title="Farm" description="Farm SUSHI" />
-      <TridentHeader className="sm:!flex-row justify-between items-center" pattern="bg-bubble">
+      <TridentHeader className="sm:!flex-row justify-between items-center">
         <div>
           <Typography variant="h2" className="text-high-emphesis" weight={700}>
-            {i18n._(t`Onsen Menu`)}
+            {i18n._(t`Fusion Reactor`)}
           </Typography>
           <Typography variant="sm" weight={400}>
-            {i18n._(t`Earn fees and rewards by depositing and staking your tokens to the platform.`)}
+            {i18n._(t`Earn fees and rewards by depositing and staking your tokens to the Fusion Reactor.`)}
           </Typography>
         </div>
         <div className="flex gap-3">
-          <Button id="btn-create-new-pool" size="sm">
+          {/* <Button id="btn-create-new-pool" size="sm">
             <a
               href="https://docs.google.com/document/d/1VcdrqAn1sR8Wa0BSSU-jAl68CfoECR62LCzIyzUpZ_U"
               target="_blank"
@@ -90,7 +92,7 @@ export default function Farm(): JSX.Element {
             >
               {i18n._(t`Apply for Onsen`)}
             </a>
-          </Button>
+          </Button> */}
         </div>
       </TridentHeader>
       <TridentBody>
@@ -117,3 +119,6 @@ export default function Farm(): JSX.Element {
     </>
   )
 }
+
+Farm.Guard = NetworkGuard(Feature.LIQUIDITY_MINING)
+export default Farm

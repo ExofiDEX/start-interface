@@ -10,7 +10,7 @@ export const PoolSort: FC = () => {
   const dispatch = useAppDispatch()
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex items-center gap-2">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="w-full px-4 py-2.5 text-sm font-bold bg-transparent border rounded shadow-sm text-primary border-dark-800 hover:bg-dark-900">
@@ -31,7 +31,7 @@ export const PoolSort: FC = () => {
         >
           <Menu.Items
             static
-            className="w-full absolute rounded mt-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-dark-800 bg-dark-1000 shadow-md"
+            className="absolute w-full mt-2 border rounded shadow-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border-dark-800 bg-dark-1000"
           >
             {Object.values(PoolSortOption)
               .filter((title): title is PoolSortOption => title !== sort)

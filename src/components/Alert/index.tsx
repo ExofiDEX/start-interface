@@ -8,10 +8,10 @@ import Typography from '../Typography'
 const TYPE = {
   information: {
     text: 'text-high-emphesis',
-    color: 'bg-purple bg-opacity-20 text-high-emphesis',
+    color: 'bg-purple bg-opacity-50 text-high-emphesis',
     icon: (
       <svg
-        className="h-5 w-5 text-purple"
+        className="w-5 h-5 text-purple"
         viewBox="0 0 33 33"
         xmlns="http://www.w3.org/2000/svg"
         path="currentColor"
@@ -27,7 +27,7 @@ const TYPE = {
   },
   warning: {
     text: 'text-high-emphesis',
-    color: 'bg-yellow bg-opacity-25 text-high-emphesis',
+    color: 'bg-yellow bg-opacity-50 text-high-emphesis',
     icon: (
       <svg
         className="w-5 h-5 text-yellow"
@@ -46,8 +46,8 @@ const TYPE = {
   },
   error: {
     text: 'text-red',
-    color: 'bg-red bg-opacity-25 text-high-emphesis',
-    icon: <ExclamationCircleIcon className="h-5 w-5 text-red" />,
+    color: 'bg-red bg-opacity-50 text-high-emphesis',
+    icon: <ExclamationCircleIcon className="w-5 h-5 text-red" />,
   },
 }
 
@@ -88,7 +88,7 @@ export default function Alert({
         <button
           type="button"
           onClick={() => setShow(!show)}
-          className="inline-flex opacity-80 hover:opacity-100 focused:opacity-100 rounded text-primary hover:text-high-emphesis focus:text-high-emphesis focus:outline-none focus:ring focus:ring-offset focus:ring-offset-purple focus:ring-purple"
+          className="inline-flex rounded opacity-80 hover:opacity-100 focused:opacity-100 text-primary hover:text-high-emphesis focus:text-high-emphesis focus:outline-none focus:ring focus:ring-offset focus:ring-offset-purple focus:ring-purple"
         >
           <span className="sr-only">Dismiss</span>
           <XIcon className="w-5 h-5" aria-hidden="true" />

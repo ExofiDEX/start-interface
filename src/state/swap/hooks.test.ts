@@ -1,4 +1,4 @@
-import { ChainId, SUSHI_ADDRESS } from '@sushiswap/core-sdk'
+import { ChainId, SUSHI_ADDRESS } from '@exoda/core-sdk'
 import { parse } from 'qs'
 
 import { Field } from './actions'

@@ -1,6 +1,6 @@
+import { Currency } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency } from '@sushiswap/core-sdk'
 import NavLink from 'app/components/NavLink'
 import Settings from 'app/components/Settings'
 import Typography from 'app/components/Typography'
@@ -45,7 +45,7 @@ const HeaderNew: FC<HeaderNewProps> = ({ inputCurrency, outputCurrency, trident 
             {i18n._(t`Swap`)}
           </Typography>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           activeClassName="text-high-emphesis"
           href={{
             pathname: '/limit-order',
@@ -55,7 +55,7 @@ const HeaderNew: FC<HeaderNewProps> = ({ inputCurrency, outputCurrency, trident 
           <Typography weight={700} className="text-secondary hover:text-white">
             {i18n._(t`Limit`)}
           </Typography>
-        </NavLink>
+        </NavLink> */}
       </div>
       <div className="flex gap-4">
         {isLimitOrder && <MyOrders />}

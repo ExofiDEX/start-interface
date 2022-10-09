@@ -76,10 +76,12 @@ export default function Analytics(): JSX.Element {
       <TridentHeader className="sm:!flex-row justify-between items-center" pattern="bg-bubble">
         <div>
           <Typography variant="h2" className="text-high-emphesis" weight={700}>
-            {i18n._(t`Sushi Analytics.`)}
+            {i18n._(t`ExofiDEX Analytics.`)}
           </Typography>
           <Typography variant="sm" weight={400}>
-            {i18n._(t`Dive deeper in the analytics of Sushi Bar, BentoBox, Pools, Farms and Tokens.`)}
+            {i18n._(
+              t`Dive deeper in the analytics of Exofi LHC(Staking), Fusion Reactor Pools, Dyson Sphere(Farms) and Particles(Tokens).`
+            )}
           </Typography>
         </div>
       </TridentHeader>
@@ -90,7 +92,7 @@ export default function Analytics(): JSX.Element {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <ChartCard
               header="TVL"
-              subheader="SUSHI AMM"
+              subheader="EXOFI AMM"
               figure={chartData.liquidity}
               change={chartData.liquidityChange}
               chart={chartData.liquidityChart}
@@ -99,7 +101,7 @@ export default function Analytics(): JSX.Element {
             />
             <ChartCard
               header="Volume"
-              subheader="SUSHI AMM"
+              subheader="EXOFI AMM"
               figure={chartData.volume1d}
               change={chartData.volume1dChange}
               chart={chartData.volumeChart}

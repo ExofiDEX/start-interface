@@ -1,5 +1,5 @@
 import { Web3Provider } from '@ethersproject/providers'
-import { ChainId } from '@sushiswap/core-sdk'
+import { ChainId } from '@exoda/core-sdk'
 import ms from 'ms.macro'
 
 const NETWORK_POLLING_INTERVALS: { [chainId: number]: number } = {
@@ -7,6 +7,8 @@ const NETWORK_POLLING_INTERVALS: { [chainId: number]: number } = {
   [ChainId.ARBITRUM_TESTNET]: ms`1s`,
   // [ChainId.HARMONY]: ms`1s`,
   [ChainId.MATIC]: ms`1s`,
+  [ChainId.ETHEREUM]: ms`1s`,
+  [ChainId.GÖRLI]: ms`1s`,
 }
 
 export default function getLibrary(provider: any): Web3Provider {

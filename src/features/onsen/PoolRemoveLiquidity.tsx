@@ -1,8 +1,8 @@
 import { TransactionResponse } from '@ethersproject/abstract-provider'
 import { BigNumber } from '@ethersproject/bignumber'
+import { ChainId, CurrencyAmount, currencyEquals, NATIVE, Percent, WNATIVE, ZERO } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ChainId, CurrencyAmount, currencyEquals, NATIVE, Percent, WNATIVE, ZERO } from '@sushiswap/core-sdk'
 import AssetInput from 'app/components/AssetInput'
 import Button from 'app/components/Button'
 import ListPanel from 'app/components/ListPanel'
@@ -58,10 +58,19 @@ const PoolWithdraw = ({ currencyA, currencyB, header }) => {
   // router contract
   const routerContract = useRouterContract()
 
+  let symbol = ''
+  if (currencyA && currencyB && currencyA.symbol && currencyB.symbol) {
+    symbol =
+      currencyA.address < currencyB.address
+        ? currencyA.symbol + '/' + currencyB.symbol + ' Plasma'
+        : currencyB.symbol + '/' + currencyA.symbol + ' Plasma'
+  }
+
   // allowance handling
   const { gatherPermitSignature, signatureData } = useV2LiquidityTokenPermit(
     parsedAmounts[Field.LIQUIDITY],
-    routerContract?.address
+    routerContract?.address,
+    symbol
   )
   const [approval, approveCallback] = useApproveCallback(parsedAmounts[Field.LIQUIDITY], routerContract?.address)
 
@@ -320,7 +329,7 @@ const PoolWithdraw = ({ currencyA, currencyB, header }) => {
       </HeadlessUiModal.BorderedContent>
       {!userLiquidity?.equalTo(ZERO) && (
         <Typography variant="xs" className="italic text-center">
-          {i18n._(t`If your SLP is staked, you cannot remove your liquidity. You must unstake first.`)}
+          {i18n._(t`If your ENERGY is staked, you cannot remove your liquidity. You must unstake first.`)}
         </Typography>
       )}
       {!account ? (

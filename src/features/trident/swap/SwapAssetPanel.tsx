@@ -1,7 +1,7 @@
+import { Currency, Percent, ZERO } from '@exoda/core-sdk'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency, Percent, ZERO } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
 import { CurrencyLogo } from 'app/components/CurrencyLogo'
 import NumericalInput from 'app/components/Input/Numeric'
@@ -65,7 +65,7 @@ const SwapAssetPanel: FC<SwapAssetPanel> = forwardRef<HTMLInputElement, SwapAsse
         className={classNames(
           disabled ? 'pointer-events-none opacity-40' : '',
           error ? 'border-red-800 hover:border-red-500' : 'border-dark-700 hover:border-dark-600',
-          'rounded-[14px] border bg-dark-900 p-3 flex flex-col gap-4'
+          'rounded-[14px] border backdrop-blur-input border-input p-3 flex flex-col gap-4'
         )}
       >
         {header({

@@ -1,6 +1,6 @@
+import { Currency, CurrencyAmount, JSBI, Pair, Percent, Token, ZERO } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency, CurrencyAmount, JSBI, Pair, Percent, Token, ZERO } from '@sushiswap/core-sdk'
 import { tryParseAmount } from 'app/functions/parse'
 import { useTotalSupply } from 'app/hooks/useTotalSupply'
 import { useV2Pair } from 'app/hooks/useV2Pairs'
@@ -58,6 +58,8 @@ export function useDerivedBurnInfo(
     totalSupply &&
     userLiquidity &&
     tokenA &&
+    JSBI.greaterThan(userLiquidity.denominator, JSBI.BigInt(0)) &&
+    JSBI.greaterThan(userLiquidity.numerator, JSBI.BigInt(0)) &&
     // this condition is a short-circuit in the case where useTokenBalance updates sooner than useTotalSupply
     JSBI.greaterThanOrEqual(totalSupply.quotient, userLiquidity.quotient)
       ? CurrencyAmount.fromRawAmount(tokenA, pair.getLiquidityValue(tokenA, totalSupply, userLiquidity, false).quotient)
@@ -68,6 +70,8 @@ export function useDerivedBurnInfo(
     totalSupply &&
     userLiquidity &&
     tokenB &&
+    JSBI.greaterThan(userLiquidity.denominator, JSBI.BigInt(0)) &&
+    JSBI.greaterThan(userLiquidity.numerator, JSBI.BigInt(0)) &&
     // this condition is a short-circuit in the case where useTokenBalance updates sooner than useTotalSupply
     JSBI.greaterThanOrEqual(totalSupply.quotient, userLiquidity.quotient)
       ? CurrencyAmount.fromRawAmount(tokenB, pair.getLiquidityValue(tokenB, totalSupply, userLiquidity, false).quotient)
@@ -145,7 +149,7 @@ export function useDerivedBurnInfo(
   }
 
   if (parsedAmounts[Field.CURRENCY_A]?.equalTo(ZERO) && parsedAmounts[Field.CURRENCY_B]?.equalTo(ZERO)) {
-    error = error ?? i18n._(t`Insufficient SLP balance`)
+    error = error ?? i18n._(t`Insufficient ENERGY balance`)
   }
 
   return { pair, parsedAmounts, error, userLiquidity }

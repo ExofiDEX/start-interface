@@ -1,21 +1,23 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
+import { Currency, currencyEquals, WNATIVE } from '@exoda/core-sdk'
 import { ArrowLeftIcon, PlusIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency, currencyEquals, WNATIVE } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
 import DoubleCurrencyLogo from 'app/components/DoubleLogo'
 import SettingsTab from 'app/components/Settings'
 import Typography from 'app/components/Typography'
 import Web3Connect from 'app/components/Web3Connect'
 import { ZERO_PERCENT } from 'app/constants'
+import { Feature } from 'app/enums'
 import { ConfirmAddModalBottom } from 'app/features/legacy/liquidity/ConfirmAddModalBottom'
 import LiquidityPrice from 'app/features/legacy/liquidity/LiquidityPrice'
 import UnsupportedCurrencyFooter from 'app/features/legacy/swap/UnsupportedCurrencyFooter'
 import SwapAssetPanel from 'app/features/trident/swap/SwapAssetPanel'
 import { currencyId } from 'app/functions/currency'
 import { calculateGasMargin, calculateSlippageAmount } from 'app/functions/trade'
+import NetworkGuard from 'app/guards/Network'
 import { useCurrency } from 'app/hooks/Tokens'
 import { ApprovalState, useApproveCallback } from 'app/hooks/useApproveCallback'
 import { useRouterContract } from 'app/hooks/useContract'
@@ -385,7 +387,8 @@ export default function Add() {
           )}
         </Typography>
       )}
-      <Typography variant="xs" className="px-10 mt-5 text-center text-low-emphesis">
+
+      <Typography variant="xs" className="px-10 py-1 mt-5 text-center text-low-emphesis text-bg-blur">
         <Typography variant="xs" weight={700} component="span">
           Tip
         </Typography>
@@ -401,3 +404,4 @@ export default function Add() {
 }
 
 Add.Layout = SwapLayout('add-page')
+Add.Guard = NetworkGuard(Feature.ADD_LIQUIDITY)

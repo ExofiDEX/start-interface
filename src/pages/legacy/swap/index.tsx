@@ -1,7 +1,7 @@
+import { ChainId, Currency, JSBI, SUSHI_ADDRESS, Token, Trade as V2Trade, TradeType } from '@exoda/core-sdk'
 import { ArrowDownIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency, JSBI, Token, Trade as V2Trade, TradeType } from '@sushiswap/core-sdk'
 import Banner from 'app/components/Banner'
 import Button from 'app/components/Button'
 import RecipientField from 'app/components/RecipientField'
@@ -41,7 +41,7 @@ const Swap = ({ banners }: SwapProps) => {
   const { i18n } = useLingui()
 
   const loadedUrlParams = useDefaultsFromURLSearch()
-  const { account } = useActiveWeb3React()
+  const { chainId, account } = useActiveWeb3React()
   const defaultTokens = useAllTokens()
 
   const [isExpertMode] = useExpertModeManager()
@@ -62,12 +62,14 @@ const Swap = ({ banners }: SwapProps) => {
   }, [])
 
   // dismiss warning if all imported tokens are in active lists
-  const importTokensNotInDefault =
+  const importTokensNotInDefaultWithDefault =
     urlLoadedTokens &&
     urlLoadedTokens.filter((token: Token) => {
       return !Boolean(token.address in defaultTokens)
     })
-
+  const importTokensNotInDefault = importTokensNotInDefaultWithDefault.filter(
+    (token) => token.address !== SUSHI_ADDRESS[chainId ? chainId : ChainId.ETHEREUM]
+  )
   const {
     wrapType,
     execute: onWrap,

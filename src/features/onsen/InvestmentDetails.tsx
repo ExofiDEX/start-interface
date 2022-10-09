@@ -1,8 +1,8 @@
 import { getAddress } from '@ethersproject/address'
+import { toAmount } from '@exoda/bentobox-sdk'
+import { ChainId, CurrencyAmount, SUSHI_ADDRESS, Token, ZERO } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { toAmount } from '@sushiswap/bentobox-sdk'
-import { ChainId, CurrencyAmount, Token, ZERO } from '@sushiswap/core-sdk'
 import Button from 'app/components/Button'
 import { CurrencyLogo } from 'app/components/CurrencyLogo'
 import { HeadlessUiModal } from 'app/components/Modal'
@@ -44,8 +44,7 @@ const InvestmentDetails = ({ farm }) => {
   const [pendingTx, setPendingTx] = useState(false)
   const token0 = useCurrency(farm.pair.token0.id)
   const token1 = useCurrency(farm.pair.token1.id)
-
-  console.log({ farm })
+  const rewardToken = useCurrency(SUSHI_ADDRESS[chainId ? chainId : ChainId.ETHEREUM])
 
   const liquidityToken = useMemo(
     () =>
@@ -54,7 +53,7 @@ const InvestmentDetails = ({ farm }) => {
             chainId,
             getAddress(farm.pair.id),
             farm.pair.type === PairType.KASHI ? Number(farm.pair.asset.decimals) : 18,
-            farm.pair.symbol ?? farm.pair.type === PairType.KASHI ? 'KMP' : 'SLP',
+            farm.pair.symbol ?? farm.pair.type === PairType.KASHI ? 'KMP' : 'ENERGY',
             farm.pair.name
           )
         : undefined,
@@ -162,7 +161,7 @@ const InvestmentDetails = ({ farm }) => {
         {farm?.rewards?.map((reward, i) => {
           return (
             <div className="flex items-center gap-2" key={i}>
-              <CurrencyLogo currency={reward.currency} size={18} />
+              <CurrencyLogo currency={rewardToken} size={18} />
               {!secondaryRewardOnly ? (
                 <>
                   {i === 0 && (

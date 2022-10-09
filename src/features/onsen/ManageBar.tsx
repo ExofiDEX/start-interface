@@ -1,9 +1,9 @@
 import { getAddress } from '@ethersproject/address'
 import { BigNumber } from '@ethersproject/bignumber'
+import { ChainId, MASTERCHEF_ADDRESS, MASTERCHEF_V2_ADDRESS, MINICHEF_ADDRESS, Token } from '@exoda/core-sdk'
 import { MinusIcon, PlusIcon } from '@heroicons/react/solid'
 import { i18n } from '@lingui/core'
 import { t } from '@lingui/macro'
-import { ChainId, MASTERCHEF_ADDRESS, MASTERCHEF_V2_ADDRESS, MINICHEF_ADDRESS, Token } from '@sushiswap/core-sdk'
 import AssetInput from 'app/components/AssetInput'
 import Button from 'app/components/Button'
 import { HeadlessUiModal } from 'app/components/Modal'
@@ -26,8 +26,14 @@ import { useUserInfo } from './hooks'
 import useMasterChef from './useMasterChef'
 
 const APPROVAL_ADDRESSES = {
-  [Chef.MASTERCHEF]: { [ChainId.ETHEREUM]: MASTERCHEF_ADDRESS[ChainId.ETHEREUM] },
-  [Chef.MASTERCHEF_V2]: { [ChainId.ETHEREUM]: MASTERCHEF_V2_ADDRESS[ChainId.ETHEREUM] },
+  [Chef.MASTERCHEF]: {
+    [ChainId.ETHEREUM]: MASTERCHEF_ADDRESS[ChainId.ETHEREUM],
+    [ChainId.GÖRLI]: MASTERCHEF_ADDRESS[ChainId.GÖRLI],
+  },
+  [Chef.MASTERCHEF_V2]: {
+    [ChainId.ETHEREUM]: MASTERCHEF_V2_ADDRESS[ChainId.ETHEREUM],
+    [ChainId.GÖRLI]: MASTERCHEF_V2_ADDRESS[ChainId.GÖRLI],
+  },
   [Chef.MINICHEF]: {
     [ChainId.MATIC]: MINICHEF_ADDRESS[ChainId.MATIC],
     [ChainId.XDAI]: MINICHEF_ADDRESS[ChainId.XDAI],
@@ -58,7 +64,7 @@ const ManageBar = ({ farm }) => {
     chainId || 1,
     getAddress(farm.pair.id),
     farm.pair.type === PairType.KASHI ? Number(farm.pair.asset.decimals) : 18,
-    farm.pair.type === PairType.KASHI ? 'KMP' : 'SLP'
+    farm.pair.type === PairType.KASHI ? 'KMP' : 'ENERGY'
   )
   const balance = useCurrencyBalance(account ?? undefined, liquidityToken)
   const stakedAmount = useUserInfo(farm, liquidityToken)

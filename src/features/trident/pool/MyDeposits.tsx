@@ -10,12 +10,12 @@ const MyDeposits: FC = () => {
   const { poolWithState } = usePoolContext()
 
   return (
-    <div className="flex flex-col px-5 gap-5 mt-12">
+    <div className="flex flex-col gap-5 px-5 mt-12">
       <Typography variant="h3" className="text-high-emphesis" weight={700}>
         {i18n._(t`My Deposits`)}
       </Typography>
       <ListPanel
-        header={<ListPanel.Header title={i18n._(t`Assets`)} value="$16,720.00" subValue="54.32134 SLP" />}
+        header={<ListPanel.Header title={i18n._(t`Assets`)} value="$16,720.00" subValue="54.32134 ENERGY" />}
         items={[poolWithState?.pool?.reserve0, poolWithState?.pool?.reserve1].map((amount, index) => (
           <ListPanel.CurrencyAmountItem amount={amount} key={index} />
         ))}

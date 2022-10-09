@@ -2,8 +2,8 @@
 // pages/_document.js
 import { Head, Html, Main, NextScript } from 'next/document'
 
-const APP_NAME = 'Sushi'
-const APP_DESCRIPTION = 'Swap, yield, lend, borrow, leverage, limit, launch all on one community driven ecosystem'
+const APP_NAME = 'Exofi'
+const APP_DESCRIPTION = 'Swap, yield launch all on one community driven ecosystem'
 
 export default function Document() {
   return (
@@ -31,7 +31,7 @@ export default function Document() {
         <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
 
         <link rel="manifest" href="/manifest.json" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <body>
         <Main />

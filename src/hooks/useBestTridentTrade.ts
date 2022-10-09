@@ -8,7 +8,7 @@ import {
   Trade as LegacyTrade,
   TradeType,
   WNATIVE,
-} from '@sushiswap/core-sdk'
+} from '@exoda/core-sdk'
 import {
   ConstantProductPool,
   convertTinesSingleRouteToLegacyRoute,
@@ -20,7 +20,7 @@ import {
   PoolState,
   RouteStatus,
   Trade,
-} from '@sushiswap/trident-sdk'
+} from '@exoda/trident-sdk'
 import { PoolUnion } from 'app/features/trident/types'
 import { toAmountJSBI, toShareCurrencyAmount } from 'app/functions'
 import { useBentoRebase } from 'app/hooks/useBentoRebases'

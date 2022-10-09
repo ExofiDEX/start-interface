@@ -33,8 +33,17 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("/images/background.png") no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   background-color: var(--primary);
   color: var(--text-primary);
+
+}
+@media only screen and (max-width: 1080px) {
+  body{
+    background: url("/images/background-mobile.png") no-repeat;
+  }
 }
 
 body {
@@ -47,10 +56,83 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.backdrop-blur-input  {
+  background: rgba(0, 0, 0, 0.30);
+}
+
+
+.test-blur{
+  background: rgba(0, 0, 0, 0.48);
+  mix-blend-mode: normal;
+  backdrop-filter: blur(120px);
+}
+.text-bg-blur {
+  background: rgba(0, 0, 0, 0.27);
+  backdrop-filter: blur(120px);
+  color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.625rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  
+}
+
+.backdrop-blur-border{
+  background: rgba(255, 255, 255, 0.21);
+  backdrop-filter: blur(12px);
+}
+
+.heading-blur{
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(200px);
+}
+
+.border-input {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+}
+
+.backdrop-blur-highlight  {
+  background: rgba(255,209,102, 0.5);
+  mix-blend-mode: normal;
+  backdrop-filter: blur(120px);
+}
+
+ @media only screen and (min-width: 1080px) {
+  .backdrop-blur  {
+    background: rgba(0, 0, 0, 0.48);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(120px);
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .backdrop-blur {
+    background: rgba(0, 0, 0, 0.2);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(60px);
+  }
+}
+.footer-bg {
+  background: rgba(0, 0, 0, 0.18);
+  mix-blend-mode: normal;
+  backdrop-filter: blur(60px);
+}
+
 #connect-wallet{
   background-image: linear-gradient(to right, #00F0FF , #FF00E5, #FFF500);
   color: white;
 }
+
+.search-bar-color{
+  /* background-color: #313132; */
+  /* background: rgba(0, 0, 0, 0.40); */
+  background: rgba(0, 0, 0, 0.6);
+  mix-blend-mode: normal;
+  backdrop-filter: blur(120px);
+}  
+.background-color-onsen{
+  background-color: #313132;
+
+}
+
 #connect-wallet:hover{
   background: linear-gradient(to right, #6ae8f1 , #eb6cde, #e2de65);
   color: white;
@@ -91,7 +173,18 @@ input:focus {
 input[type=datetime-local]::-webkit-calendar-picker-indicator {
   background-image: url('../../public/images/datepicker-icon.svg')
 }
-
+.sushi-icon{
+  background-image: url('../../public/images/fermion.svg')
+}
+#sushi-icon{
+  width: 62px;
+  height: 62px;
+  background-image: url('../../public/images/fermion.svg')
+  
+  /* width="62px"
+  height="62px"
+  objectFit="contain" */
+}
 /* if backdrop support: very transparent and blurred */
 @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .backdrop-blur-fallback {

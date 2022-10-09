@@ -13,6 +13,7 @@ import React, { FC, useCallback, useMemo } from 'react'
 import { ExternalLink as LinkIcon } from 'react-feather'
 import { WalletLinkConnector } from 'web3-react-walletlink-connector'
 
+import avatar from '../../../public/images/alien.svg'
 import Button from '../Button'
 import ExternalLink from '../ExternalLink'
 import Typography from '../Typography'
@@ -85,9 +86,7 @@ const AccountDetails: FC<AccountDetailsProps> = ({
                   size={48}
                   // @ts-ignore TYPE NEEDS FIXING
                   address={account}
-                  defaultComponent={
-                    <Image src="https://app.sushi.com/images/chef.svg" alt="Sushi Chef" width={48} height={48} />
-                  }
+                  defaultComponent={<Image src={avatar} unoptimized={true} alt="Exofi Alien" width={48} height={48} />}
                   provider={library}
                 />
               </div>

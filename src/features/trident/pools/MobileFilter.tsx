@@ -1,6 +1,6 @@
+import { Fee } from '@exoda/trident-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Fee } from '@sushiswap/trident-sdk'
 import Button from 'app/components/Button'
 import Checkbox from 'app/components/Checkbox'
 import BottomSlideIn from 'app/components/Dialog/BottomSlideIn'

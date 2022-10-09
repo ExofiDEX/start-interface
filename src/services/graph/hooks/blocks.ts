@@ -1,5 +1,6 @@
-import { ChainId } from '@sushiswap/core-sdk'
-import { getAverageBlockTime, getBlock, getMassBlocks } from 'app/services/graph/fetchers'
+import { Web3Provider } from '@ethersproject/providers'
+import { ChainId } from '@exoda/core-sdk'
+import { ethFetcher, getAverageBlockTime, getBlock } from 'app/services/graph/fetchers'
 import {
   addSeconds,
   getUnixTime,
@@ -160,7 +161,7 @@ export function useBlock({
 }: GraphProps) {
   return useSWR(
     shouldFetch ? ['block', chainId, stringify(variables)] : null,
-    (_, chainId) => getBlock(chainId, variables),
+    (_, chainId) => getBlock(chainId),
     swrConfig
   )
 }
@@ -172,7 +173,7 @@ export function useMassBlocks({
 }: GraphProps & { timestamps: number[] | string[] }) {
   return useSWR(
     chainId ? ['massBlocks', chainId, stringify(timestamps)] : null,
-    (_, chainId) => getMassBlocks(chainId, timestamps),
+    (_, chainId) => getBlock(chainId),
     swrConfig
   )
 }
@@ -183,4 +184,15 @@ export function useAverageBlockTime({
   swrConfig = undefined,
 }: GraphProps) {
   return useSWR(chainId ? ['averageBlockTime', chainId] : null, (_, chainId) => getAverageBlockTime(chainId), swrConfig)
+}
+
+export function useGetBlock({
+  library,
+  blockNumber,
+}: {
+  library: Web3Provider | undefined
+  blockNumber: String | number
+}) {
+  // @ts-ignore TYPE NEEDS FIXING
+  return useSWR(['getBlock', blockNumber], { fetcher: ethFetcher(library) })
 }

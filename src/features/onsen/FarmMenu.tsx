@@ -2,7 +2,6 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ChainId } from '@sushiswap/core-sdk'
 import Typography from 'app/components/Typography'
 import { useWalletModalToggle } from 'app/state/application/hooks'
 import { useRouter } from 'next/router'
@@ -53,9 +52,9 @@ enum FarmFilter {
 const filters: Record<string, FarmFilter> = {
   portfolio: FarmFilter.Portfolio,
   farm: FarmFilter.All,
-  kashi: FarmFilter.Kashi,
-  old: FarmFilter.Old,
-  sushi: FarmFilter.Sushi,
+  // kashi: FarmFilter.Kashi,
+  // old: FarmFilter.Old,
+  // sushi: FarmFilter.Sushi,
 }
 
 const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: number }) => {
@@ -77,19 +76,19 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
       ) : (
         <MenuLink onClick={toggleWalletModal} label={i18n._(t`Your Farms`)} />
       ),
-      [FarmFilter.Kashi]:
-        chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
-          <MenuLink href={'/farm?filter=kashi'} label={i18n._(t`Kashi Farms`)} />
-        ) : undefined,
-      [FarmFilter.Sushi]:
-        chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
-          <MenuLink href={'/farm?filter=sushi'} label={i18n._(t`SushiSwap Farms`)} />
-        ) : undefined,
-      // @ts-ignore TYPE NEEDS FIXING
-      [FarmFilter.Old]:
-        chainId && [ChainId.CELO].includes(chainId) ? (
-          <MenuLink href={'/farm?filter=old'} label={i18n._(t`Old Farms`)} />
-        ) : undefined,
+      // [FarmFilter.Kashi]:
+      //   chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
+      //     <MenuLink href={'/farm?filter=kashi'} label={i18n._(t`Kashi Farms`)} />
+      //   ) : undefined,
+      // [FarmFilter.Sushi]:
+      //   chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
+      //     <MenuLink href={'/farm?filter=sushi'} label={i18n._(t`SushiSwap Farms`)} />
+      //   ) : undefined,
+      // // @ts-ignore TYPE NEEDS FIXING
+      // [FarmFilter.Old]:
+      //   chainId && [ChainId.CELO].includes(chainId) ? (
+      //     <MenuLink href={'/farm?filter=old'} label={i18n._(t`Old Farms`)} />
+      //   ) : undefined,
     }
 
     return Object.entries(map).reduce<Record<string, ReactNode>>((acc, [k, v]) => {
@@ -102,7 +101,7 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
     <div className="flex gap-2 items-center w-[180px]">
       <Menu as="div" className="relative inline-block w-full text-left">
         <div>
-          <Menu.Button className="w-full px-4 py-2.5 text-sm font-bold bg-transparent border rounded shadow-sm text-primary border-dark-800 hover:bg-dark-900">
+          <Menu.Button className="w-full px-4 py-2.5 text-sm font-bold rounded shadow-sm text-low-emphasis backdrop-blur hover:backdrop-blur-input hover:text-high-emphasis">
             <div className="flex flex-row items-center justify-between">
               <Typography weight={700} variant="sm">
                 {selected}
@@ -122,7 +121,7 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
         >
           <Menu.Items
             static
-            className="absolute z-10 w-full mt-2 border divide-y rounded shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border-dark-900 bg-dark-1000 divide-dark-900"
+            className="absolute z-10 w-full mt-2 overflow-auto divide-y rounded shadow-lg focus:outline-none backdrop-blur divide-dark-1000/10"
           >
             {Object.entries(items).map(([k, v], index) => (
               <div

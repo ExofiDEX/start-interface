@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from '@sushiswap/core-sdk'
+import { Currency, Percent, Price } from '@exoda/core-sdk'
 import Typography from 'app/components/Typography'
 import { ONE_BIPS } from 'app/constants'
 import TradePrice from 'app/features/legacy/swap/TradePrice'

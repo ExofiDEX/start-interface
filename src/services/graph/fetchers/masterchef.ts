@@ -1,9 +1,8 @@
-import { ChainId } from '@sushiswap/core-sdk'
-import { GRAPH_HOST } from 'app/services/graph/constants'
+import { ChainId, SUSHI_ADDRESS } from '@exoda/core-sdk'
+import { GRAPH_HOST, MFG_GRAPH_VERSION } from 'app/services/graph/constants'
 import { getTokenSubset } from 'app/services/graph/fetchers/exchange'
 import {
   masterChefV1PairAddressesQuery,
-  masterChefV1SushiPerBlockQuery,
   masterChefV1TotalAllocPointQuery,
   masterChefV2PairAddressesQuery,
   miniChefPairAddressesQuery,
@@ -41,22 +40,24 @@ export const oldMiniChef = async (query, chainId = ChainId.ETHEREUM) =>
   request(`${GRAPH_HOST[chainId]}/subgraphs/name/${OLD_MINICHEF[chainId]}`, query)
 
 export const MASTERCHEF_V2 = {
-  [ChainId.ETHEREUM]: 'sushiswap/master-chefv2',
+  [ChainId.ETHEREUM]: '36072/mfg',
+  [ChainId.GÖRLI]: '30494/mfg-goerli', // Enable Görli Testnet
 }
 
 // @ts-ignore TYPE NEEDS FIXING
 export const masterChefV2 = async (query, chainId = ChainId.ETHEREUM, variables = undefined) =>
   // @ts-ignore TYPE NEEDS FIXING
-  request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V2[chainId]}`, query, variables)
+  request(`${GRAPH_HOST[chainId]}/query/${MASTERCHEF_V2[chainId]}/${MFG_GRAPH_VERSION[chainId]}`, query, variables)
 
 export const MASTERCHEF_V1 = {
-  [ChainId.ETHEREUM]: 'sushiswap/master-chef',
+  [ChainId.ETHEREUM]: '36072/mfg',
+  [ChainId.GÖRLI]: '30494/mfg-goerli', // Enable Görli Testnet
 }
 
 // @ts-ignore TYPE NEEDS FIXING
 export const masterChefV1 = async (query, chainId = ChainId.ETHEREUM, variables = undefined) =>
   // @ts-ignore TYPE NEEDS FIXING
-  request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V1[chainId]}`, query, variables)
+  request(`${GRAPH_HOST[chainId]}/query/${MASTERCHEF_V1[chainId]}/${MFG_GRAPH_VERSION[chainId]}`, query, variables)
 
 export const getMasterChefV1TotalAllocPoint = async () => {
   const {
@@ -65,15 +66,19 @@ export const getMasterChefV1TotalAllocPoint = async () => {
   return totalAllocPoint
 }
 
+// Not available in the subgraph anymore
+// TODO: Michael: The best fix would be to ask the MFG contract getFermionPerBlock() method.
 export const getMasterChefV1SushiPerBlock = async () => {
-  const {
-    masterChef: { sushiPerBlock },
-  } = await masterChefV1(masterChefV1SushiPerBlockQuery)
-  return sushiPerBlock / 1e18
+  // const {
+  //   masterChef: { sushiPerBlock },
+  // } = await masterChefV1(masterChefV1SushiPerBlockQuery)
+  // return sushiPerBlock / 1e18
+  return 60 // Current value.
 }
 
-export const getMasterChefV1Farms = async (variables = undefined) => {
-  const { pools } = await masterChefV1(poolsQuery, undefined, variables)
+export const getMasterChefV1Farms = async (chainId = ChainId.ETHEREUM, variables = undefined) => {
+  // Expand for use in Testnets
+  const { pools } = await masterChefV1(poolsQuery, chainId, variables)
   return pools
 }
 
@@ -83,12 +88,13 @@ export const getMasterChefV1PairAddreses = async () => {
   return pools?.map((pool) => pool.pair)
 }
 
-export const getMasterChefV2Farms = async (variables = undefined) => {
-  const { pools } = await masterChefV2(poolsV2Query, undefined, variables)
+export const getMasterChefV2Farms = async (chainId = ChainId.ETHEREUM, variables = undefined) => {
+  // Expand for use in Testnets
+  const { pools } = await masterChefV2(poolsV2Query, chainId, variables)
 
-  const tokens = await getTokenSubset(ChainId.ETHEREUM, {
+  const tokens = await getTokenSubset(chainId, {
     // @ts-ignore TYPE NEEDS FIXING
-    tokenAddresses: Array.from(pools.map((pool) => pool.rewarder.rewardToken)),
+    tokenAddresses: Array.from(pools.map((pool) => SUSHI_ADDRESS[chainId])), // There is only Fermion but doing this results in no result at all...but maybe V2 Farms not needed
   })
 
   // @ts-ignore TYPE NEEDS FIXING
@@ -96,7 +102,7 @@ export const getMasterChefV2Farms = async (variables = undefined) => {
     ...pool,
     rewardToken: {
       // @ts-ignore TYPE NEEDS FIXING
-      ...tokens.find((token) => token.id === pool.rewarder.rewardToken),
+      ...tokens.find((token) => token.id === SUSHI_ADDRESS[chainId]), // There is only Fermion but doing this results in no result at all...but maybe V2 Farms not needed
     },
   }))
 }
@@ -119,7 +125,7 @@ export const getMiniChefFarms = async (chainId = ChainId.ETHEREUM, variables = u
     const { pools } = await miniChef(miniChefPoolsQueryV2, chainId, variables)
     const tokens = await getTokenSubset(chainId, {
       // @ts-ignore TYPE NEEDS FIXING
-      tokenAddresses: Array.from(pools.map((pool) => pool.rewarder.rewardToken)),
+      tokenAddresses: Array.from(pools.map((pool) => SUSHI[chainId])), // There is only Fermion...
     })
 
     // @ts-ignore TYPE NEEDS FIXING
@@ -127,7 +133,7 @@ export const getMiniChefFarms = async (chainId = ChainId.ETHEREUM, variables = u
       ...pool,
       rewardToken: {
         // @ts-ignore TYPE NEEDS FIXING
-        ...tokens.find((token) => token.id === pool.rewarder.rewardToken),
+        ...tokens.find((token) => token.id === SUSHI[chainId]), // There is only Fermion...
       },
     }))
   } else {

@@ -1,4 +1,4 @@
-import { ChainId } from '@sushiswap/core-sdk'
+import { ChainId } from '@exoda/core-sdk'
 import { useActiveWeb3React } from 'app/services/web3'
 import stringify from 'fast-json-stable-stringify'
 import useSWR, { SWRConfiguration } from 'swr'
@@ -175,7 +175,8 @@ export function useMaticPrice(swrConfig: SWRConfiguration = undefined) {
 
 // @ts-ignore TYPE NEEDS FIXING
 export function useSushiPrice(swrConfig: SWRConfiguration = undefined) {
-  return useSWR(['sushiPrice'], () => getSushiPrice(), swrConfig)
+  const { chainId } = useActiveWeb3React()
+  return useSWR(['sushiPrice'], () => getSushiPrice(chainId), swrConfig)
 }
 
 // @ts-ignore TYPE NEEDS FIXING

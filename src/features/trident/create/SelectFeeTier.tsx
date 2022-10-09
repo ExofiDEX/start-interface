@@ -1,6 +1,6 @@
+import { Fee } from '@exoda/trident-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Fee } from '@sushiswap/trident-sdk'
 import Typography from 'app/components/Typography'
 import { selectTridentCreate, setCreateSelectedFeeTier } from 'app/features/trident/create/createSlice'
 import { useAppDispatch, useAppSelector } from 'app/state/hooks'

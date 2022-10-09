@@ -1,15 +1,15 @@
 const SEO = {
-  defaultTitle: 'Sushi',
-  titleTemplate: '%s | Sushi',
-  description: 'Swap, yield, lend, borrow, leverage, limit, launch all on one community driven ecosystem',
+  defaultTitle: 'Exofi',
+  titleTemplate: '%s | Exofi',
+  description: 'Swap, liquidity, staking, rewards launch all on one community driven ecosystem',
   openGraph: {
     type: 'website',
-    url: 'https://app.sushi.com/',
-    site_name: 'Sushi',
+    url: 'https://app.exofi.com/',
+    site_name: 'ExofiDEX',
   },
   twitter: {
-    handle: '@SushiSwap',
-    site: '@SushiSwap',
+    handle: '@EXOFI3',
+    site: '@EXOFI3',
     cardType: 'summary_large_image',
   },
 }

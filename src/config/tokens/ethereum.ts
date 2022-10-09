@@ -1,6 +1,10 @@
-import { ChainId, Token } from '@sushiswap/core-sdk'
+import { ChainId, Token } from '@exoda/core-sdk'
 
 // Default Ethereum chain tokens
+
+export const FERMION = new Token(ChainId.ETHEREUM, '0xB3acCd620760C8F980cbBb0Bc4BE9FcA83C5eD87', 18, 'EXOFI', 'Fermion')
+export const PLANET = new Token(ChainId.ETHEREUM, '0xDbadeFb972132C82BE8601Fa7b9Ba4801262271d', 18, 'GRAVITY', 'Planet')
+
 export const ALPHA = new Token(
   ChainId.ETHEREUM,
   '0xa1faa113cbE53436Df28FF0aEe54275c13B40975',

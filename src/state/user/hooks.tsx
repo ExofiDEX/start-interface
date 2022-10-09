@@ -11,7 +11,7 @@ import {
   KASHI_ADDRESS,
   Pair,
   Token,
-} from '@sushiswap/core-sdk'
+} from '@exoda/core-sdk'
 import { CHAINLINK_PRICE_FEED_MAP } from 'app/config/oracles/chainlink'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from 'app/config/routing'
 import { e10 } from 'app/functions'
@@ -177,8 +177,8 @@ export function toV2LiquidityToken([tokenA, tokenB]: [Token, Token]): Token {
     tokenA.chainId,
     computePairAddress({ factoryAddress: FACTORY_ADDRESS[tokenA.chainId], tokenA, tokenB }),
     18,
-    'UNI-V2',
-    'Uniswap V2'
+    'ENERGY',
+    tokenA.symbol + '/' + tokenB.symbol + ' Plasma'
   )
 }
 

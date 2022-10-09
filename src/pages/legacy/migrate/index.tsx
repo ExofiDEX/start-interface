@@ -1,10 +1,12 @@
 import { formatUnits, parseUnits } from '@ethersproject/units'
+import { ChainId, JSBI } from '@exoda/core-sdk'
 import { ChevronDownIcon, XIcon } from '@heroicons/react/outline'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { ChainId, JSBI } from '@sushiswap/core-sdk'
 import Back from 'app/components/Back'
 import Chip from 'app/components/Chip'
+import { Feature } from 'app/enums'
+import NetworkGuard from 'app/guards/Network'
 import { USER_REJECTED_TX } from 'app/services/web3/WalletError'
 import Head from 'next/head'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -247,13 +249,13 @@ export default function Migrate() {
   return (
     <Container id="migrate-page" className="py-4 space-y-6 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
-        <title>Migrate | Sushi</title>
-        <meta key="description" name="description" content="Migrate your liquidity to SushiSwap." />
-        <meta key="twitter:description" name="twitter:description" content="Migrate your liquidity to SushiSwap." />
-        <meta key="og:description" property="og:description" content="Migrate your liquidity to SushiSwap." />
+        <title>Migrate | Exofi</title>
+        <meta key="description" name="description" content="Migrate your liquidity to ExofiDEX." />
+        <meta key="twitter:description" name="twitter:description" content="Migrate your liquidity to ExofiDEX." />
+        <meta key="og:description" property="og:description" content="Migrate your liquidity to ExofiDEX." />
       </Head>
 
-      <div className="p-4 mb-3 space-y-3">
+      <div className="items-center justify-center w-full p-4 mb-3 space-y-3 rounded heading-blur">
         <Back />
 
         <Typography component="h1" variant="h2">
@@ -264,7 +266,7 @@ export default function Migrate() {
       {!account ? (
         <Web3Connect className="w-full !bg-dark-900 bg-gradient-to-r from-pink/80 hover:from-pink to-purple/80 hover:to-purple text-white h-[38px]" />
       ) : (
-        <div className="p-4 space-y-4 rounded bg-dark-900">
+        <div className="p-4 space-y-4 rounded backdrop-blur">
           {state.loading ? (
             <Typography variant="lg" className="p-4 text-center text-primary">
               <Dots>{i18n._(t`Loading your ${exchange} liquidity positions`)}</Dots>
@@ -290,3 +292,5 @@ export default function Migrate() {
     </Container>
   )
 }
+
+Migrate.Guard = NetworkGuard(Feature.MIGRATE)

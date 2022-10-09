@@ -1,6 +1,6 @@
+import { Currency, CurrencyAmount, JSBI, NATIVE, Token } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency, CurrencyAmount, JSBI, NATIVE, Token } from '@sushiswap/core-sdk'
 import Alert from 'app/components/Alert'
 import Back from 'app/components/Back'
 import Button from 'app/components/Button'
@@ -12,7 +12,9 @@ import { MinimalPositionCard } from 'app/components/PositionCard'
 import { AutoRow } from 'app/components/Row'
 import Typography from 'app/components/Typography'
 import Web3Connect from 'app/components/Web3Connect'
+import { Feature } from 'app/enums'
 import { currencyId } from 'app/functions/currency'
+import NetworkGuard from 'app/guards/Network'
 import { PairState, useV2Pair } from 'app/hooks/useV2Pairs'
 import { useActiveWeb3React } from 'app/services/web3'
 import { usePairAdder } from 'app/state/user/hooks'
@@ -79,7 +81,7 @@ export default function PoolFinder() {
   return (
     <Container id="find-pool-page" className="py-4 space-y-6 md:py-8 lg:py-12" maxWidth="2xl">
       <NextSeo title={`Find Pool`} />
-      <div className="p-4 mb-3 space-y-3">
+      <div className="items-center justify-center w-full p-4 mb-3 space-y-3 rounded heading-blur">
         <Back />
 
         <Typography component="h1" variant="h2">
@@ -95,7 +97,7 @@ export default function PoolFinder() {
         }
         type="information"
       />
-      <div className="relative p-4 space-y-4 rounded bg-dark-900 shadow-liquidity">
+      <div className="relative p-4 space-y-4 rounded backdrop-blur shadow-liquidity">
         <AutoColumn gap={'md'}>
           <CurrencySelectPanel
             currency={currency0}
@@ -179,3 +181,5 @@ export default function PoolFinder() {
     </Container>
   )
 }
+
+PoolFinder.Guard = NetworkGuard(Feature.POOL_FINDER)

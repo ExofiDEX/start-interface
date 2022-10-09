@@ -50,7 +50,7 @@ const TransactionDetails: FC = () => {
             {i18n._(t`Minimum Received`)}
           </Typography>
           <Typography id="text-liquidity-minted" weight={700} variant="sm" className="text-high-emphesis">
-            {liquidityMinted?.toSignificant(6) || '0.000'} SLP
+            {liquidityMinted?.toSignificant(6) || '0.000'} ENERGY
           </Typography>
         </div>
         <div className="flex flex-row justify-between gap-2">
@@ -74,9 +74,9 @@ const TransactionDetails: FC = () => {
             {poolBalance?.greaterThan(0) ? poolBalance?.toSignificant(6) : '0.000'}
             {liquidityMinted?.greaterThan(0) && (
               <>
-                {' SLP '}→{' '}
+                {' ENERGY '}→{' '}
                 <span className="text-green">
-                  {poolBalance && liquidityMinted ? poolBalance.add(liquidityMinted)?.toSignificant(6) : '0.000'} SLP
+                  {poolBalance && liquidityMinted ? poolBalance.add(liquidityMinted)?.toSignificant(6) : '0.000'} ENERGY
                 </span>
               </>
             )}

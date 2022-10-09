@@ -1,6 +1,5 @@
-import { NATIVE } from '@sushiswap/core-sdk'
+import { NATIVE } from '@exoda/core-sdk'
 import Container from 'app/components/Container'
-import { NAV_CLASS } from 'app/components/Header/styles'
 import useMenu from 'app/components/Header/useMenu'
 import { Logo } from 'app/components/Icon'
 import Web3Network from 'app/components/Web3Network'
@@ -8,7 +7,6 @@ import Web3Status from 'app/components/Web3Status'
 import useIsCoinbaseWallet from 'app/hooks/useIsCoinbaseWallet'
 import { useActiveWeb3React } from 'app/services/web3'
 import { useNativeCurrencyBalances } from 'app/state/wallet/hooks'
-// import Image from 'next/image'
 import React, { FC } from 'react'
 
 import Dots from '../Dots'
@@ -26,12 +24,12 @@ const Desktop: FC = () => {
   return (
     <>
       <header className="fixed z-20 hidden w-full lg:block" style={{ height: HEADER_HEIGHT }}>
-        <nav className={NAV_CLASS}>
+        <nav className="backdrop-blur">
           <Container maxWidth="full" className="mx-auto">
             <div className="flex items-center justify-between gap-4 px-6">
               <div className="flex gap-4">
                 <div className="flex items-center w-6 mr-4">
-                  <Logo alt="Exofi logo" width="50px" height="50px" />
+                  <Logo width="50px" height="50px" />
                   {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="24px" height="24px" /> */}
                 </div>
                 {menu.map((node) => {

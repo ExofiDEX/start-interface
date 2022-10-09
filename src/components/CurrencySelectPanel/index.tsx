@@ -1,7 +1,7 @@
+import { Currency } from '@exoda/core-sdk'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Currency } from '@sushiswap/core-sdk'
 import selectCoinAnimation from 'app/animation/select-coin.json'
 import CurrencySearchModal from 'app/modals/SearchModal/CurrencySearchModal'
 import Lottie from 'lottie-react'
@@ -37,7 +37,7 @@ export default function CurrencySelectPanel({
   }, [setModalOpen])
 
   return (
-    <div id={id} className="p-5 rounded bg-dark-800">
+    <div id={id} className="p-5 rounded backdrop-blur-input">
       <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row">
         <div className="w-full" onClick={onClick}>
           <div

@@ -1,3 +1,4 @@
+import { ChainId, SUSHI_ADDRESS } from '@exoda/core-sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { CurrencyLogo, CurrencyLogoArray } from 'app/components/CurrencyLogo'
@@ -6,9 +7,8 @@ import Typography from 'app/components/Typography'
 import { TABLE_TBODY_TD_CLASSNAME, TABLE_TBODY_TR_CLASSNAME } from 'app/features/trident/constants'
 import { classNames, formatNumber, formatPercent } from 'app/functions'
 import { useCurrency } from 'app/hooks/Tokens'
+import { useActiveWeb3React } from 'app/services/web3'
 import React, { FC, ReactNode } from 'react'
-
-import { PairType } from './enum'
 
 interface FarmListItem {
   farm: any
@@ -18,8 +18,10 @@ interface FarmListItem {
 // @ts-ignore TYPE NEEDS FIXING
 const FarmListItem: FC<FarmListItem> = ({ farm, onClick }) => {
   const { i18n } = useLingui()
+  const { chainId } = useActiveWeb3React()
   const token0 = useCurrency(farm.pair.token0.id) ?? undefined
   const token1 = useCurrency(farm.pair.token1.id) ?? undefined
+  const rewardToken = useCurrency(SUSHI_ADDRESS[chainId ? chainId : ChainId.ETHEREUM])
 
   return (
     <div className={classNames(TABLE_TBODY_TR_CLASSNAME, 'grid grid-cols-4')} onClick={onClick}>
@@ -31,7 +33,7 @@ const FarmListItem: FC<FarmListItem> = ({ farm, onClick }) => {
             <span className="text-low-emphesis">/</span>
             {farm?.pair?.token1?.symbol}
           </Typography>
-          {farm?.pair?.type === PairType.SWAP && (
+          {/* {farm?.pair?.type === PairType.SWAP && (
             <Typography variant="xs" className="text-low-emphesis">
               {i18n._(t`SushiSwap Farm`)}
             </Typography>
@@ -40,7 +42,7 @@ const FarmListItem: FC<FarmListItem> = ({ farm, onClick }) => {
             <Typography variant="xs" className="text-low-emphesis">
               {i18n._(t`Kashi Farm`)}
             </Typography>
-          )}
+          )} */}
         </div>
       </div>
       <div className={TABLE_TBODY_TD_CLASSNAME(1, 4)}>
@@ -59,7 +61,7 @@ const FarmListItem: FC<FarmListItem> = ({ farm, onClick }) => {
             component="span"
           >
             {formatNumber(reward.rewardPerDay)}
-            <CurrencyLogo currency={reward.currency} size={16} />
+            <CurrencyLogo currency={rewardToken} size={16} />
           </Typography>
         ))}
       </div>
