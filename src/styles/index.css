@@ -192,6 +192,19 @@ input[type=datetime-local]::-webkit-calendar-picker-indicator {
   }
 }
 
+.text-low-emphesis{
+  --tw-text-opacity: 0.6;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-high-emphesis{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.h-500{
+  height: 570px;
+}
 
 .hide-scrollbar {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */

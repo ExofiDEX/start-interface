@@ -30,6 +30,7 @@ export enum ApplicationModal {
   VOTE,
   LANGUAGE,
   NETWORK,
+  RAMP,
 }
 
 type PopupList = Array<{
