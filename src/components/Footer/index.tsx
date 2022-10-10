@@ -4,7 +4,10 @@ import { DiscordIcon, RedditIcon, TelegramIcon, TwitterIcon } from 'app/componen
 import { Logo } from 'app/components/Icon'
 import LanguageSwitch from 'app/components/LanguageSwitch'
 import Typography from 'app/components/Typography'
+import { Feature } from 'app/enums'
+import { featureEnabled } from 'app/functions'
 import { useActiveWeb3React } from 'app/services/web3'
+import Link from 'next/link'
 import React from 'react'
 
 import Container from '../Container'
@@ -46,76 +49,91 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          {/* <div className="flex flex-col gap-1 text-right">
+          <div className="flex flex-col gap-1 text-right">
             <Typography variant="xs" weight={700} className="mt-2.5 hover:text-high-emphesis">
               {i18n._(t`Products`)}
             </Typography>
-            <Link href={featureEnabled(Feature.TRIDENT, chainId) ? '/trident/pools' : '/legacy/pool'} passHref={true}>
+            <Link href="/swap" passHref={true}>
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
-                {i18n._(t`Liquidity Pools`)}
+                {i18n._(t`Quantum Flip`)}
               </Typography>
             </Link>
-            <Link href="/kashi" passHref={true}>
+            <Link href={featureEnabled(Feature.TRIDENT, chainId) ? '/trident/pools' : '/legacy/pool'} passHref={true}>
+              <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
+                {i18n._(t`Fusion Reactor`)}
+              </Typography>
+            </Link>
+            <Link href="/farms" passHref={true}>
+              <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
+                {i18n._(t`Dyson Sphere`)}
+              </Typography>
+            </Link>
+            {/* <Link href="/kashi" passHref={true}>
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`Kashi Lending`)}
               </Typography>
-            </Link>
-            <Link href="/miso" passHref={true}>
+            </Link> */}
+            {/* <Link href="/miso" passHref={true}>
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`MISO Launchpad`)}
               </Typography>
-            </Link>
-            <a href="https://shoyunft.com" target="_blank" rel="noreferrer">
+            </Link> */}
+            {/* <a href="https://shoyunft.com" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`Shoyu NFT`)}
               </Typography>
-            </a>
-            <Link href="/tools" passHref={true}>
+            </a> */}
+            {/* <Link href="/tools" passHref={true}>
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`Tools`)}
               </Typography>
-            </Link>
+            </Link> */}
           </div>
           <div className="flex flex-col gap-1 md:text-right lg:text-right">
             <Typography variant="xs" weight={700} className="mt-2.5 hover:text-high-emphesis">
               {i18n._(t`Help`)}
             </Typography>
-            <a href="https://docs.sushi.com" target="_blank" rel="noreferrer">
+            <a href="https://docs.exofi.com" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
-                {i18n._(t`What is Sushi?`)}
+                {i18n._(t`Documentation`)}
               </Typography>
             </a>
-            <a href="https://discord.gg/NVPXN4e" target="_blank" rel="noreferrer">
+            <a href="https://discord.gg/Gs4QQUVVWX" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`Ask on Discord`)}
               </Typography>
             </a>
-            <a href="https://twitter.com/sushiswap" target="_blank" rel="noreferrer">
+            <a href="https://twitter.com/EXOFI3" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`Ask on Twitter`)}
               </Typography>
             </a>
-            <a href="https://forum.sushi.com" target="_blank" rel="noreferrer">
+            <a href="https://www.reddit.com/r/EXOFI3/" target="_blank" rel="noreferrer">
+              <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
+                {i18n._(t`Ask on Reddit`)}
+              </Typography>
+            </a>
+            {/* <a href="https://forum.sushi.com" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`Ask on Forum`)}
               </Typography>
-            </a>
+            </a> */}
           </div>
           <div className="flex flex-col gap-1 text-right xs:text-right md:text-left lg:text-right">
             <Typography variant="xs" weight={700} className="mt-2.5 hover:text-high-emphesis">
               {i18n._(t`Developers`)}
             </Typography>
-            <a href="https://docs.sushi.com" target="_blank" rel="noreferrer">
+            <a href="https://docs.exofi.com" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`GitBook`)}
               </Typography>
             </a>
-            <a href="https://github.com/sushiswap" target="_blank" rel="noreferrer">
+            <a href="https://github.com/ExofiDEX" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`GitHub`)}
               </Typography>
             </a>
-            <a href="https://dev.sushi.com" target="_blank" rel="noreferrer">
+            {/* <a href="https://dev.sushi.com" target="_blank" rel="noreferrer">
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`Development`)}
               </Typography>
@@ -124,9 +142,9 @@ const Footer = () => {
               <Typography variant="xs" className="text-low-emphesis hover:text-high-emphesis">
                 {i18n._(t`SushiGuard`)}
               </Typography>
-            </a>
+            </a> */}
           </div>
-          <div className="flex flex-col gap-1 md:text-right lg:text-right">
+          {/* <div className="flex flex-col gap-1 md:text-right lg:text-right">
             <Typography variant="xs" weight={700} className="mt-2.5 hover:text-high-emphesis">
               {i18n._(t`Governance`)}
             </Typography>
@@ -140,8 +158,8 @@ const Footer = () => {
                 {i18n._(t`Vote`)}
               </Typography>
             </a>
-          </div>
-          <div className="flex flex-col gap-1 text-right">
+          </div> */}
+          {/* <div className="flex flex-col gap-1 text-right">
             <Typography variant="xs" weight={700} className="mt-2.5 hover:text-high-emphesis">
               {i18n._(t`Protocol`)}
             </Typography>
