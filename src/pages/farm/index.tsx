@@ -38,7 +38,7 @@ function Farm(): JSX.Element {
   const chainId = Number(router.query.chainId)
   const userPools = useUserPools({
     chainId,
-    variables: { where: { address: account.toLowerCase() } },
+    variables: { where: { address: account?.toLowerCase() } },
   })
   console.log('userPools', userPools)
   const FILTER = {
