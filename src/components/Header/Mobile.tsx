@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
 import useMenu from 'app/components/Header/useMenu'
 import { Logo } from 'app/components/Icon'
+import Ramp from 'app/components/Ramp'
 import Web3Network from 'app/components/Web3Network'
 import Web3Status from 'app/components/Web3Status'
 import useIsCoinbaseWallet from 'app/hooks/useIsCoinbaseWallet'
@@ -70,6 +71,7 @@ const Mobile: FC = () => {
                       </nav>
 
                       <div className="flex flex-col gap-4 px-6">
+                        <Ramp />
                         {library && (library.provider.isMetaMask || isCoinbaseWallet) && (
                           <div className="hidden sm:flex">
                             <Web3Network />
