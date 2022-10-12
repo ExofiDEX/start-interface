@@ -7,7 +7,7 @@ export function Buy() {
       allow="accelerometer; autoplay; camera; gyroscope; payment"
       frameBorder="0"
       height="100%"
-      src="https://buy-staging.moonpay.io?apiKey=pk_test_d11ELg96c0pv45LtJnxRuYz1WFnX7i"
+      src="https://buy.moonpay.com?apiKey=pk_live_mRrydrPDifC0d6Vv1E3q05wJZ5YTGIXA"
       width="100%"
       scrolling="no"
     />
@@ -21,7 +21,7 @@ export function Sell() {
       allow="accelerometer; autoplay; camera; gyroscope; payment"
       frameBorder="0"
       height="100%"
-      src="https://sell-staging.moonpay.io?apiKey=pk_test_d11ELg96c0pv45LtJnxRuYz1WFnX7i"
+      src="https://sell.moonpay.com?apiKey=pk_live_mRrydrPDifC0d6Vv1E3q05wJZ5YTGIXA"
       width="100%"
       scrolling="no"
     />
