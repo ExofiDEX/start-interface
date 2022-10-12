@@ -2,6 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit'
 import portfolio from 'app/features/portfolio/portfolioSlice'
 import multicall from 'app/lib/state/multicall'
 
+import ramp from '../features/on-ramp/rampSlice'
 import onsen from '../features/onsen/onsenSlice'
 import tridentAdd from '../features/trident/add/addSlice'
 import tridentCreate from '../features/trident/create/createSlice'
@@ -52,6 +53,7 @@ const reducer = combineReducers({
   tokens,
   pools,
   farms,
+  ramp,
 })
 
 export default reducer

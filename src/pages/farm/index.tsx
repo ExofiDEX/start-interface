@@ -77,7 +77,7 @@ function Farm(): JSX.Element {
       <TridentHeader className="sm:!flex-row justify-between items-center">
         <div>
           <Typography variant="h2" className="text-high-emphesis" weight={700}>
-            {i18n._(t`Fusion Reactor`)}
+            {i18n._(t`Dyson Sphere`)}
           </Typography>
           <Typography variant="sm" weight={400}>
             {i18n._(t`Earn fees and rewards by depositing and staking your tokens to the Fusion Reactor.`)}
