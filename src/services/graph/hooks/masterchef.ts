@@ -10,11 +10,15 @@ import {
   getMiniChefFarms,
   getMiniChefPairAddreses,
   getOldMiniChefFarms,
+  getUserPools,
 } from 'app/services/graph/fetchers'
 import { useActiveWeb3React } from 'app/services/web3'
+import stringify from 'fast-json-stable-stringify'
 import concat from 'lodash/concat'
 import { useMemo } from 'react'
 import useSWR, { SWRConfiguration } from 'swr'
+
+import { GraphProps } from '../interfaces'
 
 export function useMasterChefV1TotalAllocPoint(swrConfig = undefined) {
   const { chainId } = useActiveWeb3React()
@@ -122,6 +126,24 @@ export function useMasterChefV2PairAddresses() {
   const { chainId } = useActiveWeb3React()
   const shouldFetch = chainId && (chainId === ChainId.ETHEREUM || chainId === ChainId.GÖRLI)
   return useSWR(shouldFetch ? ['masterChefV2PairAddresses', chainId] : null, (_) => getMasterChefV2PairAddreses())
+}
+
+export function useUserPools({
+  chainId = ChainId.ETHEREUM,
+  variables,
+  shouldFetch = true,
+  swrConfig = undefined,
+}: GraphProps) {
+  const { data } = useSWR(
+    shouldFetch ? ['userPools', chainId, stringify(variables)] : null,
+    () => getUserPools(chainId, variables),
+    swrConfig
+  )
+  return useMemo(() => {
+    if (!data) return []
+    // @ts-ignore TYPE NEEDS FIXING
+    return data.map((data) => data?.id)
+  }, [data])
 }
 
 export function useMiniChefPairAddresses() {

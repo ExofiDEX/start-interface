@@ -10,6 +10,7 @@ import {
   miniChefPoolsQueryV2,
   poolsQuery,
   poolsV2Query,
+  userPoolsQuery,
 } from 'app/services/graph/queries'
 import { request } from 'graphql-request'
 
@@ -111,6 +112,12 @@ export const getMasterChefV2PairAddreses = async () => {
   const { pools } = await masterChefV2(masterChefV2PairAddressesQuery)
   // @ts-ignore
   return pools?.map((pool) => pool.pair)
+}
+
+export const getUserPools = async (chainId = ChainId.ETHEREUM, variables = undefined) => {
+  const { users } = await masterChefV2(userPoolsQuery, chainId, variables)
+  // @ts-ignore
+  return users?.map((user) => user.pool)
 }
 
 export const getOldMiniChefFarms = async (chainId = ChainId.ETHEREUM) => {

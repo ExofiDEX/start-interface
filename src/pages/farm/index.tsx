@@ -13,6 +13,7 @@ import NetworkGuard from 'app/guards/Network'
 import useFarmRewards from 'app/hooks/useFarmRewards'
 import useFuse from 'app/hooks/useFuse'
 import { TridentBody, TridentHeader } from 'app/layouts/Trident'
+import { useUserPools } from 'app/services/graph'
 import { useActiveWeb3React } from 'app/services/web3'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
@@ -35,12 +36,16 @@ function Farm(): JSX.Element {
   // console.log({ queryOrActiveAccount })
 
   const chainId = Number(router.query.chainId)
-
+  const userPools = useUserPools({
+    chainId,
+    variables: { where: { address: account.toLowerCase() } },
+  })
+  console.log('userPools', userPools)
   const FILTER = {
     // @ts-ignore TYPE NEEDS FIXING
     all: (farm) => farm.allocPoint !== '0' && farm.chef !== Chef.OLD_FARMS,
     // @ts-ignore TYPE NEEDS FIXING
-    portfolio: (farm) => farm?.amount && !farm.amount.isZero(),
+    portfolio: (farm) => userPools.includes(farm.id),
     // @ts-ignore TYPE NEEDS FIXING
     // sushi: (farm) => farm.pair.type === PairType.SWAP && farm.allocPoint !== '0',
     // @ts-ignore TYPE NEEDS FIXING
