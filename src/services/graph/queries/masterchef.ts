@@ -60,3 +60,14 @@ export const masterChefV1SushiPerBlockQuery = gql`
     }
   }
 `
+
+export const userPoolsQuery = gql`
+  query userPools($where: User_filter) {
+    users(where: $where) {
+      id
+      pool {
+        id
+      }
+    }
+  }
+`
