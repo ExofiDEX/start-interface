@@ -136,6 +136,7 @@ export function useUserPools({
 }: GraphProps) {
   const { data } = useSWR(
     shouldFetch ? ['userPools', chainId, stringify(variables)] : null,
+    // @ts-ignore TYPE NEEDS FIXING
     () => getUserPools(chainId, variables),
     swrConfig
   )
