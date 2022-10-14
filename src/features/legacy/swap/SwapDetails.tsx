@@ -1,14 +1,12 @@
-import { Currency, CurrencyAmount, NATIVE, Percent, Token, Trade as LegacyTrade, TradeVersion } from '@exoda/core-sdk'
+import { Currency, CurrencyAmount, NATIVE, Percent, Token, Trade as LegacyTrade } from '@exoda/core-sdk'
 import { Trade as TridentTrade } from '@exoda/trident-sdk'
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronDownIcon, ExternalLinkIcon } from '@heroicons/react/outline'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import Chip from 'app/components/Chip'
 import Typography from 'app/components/Typography'
 import TradePrice from 'app/features/legacy/swap/TradePrice'
 import { classNames, computeRealizedLPFeePercent, shortenAddress, warningSeverity } from 'app/functions'
-import { getTradeVersion } from 'app/functions/getTradeVersion'
 import useFeeData from 'app/hooks/useFeeData'
 import useSushiGuardFeature from 'app/hooks/useSushiGuardFeature'
 import useSwapSlippageTolerance from 'app/hooks/useSwapSlippageTollerence'
@@ -53,7 +51,7 @@ const SwapDetails: FC<SwapDetails> = ({
       {({ open }) => (
         <div
           className={classNames(
-            open ? 'bg-dark-900' : '',
+            open ? 'backdrop-blur-input' : '',
             'shadow-inner flex flex-col gap-2 py-2 rounded px-2 border border-dark-700 transition hover:border-dark-700',
             className
           )}
@@ -70,12 +68,12 @@ const SwapDetails: FC<SwapDetails> = ({
             </div>
             <Disclosure.Button as={Fragment}>
               <div className="flex items-center justify-end flex-grow gap-2 p-1 rounded cursor-pointer">
-                <Chip
+                {/* <Chip
                   size="sm"
                   id="trade-type"
                   label={getTradeVersion(trade) === TradeVersion.V2TRADE ? 'Legacy' : 'Trident'}
                   color={getTradeVersion(trade) === TradeVersion.V2TRADE ? 'blue' : 'green'}
-                />
+                /> */}
                 <ChevronDownIcon
                   width={20}
                   className={classNames(open ? 'transform rotate-180' : '', 'transition hover:text-white')}

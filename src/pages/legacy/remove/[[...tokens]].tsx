@@ -409,7 +409,7 @@ export default function Remove() {
           <div
             className={classNames(
               inputError ? 'border-red/40 hover:border-red' : 'border-dark-700 hover:border-dark-600',
-              'flex flex-col gap-1 bg-dark-900 px-4 py-2 rounded border'
+              'flex flex-col gap-1 backdrop-blur-input px-4 py-2 rounded'
             )}
           >
             <Typography variant="sm" weight={700}>
@@ -431,7 +431,7 @@ export default function Remove() {
               </Typography>
             </div>
           </div>
-          <div className="flex-col overflow-hidden border rounded bg-dark-900 border-dark-700">
+          <div className="flex-col overflow-hidden rounded backdrop-blur-input">
             <div className="flex items-center justify-between px-4 py-2 overflow-hidden bg-dark-900">
               <Typography variant="sm" weight={700} className="text-high-emphesis">
                 {i18n._(t`You'll receive`)}
