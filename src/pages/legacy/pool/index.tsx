@@ -39,7 +39,7 @@ const Pool = () => {
           <Web3Connect className="w-full !backdrop-blur-input bg-gradient-to-r from-pink/80 hover:from-pink to-purple/80 hover:to-purple text-white h-[38px]" />
         ) : (
           <div className="px-2 space-y-4 rounded backdrop-blur-input">
-            <div className="grid grid-flow-row divide-y divide-dark-800">
+            <div className="grid grid-flow-row">
               {loading ? (
                 <div className="flex items-center justify-center h-40">
                   <Loader />

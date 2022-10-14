@@ -56,7 +56,12 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/swap',
+        destination: '/farm',
+        permanent: true,
+      },
+      {
+        source: '/swap',
+        destination: '/farm',
         permanent: true,
       },
       {

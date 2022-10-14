@@ -31,7 +31,7 @@ const FILLED = {
   purple: 'bg-purple',
   gradient:
     '!bg-gradient-to-r from-blue to-pink-600 hover:from-blue/80 hover:to-pink-600/80 focus:from-blue/80 focus:to-pink-600/80 active:from-blue/70 active:to-pink-600/70 focus:border-blue-700',
-  gray: 'bg-dark-700',
+  gray: 'bg-dark-800/80',
 }
 
 const OUTLINED = {

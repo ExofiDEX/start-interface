@@ -2,6 +2,7 @@ import { NATIVE } from '@exoda/core-sdk'
 import Container from 'app/components/Container'
 import useMenu from 'app/components/Header/useMenu'
 import { Logo } from 'app/components/Icon'
+import Ramp from 'app/components/Ramp'
 import Web3Network from 'app/components/Web3Network'
 import Web3Status from 'app/components/Web3Status'
 import useIsCoinbaseWallet from 'app/hooks/useIsCoinbaseWallet'
@@ -38,6 +39,7 @@ const Desktop: FC = () => {
               </div>
 
               <div className="flex items-center justify-end w-auto shadow select-none whitespace-nowrap">
+                <Ramp />
                 {account && chainId && (
                   <Typography weight={700} variant="sm" className="px-2 py-5 font-bold">
                     {userEthBalance ? (

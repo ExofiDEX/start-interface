@@ -336,7 +336,20 @@ const useMenu: UseMenu = () => {
       }
       //menu.push(portfolio)
     }
-
+    const help = [
+      {
+        title: i18n._(t`Documentation`),
+        link: 'https://docs.exofi.com',
+        disabled: false,
+        key: 'docs',
+      },
+    ]
+    menu.push({
+      key: 'docs',
+      title: i18n._(t`Help`),
+      icon: <BeakerIcon width={20} />,
+      items: help.filter((item) => !item?.disabled),
+    })
     return menu.filter((el) => Object.keys(el).length > 0)
   }, [account, chainId, i18n])
 }
