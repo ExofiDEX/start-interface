@@ -64,8 +64,8 @@ const SwapAssetPanel: FC<SwapAssetPanel> = forwardRef<HTMLInputElement, SwapAsse
       <div
         className={classNames(
           disabled ? 'pointer-events-none opacity-40' : '',
-          error ? 'border-red-800 hover:border-red-500' : 'border-dark-700 hover:border-dark-600',
-          'rounded-[14px] border backdrop-blur-input border-input p-3 flex flex-col gap-4'
+          error ? 'border-red-800 hover:border-red-500' : 'hover:border-dark-600',
+          'rounded-[14px] backdrop-blur-input p-3 flex flex-col gap-4'
         )}
       >
         {header({
@@ -241,7 +241,7 @@ const SwapAssetPanelHeader: FC<
     <div
       id={id}
       className={classNames(
-        hideSearchModal ? '' : 'bg-dark-800 hover:bg-dark-700 cursor-pointer',
+        hideSearchModal ? '' : 'backdrop-blur-input hover:bg-dark-900 cursor-pointer',
         'flex items-center gap-2 px-2 py-1 rounded-full shadow-md text-high-emphesis'
       )}
     >

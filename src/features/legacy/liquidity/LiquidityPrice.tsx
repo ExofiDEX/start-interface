@@ -26,7 +26,7 @@ const LiquidityPrice: FC<LiquidityPriceProps> = ({
   return (
     <div
       className={classNames(
-        'flex flex-col gap-2 px-3 py-2 rounded border border-dark-700 bg-dark-900 shadow-inner',
+        'flex flex-col gap-2 px-3 py-2 rounded border border-dark-700 backdrop-blur-input shadow-inner',
         className
       )}
     >
