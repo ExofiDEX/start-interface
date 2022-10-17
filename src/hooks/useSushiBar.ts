@@ -44,8 +44,20 @@ const useSushiBar = () => {
     },
     [addTransaction, barContract]
   )
+  const harvest = useCallback(
+    async (account: string | undefined | null, chainId: number | undefined) => {
+      try {
+        // withdrawAndHarvest(uint256 pid, uint256 amount, address to)
+        const tx = await barContract?.harvest(FERMION_POOLID[chainId ? chainId : ChainId.ETHEREUM], account)
+        return addTransaction(tx, { summary: 'Collect EXOFI Rewards from LHC' })
+      } catch (e) {
+        return e
+      }
+    },
+    [addTransaction, barContract]
+  )
 
-  return { enter, leave }
+  return { enter, leave, harvest }
 }
 
 export default useSushiBar
