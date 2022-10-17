@@ -208,7 +208,7 @@ export default function Stake() {
 
   const pendingFermions = usePendingSushi(exofiFarmObj)
 
-  const harvestButtonDisabled = pendingFermions?.toFixed(0) === '0' ? true : false
+  const harvestButtonDisabled = pendingFermions ? (pendingFermions?.toFixed(4) === '0.0000' ? true : false) : true
   const handleRewardClickButton = async () => {
     if (harvestButtonDisabled) return
     setPendingTx(true)
