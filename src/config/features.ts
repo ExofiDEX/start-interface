@@ -9,7 +9,7 @@ const features: FeatureMap = {
     Feature.LIQUIDITY_MINING,
     // Feature.BENTOBOX,
     // Feature.KASHI,
-    // Feature.MIGRATE,
+    Feature.MIGRATE,
     // Feature.ANALYTICS,
     Feature.STAKING,
     Feature.ADD_LIQUIDITY,
