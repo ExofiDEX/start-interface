@@ -22,13 +22,13 @@ const Footer = () => {
         <div className="grid grid-cols-2 gap-10 pt-8 mb-10 md:grid-cols-3 lg:grid-cols-6 xs:px-6">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-start gap-2">
-              <div className="">
-                <Logo width="28px" height="28px" />
+              <div className="flex items-center mr-4 w-28">
+                <Logo width="200px" height="50px" />
                 {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Exofi logo" width="28px" height="28px" /> */}
               </div>
-              <Typography variant="h2" weight={700} className="tracking-[0.02em] scale-y-90 hover:text-high-emphesis">
+              {/* <Typography variant="h2" weight={700} className="tracking-[0.02em] scale-y-90 hover:text-high-emphesis">
                 EXOFI
-              </Typography>
+              </Typography> */}
             </div>
             <Typography variant="xs">
               {i18n._(t`Our community is building a comprehensive decentralized trading platform for the future of finance. Join
