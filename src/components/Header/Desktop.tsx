@@ -29,8 +29,8 @@ const Desktop: FC = () => {
           <Container maxWidth="full" className="mx-auto">
             <div className="flex items-center justify-between gap-4 px-6">
               <div className="flex gap-4">
-                <div className="flex items-center w-6 mr-4">
-                  <Logo width="50px" height="50px" />
+                <div className="flex items-center w-24 mr-4">
+                  <Logo width="200px" height="50px" />
                   {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="24px" height="24px" /> */}
                 </div>
                 {menu.map((node) => {
