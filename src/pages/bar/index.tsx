@@ -59,6 +59,8 @@ const buttonStyleEnabled = `${buttonStyle} text-high-emphesis bg-gradient-to-r f
 const buttonStyleInsufficientFunds = `${buttonStyleEnabled} opacity-60`
 const buttonStyleDisabled = `${buttonStyle} text-secondary bg-dark-900/80`
 const buttonStyleConnectWallet = `${buttonStyle} text-high-emphesis bg-blue hover:bg-opacity-90`
+const rewardButtonStyleEnabled = `flex justify-center items-center w-full h-11 rounded font-bold md:font-medium md:text-lg mt-4 text-sm focus:outline-none focus:ring cursor-pointer text-high-emphesis bg-gradient-to-r from-pink-red to-light-brown hover:opacity-90`
+const rewardButtonStyleDisabled = `flex justify-center items-center w-full h-11 rounded font-bold md:font-medium md:text-lg mt-4 text-sm focus:outline-none focus:ring cursor-pointer text-secondary bg-dark-900/80`
 
 export default function Stake() {
   const { i18n } = useLingui()
@@ -72,7 +74,7 @@ export default function Stake() {
   const sushiBalance = useTokenBalance(account ?? undefined, FERMION)
   // const xSushiBalance = useTokenBalance(account ?? undefined, FERMION)
   const xSushiBalance = useUserInfo({ id: FERMION_POOLID[chainId ? chainId : ChainId.ETHEREUM], chef: 1 }, FERMION)
-  const { enter, leave } = useSushiBar()
+  const { enter, leave, harvest } = useSushiBar()
 
   const walletConnected = !!account
   const toggleWalletModal = useWalletModalToggle()
@@ -205,6 +207,18 @@ export default function Stake() {
   })[0]
 
   const pendingFermions = usePendingSushi(exofiFarmObj)
+
+  const harvestButtonDisabled = pendingFermions?.toFixed(0) === '0' ? true : false
+  const handleRewardClickButton = async () => {
+    if (harvestButtonDisabled) return
+    setPendingTx(true)
+    const success = await sendTx(() => harvest(account, chainId))
+    if (!success) {
+      setPendingTx(false)
+      return
+    }
+  }
+
   const apy1m = exofiFarm?.rewardAprPerMonth //(bar?.ratio / bar1m?.ratio - 1) * 12 * 100
 
   return (
@@ -256,7 +270,7 @@ export default function Stake() {
           <div className="w-full max-w-xl mx-auto md:mx-0 md:ml-6 md:block md:w-72">
             <div className="flex flex-col w-full px-4 pt-6 pb-5 rounded backdrop-blur md:px-8 md:pt-7 md:pb-9">
               <div className="flex flex-wrap">
-                <div className="flex flex-col flex-grow md:mb-7 md:mt-7">
+                <div className="flex flex-col flex-grow md:mb-1">
                   <p className="mb-3 text-lg font-bold md:text-2xl md:font-medium text-high-emphesis">
                     {i18n._(t`Your Rewards`)}
                   </p>
@@ -276,6 +290,13 @@ export default function Stake() {
                       <p className="text-sm md:text-base text-primary">EXOFI</p>
                     </div>
                   </div>
+                  <button
+                    className={harvestButtonDisabled ? rewardButtonStyleDisabled : rewardButtonStyleEnabled}
+                    onClick={handleRewardClickButton}
+                    disabled={harvestButtonDisabled}
+                  >
+                    {harvestButtonDisabled ? i18n._(t`No rewards`) : i18n._(t`Collect`)}
+                  </button>
                 </div>
               </div>
             </div>
@@ -427,7 +448,7 @@ export default function Stake() {
                       ? i18n._(t`Insufficient Balance`)
                       : activeTab === 0
                       ? i18n._(t`Confirm Staking`)
-                      : i18n._(t`Confirm Withdrawal`)}
+                      : i18n._(t`Withdraw and Harvest`)}
                   </button>
                 )}
               </div>
