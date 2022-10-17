@@ -33,16 +33,27 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("/images/background.png") no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  background-color: var(--primary);
   color: var(--text-primary);
-
 }
-@media only screen and (max-width: 1080px) {
+
+@media (max-width: 1080px) {
   body{
-    background: url("/images/background-mobile.png") no-repeat;
+    background-image: url("/images/background-mobile.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: var(--primary);
+  
+  }
+}
+
+@media (min-width: 1081px) {
+  body{
+    background-image: url("/images/background.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: var(--primary);
+  
   }
 }
 
