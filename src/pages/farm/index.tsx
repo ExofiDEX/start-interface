@@ -85,7 +85,7 @@ function Farm(): JSX.Element {
             {i18n._(t`Dyson Sphere`)}
           </Typography>
           <Typography variant="sm" weight={400}>
-            {i18n._(t`Earn fees and rewards by depositing and staking your tokens to the Fusion Reactor.`)}
+            {i18n._(t`Earn fees and rewards by depositing and staking your tokens to the Dyson Sphere.`)}
           </Typography>
         </div>
         <div className="flex gap-3">
