@@ -3,9 +3,12 @@ import { ChainId } from '@exoda/core-sdk'
 const THE_GRAPH = 'https://api.studio.thegraph.com'
 const NAS_GRAPH = 'https://graph.kkt.one/node'
 const HYPER_GRAPH = 'https://q.hg.network'
+const DECENTRALISED_THE_GRAPH = ' https://gateway.thegraph.com'
+
+export const API_KEY = 'adf126df88fb44b4c8138a659f3e3e9d'
 
 export const GRAPH_HOST = {
-  [ChainId.ETHEREUM]: THE_GRAPH,
+  [ChainId.ETHEREUM]: DECENTRALISED_THE_GRAPH,
   [ChainId.GÖRLI]: THE_GRAPH, // Enable Görli Testnet
   [ChainId.XDAI]: THE_GRAPH,
   [ChainId.MATIC]: THE_GRAPH,
@@ -32,7 +35,7 @@ export const TRIDENT = {
 }
 
 export const EXCHANGE_GRAPH_VERSION = {
-  [ChainId.ETHEREUM]: 'v0.0.1',
+  [ChainId.ETHEREUM]: 'sAkaNrCAZmEGn87mJWXJKEmJX1vH2WibBv3AAWfCDdM',
   [ChainId.GÖRLI]: 'v0.1.1',
   [ChainId.XDAI]: 'v0.1.1',
   [ChainId.MATIC]: 'v0.1.1',
@@ -70,7 +73,7 @@ export const BLOCKS_GRAPH_VERSION = {
 }
 
 export const MFG_GRAPH_VERSION = {
-  [ChainId.ETHEREUM]: 'v0.0.1',
+  [ChainId.ETHEREUM]: '8bq5qD26F78MAskLDEhtKGTU97eD4TM2CqjXjAzrXRi8',
   [ChainId.GÖRLI]: 'v0.1.1',
   [ChainId.XDAI]: 'v0.1.1',
   [ChainId.MATIC]: 'v0.1.1',
