@@ -1,5 +1,5 @@
 import { ChainId, SUSHI } from '@exoda/core-sdk'
-import { EXCHANGE_GRAPH_VERSION, GRAPH_HOST } from 'app/services/graph/constants'
+import { API_KEY, EXCHANGE_GRAPH_VERSION, GRAPH_HOST } from 'app/services/graph/constants'
 import {
   dayDatasQuery,
   ethPriceQuery,
@@ -19,8 +19,8 @@ import {
 import { pager } from './pager'
 
 export const EXCHANGE = {
-  [ChainId.ETHEREUM]: '36072/exchange',
-  [ChainId.GÖRLI]: '30494/exchange-goerli',
+  [ChainId.ETHEREUM]: `api/${API_KEY}/subgraphs/id`,
+  [ChainId.GÖRLI]: 'query/30494/exchange-goerli',
   [ChainId.XDAI]: 'sushiswap/xdai-exchange',
   [ChainId.MATIC]: 'sushiswap/matic-exchange',
   [ChainId.FANTOM]: 'sushiswap/fantom-exchange',
@@ -39,7 +39,7 @@ export const EXCHANGE = {
 // @ts-ignore TYPE NEEDS FIXING
 export const exchange = async (chainId = ChainId.ETHEREUM, query, variables = {}) =>
   // @ts-ignore TYPE NEEDS FIXING
-  pager(`${GRAPH_HOST[chainId]}/query/${EXCHANGE[chainId]}/${EXCHANGE_GRAPH_VERSION[chainId]}`, query, variables)
+  pager(`${GRAPH_HOST[chainId]}/${EXCHANGE[chainId]}/${EXCHANGE_GRAPH_VERSION[chainId]}`, query, variables)
 
 export const getPairs = async (chainId = ChainId.ETHEREUM, variables = undefined, query = pairsQuery) => {
   const { pairs } = await exchange(chainId, query, variables)

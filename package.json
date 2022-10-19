@@ -240,5 +240,6 @@
     "entrypoints": [
       "src/pages"
     ]
-  }
+  },
+  "dependencies": {}
 }

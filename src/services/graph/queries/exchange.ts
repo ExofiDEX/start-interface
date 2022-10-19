@@ -46,8 +46,8 @@ export const bundleFields = gql`
 `
 
 export const ethPriceQuery = gql`
-  query ethPriceQuery($id: Int! = 1, $block: Block_height) {
-    bundles(id: $id, block: $block) {
+  query ethPriceQuery($id: Int! = 1) {
+    bundles(id: $id) {
       ...bundleFields
     }
   }
@@ -120,8 +120,8 @@ export const pairFieldsQuery = gql`
 `
 
 export const pairQuery = gql`
-  query pairQuery($id: String!, $block: Block_height) {
-    pair(id: $id, block: $block) {
+  query pairQuery($id: String!) {
+    pair(id: $id) {
       ...pairFields
     }
   }
@@ -145,8 +145,8 @@ export const pairCountQuery = gql`
 `
 
 export const pairDayDatasQuery = gql`
-  query pairDayDatasQuery($first: Int = 1000, $skip: Int, $block: Block_height, $where: PairDayData_filter) {
-    pairDayDatas(first: $first, skip: $skip, orderBy: date, orderDirection: desc, where: $where, block: $block) {
+  query pairDayDatasQuery($first: Int = 1000, $skip: Int, $where: PairDayData_filter) {
+    pairDayDatas(first: $first, skip: $skip, orderBy: date, orderDirection: desc, where: $where) {
       date
       pair {
         id
@@ -186,7 +186,7 @@ export const pairsQuery = gql`
     $skip: Int = 0
     $first: Int = 1000
     $where: Pair_filter
-    $block: Block_height
+    #$block: Block_height
     $orderBy: Pair_orderBy = "trackedReserveETH"
     $orderDirection: OrderDirection = "desc"
   ) {
@@ -195,7 +195,7 @@ export const pairsQuery = gql`
       first: $first
       orderBy: $orderBy
       orderDirection: $orderDirection
-      block: $block
+      #block: $block
       where: $where
     ) {
       ...pairFields
@@ -205,14 +205,8 @@ export const pairsQuery = gql`
 `
 
 export const pairsTimeTravelQuery = gql`
-  query pairsTimeTravelQuery($first: Int! = 1000, $pairAddresses: [Bytes]!, $block: Block_height!) {
-    pairs(
-      first: $first
-      block: $block
-      orderBy: trackedReserveETH
-      orderDirection: desc
-      where: { id_in: $pairAddresses }
-    ) {
+  query pairsTimeTravelQuery($first: Int! = 1000, $pairAddresses: [Bytes]!) {
+    pairs(first: $first, orderBy: trackedReserveETH, orderDirection: desc, where: { id_in: $pairAddresses }) {
       id
       reserveUSD
       trackedReserveETH
@@ -241,8 +235,8 @@ export const tokenFieldsQuery = gql`
 `
 
 export const tokenQuery = gql`
-  query tokenQuery($id: String!, $block: Block_height) {
-    token(id: $id, block: $block) {
+  query tokenQuery($id: String!) {
+    token(id: $id) {
       ...tokenFields
     }
   }
@@ -258,8 +252,8 @@ export const tokenIdsQuery = gql`
 `
 
 export const tokenDayDatasQuery = gql`
-  query tokenDayDatasQuery($first: Int! = 1000, $skip: Int, $block: Block_height, $where: TokenDayData_filter) {
-    tokenDayDatas(first: $first, skip: $skip, orderBy: date, orderDirection: desc, where: $where, block: $block) {
+  query tokenDayDatasQuery($first: Int! = 1000, $skip: Int, $where: TokenDayData_filter) {
+    tokenDayDatas(first: $first, skip: $skip, orderBy: date, orderDirection: desc, where: $where) {
       id
       date
       token {
@@ -274,25 +268,11 @@ export const tokenDayDatasQuery = gql`
 `
 
 export const tokenPairsQuery = gql`
-  query tokenPairsQuery($id: String!, $skip: Int, $block: Block_height) {
-    pairs0: pairs(
-      first: 1000
-      skip: $skip
-      orderBy: reserveUSD
-      orderDirection: desc
-      where: { token0: $id }
-      block: $block
-    ) {
+  query tokenPairsQuery($id: String!, $skip: Int) {
+    pairs0: pairs(first: 1000, skip: $skip, orderBy: reserveUSD, orderDirection: desc, where: { token0: $id }) {
       ...pairFields
     }
-    pairs1: pairs(
-      first: 1000
-      skip: $skip
-      orderBy: reserveUSD
-      orderDirection: desc
-      where: { token1: $id }
-      block: $block
-    ) {
+    pairs1: pairs(first: 1000, skip: $skip, orderBy: reserveUSD, orderDirection: desc, where: { token1: $id }) {
       ...pairFields
     }
   }
@@ -300,8 +280,8 @@ export const tokenPairsQuery = gql`
 `
 
 export const tokensQuery = gql`
-  query tokensQuery($first: Int! = 1000, $skip: Int, $block: Block_height, $where: Token_filter) {
-    tokens(first: $first, skip: $skip, orderBy: volumeUSD, orderDirection: desc, block: $block, where: $where) {
+  query tokensQuery($first: Int! = 1000, $skip: Int, $where: Token_filter) {
+    tokens(first: $first, skip: $skip, orderBy: volumeUSD, orderDirection: desc, where: $where) {
       ...tokenFields
       dayData(first: 7, orderBy: date, orderDirection: desc) {
         id
@@ -319,16 +299,14 @@ export const tokenSubsetQuery = gql`
     $skip: Int
     $tokenAddresses: [Bytes]!
     $orderBy: String! = "id"
-    $orderDirection: String! = "desc"
-    $block: Block_height
+    $orderDirection: String! = "desc" #$block: Block_height
   ) {
     tokens(
       first: $first
       skip: $skip
       orderBy: $orderBy
       orderDirection: $orderDirection
-      where: { id_in: $tokenAddresses }
-      block: $block
+      where: { id_in: $tokenAddresses } #block: $block
     ) {
       ...tokenFields
     }
@@ -338,7 +316,7 @@ export const tokenSubsetQuery = gql`
 
 // Transactions...
 export const transactionsQuery = gql`
-  query transactionsQuery($first: Int! = 1000, $skip: Int, $block: Block_height, $where: Swap_filter) {
+  query transactionsQuery($first: Int! = 1000, $skip: Int, $where: Swap_filter) {
     swaps(orderBy: timestamp, orderDirection: desc, where: $where) {
       id
       timestamp
