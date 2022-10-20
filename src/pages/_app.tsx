@@ -35,6 +35,12 @@ if (typeof window !== 'undefined' && !!window.ethereum) {
   window.ethereum.autoRefreshOnNetworkChange = false
 }
 
+if (process.env.NODE_ENV === 'production') {
+  console.log = () => {}
+  console.error = () => {}
+  console.debug = () => {}
+}
+
 // @ts-ignore TYPE NEEDS FIXING
 function MyApp({ Component, pageProps, fallback, err }) {
   const router = useRouter()
