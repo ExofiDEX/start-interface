@@ -40,7 +40,7 @@ function Farm(): JSX.Element {
     chainId,
     variables: { where: { address: account?.toLowerCase() } },
   })
-  console.log('userPools', userPools)
+
   const FILTER = {
     // @ts-ignore TYPE NEEDS FIXING
     all: (farm) => farm.allocPoint !== '0' && farm.chef !== Chef.OLD_FARMS,

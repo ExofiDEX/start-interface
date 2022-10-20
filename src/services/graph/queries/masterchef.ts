@@ -13,7 +13,7 @@ export const poolsQuery = gql`
       allocPoint
       lastRewardBlock
       accFermionPerShare
-      slpBalance
+      balance
       userCount
       magneticFieldGenerator {
         id
