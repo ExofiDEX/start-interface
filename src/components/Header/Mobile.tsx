@@ -30,7 +30,7 @@ const Mobile: FC = () => {
           </div>
           <div className="flex items-center w-24">
             {/* <Link href="/swap" passHref={true}> */}
-            <Logo width="50px" height="50px" />
+            <Logo width="200px" height="50px" />
             {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="24px" height="24px" /> */}
             {/* </Link> */}
           </div>

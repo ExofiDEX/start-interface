@@ -308,7 +308,7 @@ export default function Stake() {
               <div className="flex items-center justify-between w-full h-24 max-w-xl p-4 bg-opacity-50 rounded md:pl-5 md:pr-7 backdrop-blur-highlight">
                 <div className="flex flex-col">
                   <div className="flex items-center justify-center mb-4 flex-nowrap md:mb-2">
-                    <p className="text-sm font-bold whitespace-nowrap md:text-lg md:leading-5 text-low-emphesis">
+                    <p className="text-sm font-bold text-dark-600 whitespace-nowrap md:text-lg md:leading-5">
                       {i18n._(t`Staking APY`)}{' '}
                     </p>
                     {/* <img className="ml-3 cursor-pointer" src={MoreInfoSymbol} alt={'more info'} /> */}
@@ -327,10 +327,10 @@ export default function Stake() {
                   </div> */}
                 </div>
                 <div className="flex flex-col">
-                  <p className="mb-1 text-lg font-bold text-right text-low-emphesis md:text-3xl">
+                  <p className="mb-1 text-lg font-bold text-right text-dark-600 md:text-3xl">
                     {`${apy1m ? apy1m.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
                   </p>
-                  <p className="w-32 text-sm text-right text-low-emphesis md:w-64 md:text-base">{i18n._(t`1m APY`)}</p>
+                  <p className="w-32 text-sm text-right text-dark-600 md:w-64 md:text-base">{i18n._(t`1m APY`)}</p>
                 </div>
               </div>
             </div>
