@@ -43,7 +43,7 @@ const MenuLink: FC<{ href?: string; label: string; onClick?(): void }> = ({ href
 
 enum FarmFilter {
   All = 'All Farms',
-  Portfolio = 'Your Farms',
+  Portfolio = 'My Farms',
   Kashi = 'Kashi Farms',
   Sushi = 'Sushi Farms',
   Old = 'Old Farms',
@@ -72,9 +72,9 @@ const OnsenFilter = ({ account, chainId }: { account?: string | null; chainId?: 
     const map: Record<string, ReactNode> = {
       [FarmFilter.All]: <MenuLink href={'/farm'} label={i18n._(t`All Farms`)} />,
       [FarmFilter.Portfolio]: account ? (
-        <MenuLink href={`/farm?account=${account}&filter=portfolio`} label={i18n._(t`Your Farms`)} />
+        <MenuLink href={`/farm?account=${account}&filter=portfolio`} label={i18n._(t`My Farms`)} />
       ) : (
-        <MenuLink onClick={toggleWalletModal} label={i18n._(t`Your Farms`)} />
+        <MenuLink onClick={toggleWalletModal} label={i18n._(t`My Farms`)} />
       ),
       // [FarmFilter.Kashi]:
       //   chainId && [ChainId.ETHEREUM, ChainId.ARBITRUM].includes(chainId) ? (
