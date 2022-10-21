@@ -29,10 +29,10 @@ const Mobile: FC = () => {
             <MenuIcon width={28} className="text-white cursor-pointer hover:text-white" onClick={() => setOpen(true)} />
           </div>
           <div className="flex items-center w-24">
-            <Link href="/swap" passHref={true}>
-              <Logo width="50px" height="50px" />
-              {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="24px" height="24px" /> */}
-            </Link>
+            {/* <Link href="/swap" passHref={true}> */}
+            <Logo width="50px" height="50px" />
+            {/* <Image src="https://app.sushi.com/images/logo.svg" alt="Sushi logo" width="24px" height="24px" /> */}
+            {/* </Link> */}
           </div>
           <div className="flex items-center">{<Web3Network />}</div>
         </div>
