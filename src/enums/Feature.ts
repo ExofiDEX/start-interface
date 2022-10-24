@@ -18,4 +18,5 @@ export enum Feature {
   POOL = 'Liquidity Pool',
   POOL_FINDER = 'Pool Finder Tool',
   SWAP = 'Legacy Swap',
+  FERMION_REACTOR = 'Fermion Reactor',
 }

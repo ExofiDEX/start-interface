@@ -79,7 +79,20 @@ const useMenu: UseMenu = () => {
         disabled: !featureEnabled(Feature.POOL_FINDER, chainId),
       },
     ]
-
+    if (featureEnabled(Feature.FERMION_REACTOR, chainId)) {
+      menu.push({
+        key: 'fermion-reactor',
+        title: i18n._(t`Fermion Reactor`),
+        icon: <SwitchVerticalIcon width={20} />,
+        items: [
+          {
+            key: 'buy-fermion',
+            title: i18n._(t`Buy Fermions`),
+            link: '/fermionreactor',
+          },
+        ],
+      })
+    }
     if (featureEnabled(Feature.TRIDENT, chainId)) {
       menu.push({
         key: 'trade',

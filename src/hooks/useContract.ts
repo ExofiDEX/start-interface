@@ -8,6 +8,7 @@ import {
   CHAINLINK_ORACLE_ADDRESS,
   ENS_REGISTRAR_ADDRESS,
   FACTORY_ADDRESS,
+  FERMION_REACTOR_ADDRESS,
   MAKER_ADDRESS,
   MASTERCHEF_ADDRESS,
   MASTERCHEF_V2_ADDRESS,
@@ -42,6 +43,7 @@ import ENS_ABI from 'app/constants/abis/ens-registrar.json'
 import { ERC20_BYTES32_ABI } from 'app/constants/abis/erc20'
 import ERC20_ABI from 'app/constants/abis/erc20.json'
 import FACTORY_ABI from 'app/constants/abis/factory.json'
+import FERMION_REACTOR_ABI from 'app/constants/abis/fermion-reactor.json'
 import INARI_ABI from 'app/constants/abis/inari.json'
 import MULTICALL_ABI from 'app/constants/abis/interface-multicall.json'
 import KASHI_REPOSITORY_ABI from 'app/constants/abis/kashi-repository.json'
@@ -204,6 +206,11 @@ export function useSushiContract(withSignerIfPossible = true): Contract | null {
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId ? MASTERCHEF_ADDRESS[chainId] : undefined, MASTERCHEF_ABI, withSignerIfPossible)
+}
+
+export function useFermionReactorContract(withSignerIfPossible?: boolean): Contract | null {
+  const { chainId } = useActiveWeb3React()
+  return useContract(chainId ? FERMION_REACTOR_ADDRESS[chainId] : undefined, FERMION_REACTOR_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefV2Contract(withSignerIfPossible?: boolean): Contract | null {

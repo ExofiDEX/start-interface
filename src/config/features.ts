@@ -41,6 +41,7 @@ const features: FeatureMap = {
     Feature.POOL,
     Feature.POOL_FINDER,
     Feature.SWAP,
+    Feature.FERMION_REACTOR,
     // Feature.MISO,
     // Feature.MEOWSHI,
     // Feature.INARI,
