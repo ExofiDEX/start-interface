@@ -1,3 +1,4 @@
+import { BigNumber } from '@ethersproject/bignumber'
 import { NATIVE, ZERO } from '@exoda/core-sdk'
 import ExclamationIcon from '@heroicons/react/outline/ExclamationIcon'
 import { t } from '@lingui/macro'
@@ -38,7 +39,7 @@ const FermionReactor = () => {
   const [input, setInput] = useState<string>('')
   const { i18n } = useLingui()
   const { buy, purchaseRate, minimumLimit, maximumLimit } = useFermionReactor()
-  const [usingBalance, setUsingBalance] = useState(false)
+  const [usingBalance, setUsingBalance] = useState(true)
   const [pendingTx, setPendingTx] = useState(false)
   // @ts-ignore TYPE NEEDS FIXING
   const currency = NATIVE[chainId]
@@ -46,6 +47,8 @@ const FermionReactor = () => {
   const parsedAmount = usingBalance ? balance : tryParseAmount(input, balance?.currency)
   // @ts-ignore TYPE NEEDS FIXING
   const insufficientFunds = (balance && balance.equalTo(ZERO)) || parsedAmount?.greaterThan(balance)
+  const lowerLimit = (balance && balance.lessThan(minimumLimit)) || parsedAmount?.lessThan(minimumLimit)
+  const upperLimit = parsedAmount?.greaterThan(maximumLimit)
   const walletConnected = !!account
   const buttonStyle =
     'flex justify-center items-center w-full h-14 rounded font-bold md:font-medium md:text-lg mt-5 text-sm focus:outline-none focus:ring'
@@ -56,17 +59,26 @@ const FermionReactor = () => {
 
   const buttonDisabled = !input || pendingTx || (parsedAmount && parsedAmount.equalTo(ZERO))
   const formattedBalance = balance?.toSignificant(4)
+  const [outputAmount, setOutputAmount] = useState('0')
   const handleInput = (v: string) => {
     if (v.length <= INPUT_CHAR_LIMIT) {
       setUsingBalance(false)
       setInput(v)
+      const out = calculateOutputAmount(v.toBigNumber(18))
+      setOutputAmount(fromWei(out?.toString()))
     }
   }
 
+  const calculateOutputAmount = (amt: BigNumber) => {
+    if (purchaseRate) return amt.mul(purchaseRate).toString()
+  }
+
   const handleClickMax = () => {
+    setUsingBalance(true)
     // @ts-ignore TYPE NEEDS FIXING
     setInput(parsedAmount ? parsedAmount.toSignificant(balance.currency.decimals).substring(0, INPUT_CHAR_LIMIT) : '')
-    setUsingBalance(true)
+    const out = calculateOutputAmount(input.toBigNumber(18))
+    setOutputAmount(fromWei(out?.toString()))
   }
   const toggleWalletModal = useWalletModalToggle()
   const handleClickButton = async () => {
@@ -86,8 +98,7 @@ const FermionReactor = () => {
       setPendingTx(false)
     }
   }
-
-  const inputError = insufficientFunds
+  const inputError = insufficientFunds || lowerLimit || upperLimit
   return (
     <>
       <NextSeo
@@ -163,7 +174,7 @@ const FermionReactor = () => {
                       ? buttonStyleDisabled
                       : !walletConnected
                       ? buttonStyleConnectWallet
-                      : insufficientFunds
+                      : inputError
                       ? buttonStyleInsufficientFunds
                       : buttonStyleEnabled
                   }
@@ -176,6 +187,10 @@ const FermionReactor = () => {
                     ? i18n._(t`Enter Amount`)
                     : insufficientFunds
                     ? i18n._(t`Insufficient Balance`)
+                    : lowerLimit
+                    ? i18n._(t`Order size too low`)
+                    : upperLimit
+                    ? i18n._(t`Order size too high`)
                     : i18n._(t`Purchase Fermions`)}
                 </button>
               </div>
@@ -183,6 +198,10 @@ const FermionReactor = () => {
           </div>
           <div className="flex flex-col items-center gap-2 py-2 rounded">
             <div className="items-center justify-center w-full max-w-xl px-3 pt-2 pb-2 rounded backdrop-blur md:pb-4 md:pt-4 md:px-8">
+              <Typography variant="xs" weight={700} className="flex gap-1 tracking-[0.06em] text-primary pb-1">
+                {i18n._(t`You will get `)} <span className="text-white">{outputAmount}</span> EXOFI {i18n._(t`with`)}{' '}
+                <span className="text-white">{parsedAmount ? parsedAmount?.toSignificant(4) : 0}</span> ETH
+              </Typography>
               <Typography variant="xs" weight={700} className="flex gap-1 tracking-[0.06em] text-primary pb-1">
                 1 {currency.symbol} <span className="text-primary">=</span> {purchaseRate} EXOFI
               </Typography>
