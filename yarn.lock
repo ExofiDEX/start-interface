@@ -1852,17 +1852,17 @@
     "@ethersproject/properties" "^5.6.0"
     "@ethersproject/strings" "^5.6.0"
 
-"@exoda/bentobox-sdk@1.0.0-viper.89o", "@exoda/bentobox-sdk@^1.0.0-viper.89o":
-  version "1.0.0-viper.89o"
-  resolved "https://registry.yarnpkg.com/@exoda/bentobox-sdk/-/bentobox-sdk-1.0.0-viper.89o.tgz#fd74153eacb4873abd52535a0b3e40f4ee6808a0"
-  integrity sha512-tru9SRFr0vyBmZY/NJUGW6BCuQnvjKx4KRuiZnCp2B1Egdxlz5/FBR4VAHp6q+y9rGqAdWvZ2PnVEf0Xiksnsw==
+"@exoda/bentobox-sdk@1.0.0-viper.89r", "@exoda/bentobox-sdk@^1.0.0-viper.89r":
+  version "1.0.0-viper.89r"
+  resolved "https://registry.yarnpkg.com/@exoda/bentobox-sdk/-/bentobox-sdk-1.0.0-viper.89r.tgz#cd4fca4f43e4cd046929015a92b81e5583df767b"
+  integrity sha512-SV5ThkaDSfXFmgBZxzkNSjt8Dn+vAAEP5OnelYMnPcHdoGf/cdznNU2Xw9QNujeHx5QR9kXSfaiqxGALCkfvWA==
   dependencies:
-    "@exoda/core-sdk" "1.0.0-viper.108o"
+    "@exoda/core-sdk" "1.0.0-viper.108r"
 
-"@exoda/core-sdk@1.0.0-viper.108o", "@exoda/core-sdk@^1.0.0-viper.108o":
-  version "1.0.0-viper.108o"
-  resolved "https://registry.yarnpkg.com/@exoda/core-sdk/-/core-sdk-1.0.0-viper.108o.tgz#1ce92e567c809afa656d078311a281dadb7e17f9"
-  integrity sha512-FMb5rbvSTbPdSJopYJ1XKexXMK8T66ivi4EVLoLTwNldxRCv2pkHHpUBfvdr2kJtbOGBBHdEwLUvxLh7FlWp3w==
+"@exoda/core-sdk@1.0.0-viper.108r", "@exoda/core-sdk@^1.0.0-viper.108r":
+  version "1.0.0-viper.108r"
+  resolved "https://registry.yarnpkg.com/@exoda/core-sdk/-/core-sdk-1.0.0-viper.108r.tgz#535a135404bac14d09a79f520c0ac5b994175372"
+  integrity sha512-/Mk4r+F8AB0RE/8Tud3tPoIU4FGOTmucPMyOjSCi/ot+mhzKpkZ6HEpE9MbmBWifhwVO/qkRM9+0RSFbPR7WeQ==
   dependencies:
     "@ethersproject/address" "^5.4.0"
     "@ethersproject/bignumber" "^5.4.0"
@@ -1875,19 +1875,19 @@
     tiny-warning "^1.0.0"
     toformat "^2.0.0"
 
-"@exoda/kashi-sdk@^1.0.0-viper.80h9":
-  version "1.0.0-viper.80h9"
-  resolved "https://registry.yarnpkg.com/@exoda/kashi-sdk/-/kashi-sdk-1.0.0-viper.80h9.tgz#632a47d654ef085aa489b1d4085d47785d89e7a0"
-  integrity sha512-XjwFlr0VF7AjNVpArJ+iZ3ofZXiDgoiUPPf/fXs7QDezHjYfI07sx7zOIb9aqY1hv4l02OzUr9RaWw3Zk50ahw==
+"@exoda/kashi-sdk@^1.0.0-viper.80h12":
+  version "1.0.0-viper.80h12"
+  resolved "https://registry.yarnpkg.com/@exoda/kashi-sdk/-/kashi-sdk-1.0.0-viper.80h12.tgz#c6d063647568f032bb5e410aae821a6a795bc0db"
+  integrity sha512-sgkOgZ9C+KYNOczU3e6K4OH/bTSXDAMHgVZy8syjncBziRX0Y0oPzT0S+ZX1h/oG4Yz8GLaepktoAYIOeNyU4g==
   dependencies:
     "@ethersproject/abi" "^5.4.0"
     "@ethersproject/contracts" "^5.4.0"
-    "@exoda/bentobox-sdk" "1.0.0-viper.89o"
+    "@exoda/bentobox-sdk" "1.0.0-viper.89r"
 
-"@exoda/limit-order-sdk@^1.0.0-viper.89g10":
-  version "1.0.0-viper.89g10"
-  resolved "https://registry.yarnpkg.com/@exoda/limit-order-sdk/-/limit-order-sdk-1.0.0-viper.89g10.tgz#240ece696e864abb93199a7fd81cb4b68484cb0d"
-  integrity sha512-IBku3ZHo1Q5Flqb669MV4NlPLjF5mKMcWnlroIBfssZR515W3Jpoy/EeZqnikiDJuxox7s5A091/KOqdwbOwLQ==
+"@exoda/limit-order-sdk@^1.0.0-viper.89g13":
+  version "1.0.0-viper.89g13"
+  resolved "https://registry.yarnpkg.com/@exoda/limit-order-sdk/-/limit-order-sdk-1.0.0-viper.89g13.tgz#6564df6e3e7634bb9025f1b20f564c48ec8bdf1c"
+  integrity sha512-uPQcBXOUgtHMDj59ysFH+xORwGSGoetPBREHkYwzrGHW3ldXUH4ASUrrI5+R7UM7mRLLb29IfLrkOoXaDiVOsg==
   dependencies:
     "@ethersproject/abi" "^5.4.0"
     "@ethersproject/abstract-signer" "^5.4.0"
@@ -1896,7 +1896,7 @@
     "@ethersproject/experimental" "^5.4.0"
     "@ethersproject/signing-key" "^5.4.0"
     "@ethersproject/transactions" "^5.4.0"
-    "@exoda/core-sdk" "1.0.0-viper.108o"
+    "@exoda/core-sdk" "1.0.0-viper.108r"
     eip-712 "^0.4.0"
     isomorphic-unfetch "^3.0.0"
 
@@ -1905,23 +1905,23 @@
   resolved "https://registry.yarnpkg.com/@exoda/miso-sdk/-/miso-sdk-1.0.0-viper.78g.tgz#6f06f222f266408534c2285767e6f0f07e96db22"
   integrity sha512-2cI4OAlBgqjVPi+Pvnc48haLOFdVD3NMabTmCFe/UPr18jRRILq3LFwgHTNCgjFiZv98sCsur2C1p0q9ucz97Q==
 
-"@exoda/tines@1.0.0-viper.88o":
-  version "1.0.0-viper.88o"
-  resolved "https://registry.yarnpkg.com/@exoda/tines/-/tines-1.0.0-viper.88o.tgz#cae46de0363140cab82c56e6c531693134e5c964"
-  integrity sha512-YfxiC9sHJNQo+fZ8+Pv45cEV2thr2dgXDsQJZIvK3uRJrejodenF3NrFH0iPbhFDnR3LmovNlWCX5ZZ0DC9dVg==
+"@exoda/tines@1.0.0-viper.88r":
+  version "1.0.0-viper.88r"
+  resolved "https://registry.yarnpkg.com/@exoda/tines/-/tines-1.0.0-viper.88r.tgz#acad52a182afda0e41d733e7d3b3e460f5667fed"
+  integrity sha512-zcj8tpaetyQMm3SSgDAkAScP56oV2F5qUiSrsY8J5cOY3IvRRTIDmdTvX9dUKx0bQG0TixYaIkgWfi3oxvX0pw==
   dependencies:
     "@ethersproject/bignumber" "^5.4.0"
-    "@exoda/core-sdk" "1.0.0-viper.108o"
+    "@exoda/core-sdk" "1.0.0-viper.108r"
 
-"@exoda/trident-sdk@^1.0.0-viper.117o":
-  version "1.0.0-viper.117o"
-  resolved "https://registry.yarnpkg.com/@exoda/trident-sdk/-/trident-sdk-1.0.0-viper.117o.tgz#4b5928365d01a004520e84de9d6d11b20c3dc4d1"
-  integrity sha512-JyQkFLcR+ilFOR35iSgU6X/o1sWt9H3roGf5C7futPog0EEAwJ2bFdjWwYyTwhP4cgEpgurxehzzK0RqRYsq2w==
+"@exoda/trident-sdk@^1.0.0-viper.117r":
+  version "1.0.0-viper.117r"
+  resolved "https://registry.yarnpkg.com/@exoda/trident-sdk/-/trident-sdk-1.0.0-viper.117r.tgz#6ea72a13e9e0db2d265efd9cf82b62e0adabc2bc"
+  integrity sha512-wg1bLWyGjce8N3jrveBy50lTM4IR5sGtMZvpoKQr4SV3WOPh/3d833+xG4uWoLGq0wfrBwEPaVSgz6KTOZ8gTA==
   dependencies:
     "@ethersproject/abi" "^5.4.0"
     "@ethersproject/bignumber" "^5.4.0"
-    "@exoda/core-sdk" "1.0.0-viper.108o"
-    "@exoda/tines" "1.0.0-viper.88o"
+    "@exoda/core-sdk" "1.0.0-viper.108r"
+    "@exoda/tines" "1.0.0-viper.88r"
     "@sushiswap/trident" "1.0.0-canary.38"
     tiny-invariant "^1.1.0"
     trident-preview "npm:@sushiswap/trident@1.0.0-canary.36"

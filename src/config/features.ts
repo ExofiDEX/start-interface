@@ -15,6 +15,7 @@ const features: FeatureMap = {
     Feature.ADD_LIQUIDITY,
     Feature.POOL,
     Feature.POOL_FINDER,
+    Feature.FERMION_REACTOR,
     // Feature.SWAP,
     // Feature.MISO,
     // Feature.MEOWSHI,
