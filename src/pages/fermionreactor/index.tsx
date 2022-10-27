@@ -65,6 +65,7 @@ const FermionReactor = () => {
       setUsingBalance(false)
       setInput(v)
       const out = calculateOutputAmount(v.toBigNumber(18))
+      // @ts-ignore TYPE NEEDS FIXING
       setOutputAmount(fromWei(out?.toString()))
     }
   }
@@ -78,6 +79,7 @@ const FermionReactor = () => {
     // @ts-ignore TYPE NEEDS FIXING
     setInput(parsedAmount ? parsedAmount.toSignificant(balance.currency.decimals).substring(0, INPUT_CHAR_LIMIT) : '')
     const out = calculateOutputAmount(input.toBigNumber(18))
+    // @ts-ignore TYPE NEEDS FIXING
     setOutputAmount(fromWei(out?.toString()))
   }
   const toggleWalletModal = useWalletModalToggle()
