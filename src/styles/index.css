@@ -132,6 +132,11 @@ a {
   color: white;
 }
 
+.primary-btn{
+  background-image: linear-gradient(to right, #00F0FF , #FF00E5, #FFF500);
+  color: white;
+}
+
 .search-bar-color{
   /* background-color: #313132; */
   /* background: rgba(0, 0, 0, 0.40); */
