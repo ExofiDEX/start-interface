@@ -11,7 +11,7 @@ function Ramp(): JSX.Element | null {
     >
       <div className="grid items-center grid-flow-col justify-center h-[36px] text-sm rounded pointer-events-auto auto-cols-max mr-2 bg-blue px-3">
         {/*@ts-ignore TYPE NEEDS FIXING*/}
-        <span className="text-white">Buy Crypto</span>
+        <span className="text-white">Buy/Sell Crypto</span>
       </div>
       <RampModel />
     </div>

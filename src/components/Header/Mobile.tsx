@@ -6,6 +6,8 @@ import { Logo } from 'app/components/Icon'
 import Ramp from 'app/components/Ramp'
 import Web3Network from 'app/components/Web3Network'
 import Web3Status from 'app/components/Web3Status'
+import { Feature } from 'app/enums'
+import { featureEnabled } from 'app/functions'
 import useIsCoinbaseWallet from 'app/hooks/useIsCoinbaseWallet'
 import { useActiveWeb3React } from 'app/services/web3'
 import { useNativeCurrencyBalances } from 'app/state/wallet/hooks'
@@ -71,6 +73,18 @@ const Mobile: FC = () => {
                       </nav>
 
                       <div className="flex flex-col gap-4 px-6">
+                        {featureEnabled(Feature.FERMION_REACTOR, chainId) ? (
+                          <div className="flex items-center text-sm font-bold cursor-pointer pointer-events-auto select-none whitespace-nowrap">
+                            <div className="grid items-center grid-flow-col justify-center h-[36px] text-sm text-white rounded pointer-events-auto auto-cols-max mr-2 primary-btn px-3">
+                              <Link href="/fermionreactor" passHref={true}>
+                                Buy EXOFI
+                              </Link>
+                            </div>
+                          </div>
+                        ) : (
+                          ''
+                        )}
+
                         <Ramp />
                         {library && (library.provider.isMetaMask || isCoinbaseWallet) && (
                           <div className="hidden sm:flex">
