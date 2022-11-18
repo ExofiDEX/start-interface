@@ -2850,10 +2850,15 @@
   resolved "https://registry.yarnpkg.com/@sushiswap/miso/-/miso-1.0.0-canary.47.tgz#743f7f57ce28e796b93262eec2ea429942fa2e74"
   integrity sha512-bEDm9ZDE8jh1A+edGnYYH8dTNHytel7sk6k8EKS42Xw0szrjghWMq7HbOQ3PXrMFj2ChDOz/g6G3DZ0JrJasGA==
 
-"@sushiswap/trident@1.0.0-canary.38", "@sushiswap/trident@^1.0.0-canary.38":
+"@sushiswap/trident@1.0.0-canary.38":
   version "1.0.0-canary.38"
   resolved "https://registry.yarnpkg.com/@sushiswap/trident/-/trident-1.0.0-canary.38.tgz#a9211cb7c2cbed8e3c78647894ace6d20fd17324"
   integrity sha512-TnhOhKGevcMmGfj5rbABmmOmus7j0kHmDu2lNbPvnq+z7RB9mEsLG6DiyzEM9t+5SMm3ckTwt1GXhRgYPmy7mQ==
+
+"@sushiswap/trident@^1.0.0-canary.52":
+  version "1.0.0-canary.52"
+  resolved "https://registry.yarnpkg.com/@sushiswap/trident/-/trident-1.0.0-canary.52.tgz#c07fecb0fa0d6f67c4f427fd0f003569a5180860"
+  integrity sha512-6yjKn3tdp1is6Y69cZfGY1GxwGjZxhMDDKWJwFUi4h/8R0y1SR6a61B0Qdda2DsVf/NfP4mY1jpQ6wsyrH1GGQ==
 
 "@szmarczak/http-timer@^4.0.5":
   version "4.0.6"
