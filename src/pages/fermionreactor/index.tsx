@@ -39,7 +39,7 @@ const FermionReactor = () => {
   const [input, setInput] = useState<string>('')
   const { i18n } = useLingui()
   const { buy, purchaseRate, minimumLimit, maximumLimit } = useFermionReactor()
-  const [usingBalance, setUsingBalance] = useState(true)
+  const [usingBalance, setUsingBalance] = useState(false)
   const [pendingTx, setPendingTx] = useState(false)
   // @ts-ignore TYPE NEEDS FIXING
   const currency = NATIVE[chainId]

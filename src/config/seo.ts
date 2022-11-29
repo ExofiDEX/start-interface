@@ -8,8 +8,8 @@ const SEO = {
     site_name: 'ExofiDEX',
   },
   twitter: {
-    handle: '@EXOFI3',
-    site: '@EXOFI3',
+    handle: '@ExofiOfficial',
+    site: '@ExofiOfficial',
     cardType: 'summary_large_image',
   },
 }

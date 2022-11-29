@@ -5,7 +5,7 @@ type FeatureMap = { readonly [chainId in ChainId]?: Feature[] }
 
 const features: FeatureMap = {
   [ChainId.ETHEREUM]: [
-    // Feature.AMM,
+    Feature.AMM,
     Feature.LIQUIDITY_MINING,
     // Feature.BENTOBOX,
     // Feature.KASHI,
@@ -16,7 +16,7 @@ const features: FeatureMap = {
     Feature.POOL,
     Feature.POOL_FINDER,
     Feature.FERMION_REACTOR,
-    // Feature.SWAP,
+    Feature.SWAP,
     // Feature.MISO,
     // Feature.MEOWSHI,
     // Feature.INARI,
